@@ -1,0 +1,354 @@
+<title>Три характера системы</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+/* Layout: one shared palette and typeface; each direction differs only in grammar — surfaces, layering, selection, status, icons, motion. */
+:root{
+  --paper:#EEECE6; --paper-2:#E4E1D9; --ink:#1A1916; --ink-2:#5B5852; --rule:#C3BFB5;
+  --cin:#B3321F; --och:#94650A; --ver:#2F7259; --lap:#2B4C8C;
+  --grain-blend:multiply;
+  --f-text:"Literata", Georgia, serif;
+  --f-ui:"Golos Text", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#161513; --paper-2:#1F1E1B; --ink:#ECE9E2; --ink-2:#A29E95; --rule:#3C3A35;
+  --cin:#E8664F; --och:#D8A543; --ver:#67B398; --lap:#87A5E3; --grain-blend:screen; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#161513; --paper-2:#1F1E1B; --ink:#ECE9E2; --ink-2:#A29E95; --rule:#3C3A35;
+  --cin:#E8664F; --och:#D8A543; --ver:#67B398; --lap:#87A5E3; --grain-blend:screen; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--paper-2);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px}
+.wrap{max-width:1160px;margin:0 auto;display:grid;gap:72px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--lap);outline-offset:2px}
+
+.intro{display:grid;gap:12px;max-width:70ch}
+.intro h1{font-family:var(--f-text);font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.15;margin:0;text-wrap:balance}
+.intro p{margin:0;color:var(--ink-2)}
+.jump{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px}
+.jump a{color:var(--ink);text-underline-offset:3px;text-decoration-color:var(--rule)}
+
+.dir{display:grid;gap:22px}
+.dir-head{display:grid;gap:6px;max-width:74ch}
+.dir-head .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.dir-head h2{margin:0;font-family:var(--f-text);font-weight:400;font-size:30px;line-height:1.2}
+.dir-head .thesis{margin:0;font-family:var(--f-text);font-size:19px;font-style:italic;color:var(--ink)}
+.body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:36px;align-items:start}
+@media (max-width:900px){.body{grid-template-columns:minmax(0,1fr)}}
+
+/* grammar table */
+dl.gram{margin:0;display:grid;grid-template-columns:minmax(96px,auto) minmax(0,1fr);gap:10px 18px;font-size:14px}
+dl.gram dt{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);padding-top:3px}
+dl.gram dd{margin:0}
+@media (max-width:460px){dl.gram{grid-template-columns:minmax(0,1fr);gap:2px}dl.gram dd{margin-bottom:10px}}
+
+/* icons */
+.icons-wrap{display:grid;gap:10px}
+.icons-wrap h3{margin:0;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:500}
+.icons{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (max-width:560px){.icons{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.icons figure{margin:0;display:grid;justify-items:center;gap:6px;padding:14px 4px 10px;font-size:11.5px;color:var(--ink-2)}
+.icons svg{width:40px;height:40px;color:var(--ink);overflow:visible}
+
+/* window base */
+.win{position:relative;background:var(--paper);color:var(--ink);isolation:isolate}
+.win::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:var(--grain-blend);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .42 0 0 0 0 .38 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bar{display:flex;align-items:center;gap:10px;padding:9px 14px;font-size:13px;color:var(--ink-2)}
+.bar .t{flex:1;min-width:0;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.panes{position:relative;display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr)}
+@media (max-width:620px){.panes{grid-template-columns:minmax(0,1fr)}}
+.pane{position:relative;min-width:0;padding:20px}
+.toc{display:grid;gap:2px;font-size:14px;align-content:start}
+.toc .h{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px}
+.toc .it{position:relative;padding:6px 10px;display:flex;gap:8px}
+.toc .it i{font-style:normal;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.read{font-family:var(--f-text);font-size:16.5px;line-height:1.6;min-height:330px;padding-bottom:28px}
+.read h4{margin:0 0 10px;font-weight:400;font-size:26px;line-height:1.2}
+.read p{margin:0 0 12px;max-width:52ch}
+.trigger{font:500 13px var(--f-ui);display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:transparent;color:var(--ink);border:1px solid var(--rule);cursor:pointer;border-radius:0}
+.trigger svg{width:16px;height:16px}
+.pop{position:absolute;right:20px;top:64px;width:min(240px,calc(100% - 40px));font:14px var(--f-ui);z-index:3}
+.pop .ph{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;padding:10px 14px 6px}
+.pop .pi{display:flex;align-items:center;gap:10px;padding:8px 14px}
+.pop .pi svg{width:18px;height:18px;flex:none}
+.pop .pi.danger{color:var(--cin)}
+.replay{justify-self:start;font:500 13px var(--f-ui);background:transparent;color:var(--ink);border:1px solid var(--rule);padding:6px 12px;cursor:pointer;border-radius:0}
+.notice{font-family:var(--f-ui);font-size:13.5px;line-height:1.45}
+
+/* ---------- А. ЛИСТ ---------- */
+.g-sheet .win{border:1px solid var(--rule);box-shadow:5px 5px 0 -1px var(--paper),5px 5px 0 0 var(--rule),10px 10px 0 -1px var(--paper),10px 10px 0 0 var(--rule);margin:0 10px 10px 0}
+.g-sheet .bar{border-bottom:1px solid var(--rule)}
+.g-sheet .toc-pane{border-right:1px solid var(--rule)}
+@media (max-width:620px){.g-sheet .toc-pane{border-right:0;border-bottom:1px solid var(--rule)}}
+.g-sheet .toc .it.sel::before{content:"";position:absolute;left:-12px;top:50%;width:6px;height:6px;margin-top:-3px;background:var(--cin)}
+.g-sheet .read{display:grid;grid-template-columns:minmax(0,1fr) 112px;column-gap:22px}
+.g-sheet .read > *{grid-column:1}
+.g-sheet .read .margin{grid-column:2;grid-row:1 / span 4;border-left:1px solid var(--rule);padding-left:12px;font-family:var(--f-ui);font-size:12px;color:var(--ink-2);display:grid;gap:14px;align-content:start}
+.g-sheet .read .margin .notice{color:var(--och);font-size:12.5px}
+@media (max-width:620px){.g-sheet .read{grid-template-columns:minmax(0,1fr)}.g-sheet .read .margin{grid-column:1;grid-row:auto;border-left:0;border-top:1px solid var(--rule);padding:10px 0 0}}
+.g-sheet .panes.modal::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background-image:repeating-linear-gradient(135deg,color-mix(in srgb,var(--ink) 16%,transparent) 0 1px,transparent 1px 6px)}
+.g-sheet .pop{background:color-mix(in srgb,var(--paper) 62%,transparent);-webkit-backdrop-filter:blur(7px) saturate(.6);backdrop-filter:blur(7px) saturate(.6);border:1px solid var(--ink-2);box-shadow:4px 4px 0 -1px var(--paper),4px 4px 0 0 var(--rule),8px 8px 0 -1px var(--paper),8px 8px 0 0 var(--rule)}
+.g-sheet .pop .ph{color:var(--ink-2);border-bottom:1px solid var(--rule)}
+.g-sheet .pop .pi.hl{background:var(--paper-2)}
+.g-sheet .win.play .pop{animation:sheetIn .22s cubic-bezier(.2,0,0,1) both}
+.g-sheet .win.play .panes.modal::after{animation:fadeHatch .22s linear both}
+@keyframes sheetIn{from{transform:translateY(14px)}to{transform:none}}
+@keyframes fadeHatch{from{opacity:0}to{opacity:1}}
+
+/* ---------- Б. ЧЕРТЁЖ ---------- */
+.g-draft .win{--grid:color-mix(in srgb,var(--lap) 9%,transparent);background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:8px 8px;margin:10px}
+.crop{position:absolute;width:14px;height:14px;border-color:var(--ink);border-style:solid;border-width:0;pointer-events:none}
+.crop.tl{left:-8px;top:-8px;border-left-width:1px;border-top-width:1px}
+.crop.tr{right:-8px;top:-8px;border-right-width:1px;border-top-width:1px}
+.crop.bl{left:-8px;bottom:-8px;border-left-width:1px;border-bottom-width:1px}
+.crop.br{right:-8px;bottom:-8px;border-right-width:1px;border-bottom-width:1px}
+.g-draft .bar{border-bottom:1px dashed var(--rule)}
+.g-draft .coord{position:absolute;top:6px;right:8px;font:500 10.5px var(--f-ui);letter-spacing:.08em;color:var(--lap)}
+.g-draft .toc-pane{border-right:1px dashed var(--rule)}
+@media (max-width:620px){.g-draft .toc-pane{border-right:0;border-bottom:1px dashed var(--rule)}}
+.g-draft .toc .it.sel::before,.g-draft .toc .it.sel::after{content:"";position:absolute;width:8px;height:8px;border:0 solid var(--lap)}
+.g-draft .toc .it.sel::before{left:0;top:0;border-left-width:1.5px;border-top-width:1.5px}
+.g-draft .toc .it.sel::after{right:0;bottom:0;border-right-width:1.5px;border-bottom-width:1.5px}
+.g-draft .read .notice{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;padding:10px 12px;margin:6px 0 16px;max-width:52ch;color:var(--ink)}
+.g-draft .read .notice b{font-weight:600;color:var(--och);font-size:12px;letter-spacing:.06em}
+.g-draft .read .notice .crop{width:9px;height:9px;border-color:var(--och)}
+.g-draft .read .notice .crop.tl{left:0;top:0}.g-draft .read .notice .crop.tr{right:0;top:0}.g-draft .read .notice .crop.bl{left:0;bottom:0}.g-draft .read .notice .crop.br{right:0;bottom:0}
+.g-draft .pop{background:var(--paper);border:1px solid var(--ink)}
+.g-draft .pop .ph{color:var(--lap);display:flex;justify-content:space-between}
+.g-draft .pop .pi.hl{outline:1px dashed var(--lap);outline-offset:-3px}
+.g-draft .leader{position:absolute;right:56px;top:46px;width:1px;height:18px;background:var(--ink);z-index:3}
+.g-draft .leader::before{content:"";position:absolute;left:-2.5px;top:-3px;width:6px;height:6px;border-radius:50%;background:var(--ink)}
+.g-draft .win.play .pop{animation:drawIn .3s cubic-bezier(.4,0,.2,1) both}
+.g-draft .win.play .pop > *{animation:fillIn .3s .22s linear both}
+.g-draft .win.play .leader{animation:leadIn .15s linear both}
+@keyframes drawIn{from{clip-path:inset(0 100% 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes fillIn{from{opacity:0}to{opacity:1}}
+@keyframes leadIn{from{transform:scaleY(0);transform-origin:top}to{transform:scaleY(1);transform-origin:top}}
+
+/* ---------- В. ПЕЧАТЬ ---------- */
+.g-press .win{border-top:4px solid var(--ink);box-shadow:inset 0 3px 0 var(--paper),inset 0 4px 0 var(--ink);border-bottom:1px solid var(--ink)}
+.g-press .bar{padding-top:12px;border-bottom:1px solid var(--ink);font-variant-caps:all-small-caps;letter-spacing:.08em;font-size:14px}
+.g-press .toc-pane{border-right:1px solid var(--ink)}
+@media (max-width:620px){.g-press .toc-pane{border-right:0;border-bottom:1px solid var(--ink)}}
+.g-press .toc .it.sel{background:var(--ink);color:var(--paper)}
+.g-press .toc .it.sel i{color:var(--paper)}
+.g-press .toc .it.sel::after{content:"☜";margin-left:auto}
+.g-press .read h4{font-variant-caps:all-small-caps;letter-spacing:.06em;font-size:28px}
+.g-press .read .notice{display:inline-grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;background:var(--och);color:var(--paper);padding:7px 12px;margin:4px 0 16px;max-width:52ch}
+.g-press .read .notice b{font-variant-caps:all-small-caps;letter-spacing:.1em;font-size:14px;font-weight:600}
+.g-press .trigger{border-color:var(--ink)}
+.g-press .pop{background:var(--ink);color:var(--paper)}
+.g-press .pop .ph{font-variant-caps:all-small-caps;text-transform:none;letter-spacing:.12em;font-size:14px;border-bottom:3px double var(--paper)}
+.g-press .pop .pi + .pi{border-top:1px solid color-mix(in srgb,var(--paper) 30%,transparent)}
+.g-press .pop .pi.hl::before{content:"☞";margin-left:-4px}
+.g-press .pop .pi.danger{color:var(--paper);background:var(--cin)}
+.g-press .win.play .pop{animation:stamp .09s steps(2,end) both}
+@keyframes stamp{from{transform:scale(.97);opacity:.6}to{transform:none;opacity:1}}
+
+.common{max-width:72ch;display:grid;gap:10px}
+.common h2{margin:0;font-family:var(--f-text);font-weight:400;font-size:24px}
+.common ul{margin:0;padding-left:20px;color:var(--ink-2);display:grid;gap:6px}
+@media (prefers-reduced-motion:reduce){.win.play *, .win.play .panes::after{animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <h1>Три характера одной системы</h1>
+    <p>Шрифт и цвета во всех трёх одинаковые и пока черновые, статусные цвета подберём отдельно. Различается только грамматика: из чего сделана поверхность, как слои ложатся друг на друга, как выглядят выделение и статус, как рисуются иконки и как всё движется. В каждом окне открыто меню поверх текста. Кнопка «Повторить появление» показывает, как оно возникает.</p>
+    <nav class="jump" aria-label="Направления"><a href="#list">А. Лист</a><a href="#draft">Б. Чертёж</a><a href="#press">В. Печать</a></nav>
+  </header>
+
+  <!-- А -->
+  <section class="dir g-sheet" id="list" data-style="sheet">
+    <div class="dir-head">
+      <span class="lbl">Направление А</span>
+      <h2>Лист</h2>
+      <p class="thesis">Интерфейс — стопка листов на столе. Всё, что сверху, лежит на том, что снизу, и это видно по обрезу.</p>
+    </div>
+    <div class="body">
+      <div class="dir" style="gap:14px">
+        <div class="win">
+          <div class="bar"><span class="t">Заметки о книге</span></div>
+          <div class="panes modal">
+            <nav class="pane toc-pane toc"><span class="h">Оглавление</span>
+              <span class="it"><i>1</i>Лист и поле</span><span class="it sel"><i>2</i>Пропорции страницы</span><span class="it"><i>3</i>Сетка</span><span class="it"><i>4</i>Шрифт</span></nav>
+            <article class="pane read">
+              <h4>Пропорции страницы</h4>
+              <p>Текстовый блок вписывали в лист так, что его высота равнялась ширине страницы. Поля внизу были вдвое шире полей у корешка.</p>
+              <p>Глаз не ищет, где центр: он уже там, где должен быть.</p>
+              <div><button class="trigger" type="button" data-icon="add">Действия</button></div>
+              <aside class="margin"><span>§ 2.1</span><span class="notice">Охра: в главе нет ни одного рисунка.</span><span>стр. 14</span></aside>
+            </article>
+            <div class="pop" role="menu" aria-label="Действия с главой">
+              <div class="ph">Глава 2</div>
+              <div class="pi hl" data-icon="split">Открыть рядом</div>
+              <div class="pi" data-icon="bookmark">Добавить закладку</div>
+              <div class="pi danger" data-icon="close">Удалить главу</div>
+            </div>
+          </div>
+        </div>
+        <button class="replay" type="button">Повторить появление</button>
+      </div>
+      <dl class="gram">
+        <dt>Поверхность</dt><dd>Лист бумаги с тонким обрезом. Под окном виден край следующего листа.</dd>
+        <dt>Наложение</dt><dd>Новый слой — лист кальки сверху: полупрозрачный, сквозь него размыто видно то, что ниже. Глубину показывает число обрезов (от одного до трёх), а не размытая тень. Пока открыто модальное окно, нижний слой заштрихован, как гравюра, а не затемнён.</dd>
+        <dt>Выделение</dt><dd>Метка киноварью на поле. Сам текст не меняется.</dd>
+        <dt>Статус</dt><dd>Заметка на полях цветом пигмента, рядом с тем, к чему относится.</dd>
+        <dt>Иконки</dt><dd>Одно перо 1,5 px, прямые концы, только линии и дуги, без заливок.</dd>
+        <dt>Движение</dt><dd>Лист приезжает по прямой за 220 мс и останавливается без отскока. Ничего не проявляется из прозрачности: лист либо лежит, либо нет.</dd>
+        <dt>Знак</dt><dd>Поля. У каждой панели есть узкое поле для пометок, номеров страниц и статусов.</dd>
+      </dl>
+    </div>
+    <div class="icons-wrap"><h3>Иконки</h3><div class="icons"></div></div>
+  </section>
+
+  <!-- Б -->
+  <section class="dir g-draft" id="draft" data-style="draft">
+    <div class="dir-head">
+      <span class="lbl">Направление Б</span>
+      <h2>Чертёж</h2>
+      <p class="thesis">Интерфейс — чертёжный лист. Всё построено, и построение не прячут.</p>
+    </div>
+    <div class="body">
+      <div class="dir" style="gap:14px">
+        <div class="win">
+          <i class="crop tl"></i><i class="crop tr"></i><i class="crop bl"></i><i class="crop br"></i>
+          <div class="bar"><span class="t">Заметки о книге</span></div>
+          <div class="panes">
+            <nav class="pane toc-pane toc"><span class="coord">А</span><span class="h">Оглавление</span>
+              <span class="it"><i>1</i>Лист и поле</span><span class="it sel"><i>2</i>Пропорции страницы</span><span class="it"><i>3</i>Сетка</span><span class="it"><i>4</i>Шрифт</span></nav>
+            <article class="pane read"><span class="coord">Б</span>
+              <h4>Пропорции страницы</h4>
+              <p>Текстовый блок вписывали в лист так, что его высота равнялась ширине страницы. Поля внизу были вдвое шире полей у корешка.</p>
+              <div class="notice"><i class="crop tl"></i><i class="crop tr"></i><i class="crop bl"></i><i class="crop br"></i><b>В-02</b><span>В главе нет ни одного рисунка.</span></div>
+              <div><button class="trigger" type="button" data-icon="add">Действия</button></div>
+            </article>
+            <i class="leader" aria-hidden="true"></i>
+            <div class="pop" role="menu" aria-label="Действия с главой">
+              <div class="ph"><span>Меню</span><span>Б2</span></div>
+              <div class="pi hl" data-icon="split">Открыть рядом</div>
+              <div class="pi" data-icon="bookmark">Добавить закладку</div>
+              <div class="pi danger" data-icon="close">Удалить главу</div>
+            </div>
+          </div>
+        </div>
+        <button class="replay" type="button">Повторить появление</button>
+      </div>
+      <dl class="gram">
+        <dt>Поверхность</dt><dd>Лист с еле заметной сеткой 8 px. У панелей нет рамок: углы окна отмечены метками обреза, границы между панелями — штрихом.</dd>
+        <dt>Наложение</dt><dd>Новый слой обведён волосяной линией и привязан выноской к тому, что его вызвало. Ни тени, ни затемнения: связь показывает линия.</dd>
+        <dt>Выделение</dt><dd>Угловые скобки вокруг объекта.</dd>
+        <dt>Статус</dt><dd>Рамка из меток обреза цветом пигмента и код сообщения, на который можно сослаться.</dd>
+        <dt>Иконки</dt><dd>Волосяная линия 1 px на видимой окружности построения, с узловыми точками.</dd>
+        <dt>Движение</dt><dd>Элементы вычерчиваются: сначала выноска, потом контур, потом содержимое. Всего 300 мс.</dd>
+        <dt>Знак</dt><dd>Координаты. У каждой панели есть адрес (А, Б, Б2). Через адреса удобно управлять разделённым экраном.</dd>
+      </dl>
+    </div>
+    <div class="icons-wrap"><h3>Иконки</h3><div class="icons"></div></div>
+  </section>
+
+  <!-- В -->
+  <section class="dir g-press" id="press" data-style="press">
+    <div class="dir-head">
+      <span class="lbl">Направление В</span>
+      <h2>Печать</h2>
+      <p class="thesis">Интерфейс набран из типографского материала: литер, линеек и плашек. Ничего, чего не было бы в наборной кассе.</p>
+    </div>
+    <div class="body">
+      <div class="dir" style="gap:14px">
+        <div class="win">
+          <div class="bar"><span class="t">Заметки о книге</span></div>
+          <div class="panes">
+            <nav class="pane toc-pane toc"><span class="h">Оглавление</span>
+              <span class="it"><i>1</i>Лист и поле</span><span class="it sel"><i>2</i>Пропорции страницы</span><span class="it"><i>3</i>Сетка</span><span class="it"><i>4</i>Шрифт</span></nav>
+            <article class="pane read">
+              <h4>Пропорции страницы</h4>
+              <p>Текстовый блок вписывали в лист так, что его высота равнялась ширине страницы. Поля внизу были вдвое шире полей у корешка.</p>
+              <div class="notice"><b>Внимание</b><span>В главе нет ни одного рисунка.</span></div>
+              <div><button class="trigger" type="button" data-icon="add">Действия</button></div>
+            </article>
+            <div class="pop" role="menu" aria-label="Действия с главой">
+              <div class="ph">Глава вторая</div>
+              <div class="pi hl" data-icon="split">Открыть рядом</div>
+              <div class="pi" data-icon="bookmark">Добавить закладку</div>
+              <div class="pi danger" data-icon="close">Удалить главу</div>
+            </div>
+          </div>
+        </div>
+        <button class="replay" type="button">Повторить появление</button>
+      </div>
+      <dl class="gram">
+        <dt>Поверхность</dt><dd>Страница, отбитая сверху двойной линейкой: толстая и тонкая.</dd>
+        <dt>Наложение</dt><dd>Верхний слой — плашка чернилами, текст на ней вывороткой. Слой отличает контраст, поэтому нижний слой не трогают вовсе.</dd>
+        <dt>Выделение</dt><dd>Выворотка и указующий перст ☞.</dd>
+        <dt>Статус</dt><dd>Плашка цветом пигмента с подписью капителью.</dd>
+        <dt>Иконки</dt><dd>Литеры: залитые формы, которые стоят на базовой линии и равны высоте прописной буквы.</dd>
+        <dt>Движение</dt><dd>Почти нет. Состояние меняется сразу, как оттиск, одним коротким «ударом» за 90 мс.</dd>
+        <dt>Знак</dt><dd>Линейки разной толщины как единственный способ делить пространство.</dd>
+      </dl>
+    </div>
+    <div class="icons-wrap"><h3>Иконки</h3><div class="icons"></div></div>
+  </section>
+
+  <section class="common">
+    <h2>Что дальше</h2>
+    <ul>
+      <li>Направления можно смешивать: например, поверхность и наложение от «Листа», а иконки и координаты от «Чертежа». Отметьте, что из каждого нравится, а что нет.</li>
+      <li>Шрифт, сетку, шкалы и тёмную тему проработаем на этапе основ, когда грамматика будет выбрана.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+(function(){
+  // Each icon: base line paths, construction nodes (draft), filled variant (press)
+  var I={
+    doc:{n:"Документ",line:"M6 3h8l4 4v14H6z M14 3v4h4 M9 12h6 M9 16h6",nodes:[[6,3],[18,21],[14,3]],
+      press:'<path d="M6 3h8l4 4v14H6z" fill="currentColor"/><path d="M9 12h6M9 16h6" stroke="var(--paper)" stroke-width="1.6"/>'},
+    folder:{n:"Папка",line:"M3 6h6l2 2h10v11H3z",nodes:[[3,6],[21,19],[11,8]],
+      press:'<path d="M3 6h6l2 2h10v11H3z" fill="currentColor"/>'},
+    search:{n:"Поиск",line:"M10 4a6 6 0 1 0 0.01 0z M14.5 14.5L21 21",nodes:[[10,10],[21,21]],
+      press:'<circle cx="10" cy="10" r="5.2" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M14 14l6.5 6.5" stroke="currentColor" stroke-width="3.6"/>'},
+    bookmark:{n:"Закладка",line:"M7 3h10v18l-5-4-5 4z",nodes:[[7,3],[17,3],[12,17]],
+      press:'<path d="M7 3h10v18l-5-4-5 4z" fill="currentColor"/>'},
+    split:{n:"Разделить",line:"M3 4h18v16H3z M12 4v16",nodes:[[12,4],[12,20]],
+      press:'<path d="M3 4h7.5v16H3zM13.5 4H21v16h-7.5z" fill="currentColor"/>'},
+    close:{n:"Закрыть",line:"M6 6l12 12 M18 6L6 18",nodes:[[12,12]],
+      press:'<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3.4"/>'},
+    add:{n:"Добавить",line:"M12 5v14 M5 12h14",nodes:[[12,12]],
+      press:'<path d="M12 4.5v15M4.5 12h15" stroke="currentColor" stroke-width="3.4"/>'},
+    alert:{n:"Внимание",line:"M12 3.5L21 20H3z M12 9.5v5 M12 16.8v.4",nodes:[[12,3.5],[3,20],[21,20]],
+      press:'<path d="M12 3L21.5 20.5h-19z" fill="currentColor"/><path d="M12 9.5v5M12 16.6v1.2" stroke="var(--paper)" stroke-width="2"/>'}
+  };
+  function svg(key,style){
+    var d=I[key],s='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-linecap="square" stroke-linejoin="miter">';
+    if(style==="sheet") s+='<path d="'+d.line+'" stroke="currentColor" stroke-width="1.5"/>';
+    else if(style==="draft"){
+      s+='<circle cx="12" cy="12" r="10" stroke="var(--lap)" stroke-width=".6" stroke-dasharray="1 2" opacity=".7"/>';
+      s+='<path d="M12 1v22M1 12h22" stroke="var(--lap)" stroke-width=".4" opacity=".45"/>';
+      s+='<path d="'+d.line+'" stroke="currentColor" stroke-width="1"/>';
+      d.nodes.forEach(function(p){s+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="1.15" fill="var(--cin)"/>';});
+    } else s+=d.press;
+    return s+'</svg>';
+  }
+  document.querySelectorAll('.dir[data-style]').forEach(function(sec){
+    var st=sec.getAttribute('data-style');
+    var box=sec.querySelector('.icons');
+    Object.keys(I).forEach(function(k){
+      var f=document.createElement('figure');f.innerHTML=svg(k,st)+'<figcaption>'+I[k].n+'</figcaption>';box.appendChild(f);
+    });
+    sec.querySelectorAll('[data-icon]').forEach(function(el){
+      var k=el.getAttribute('data-icon');
+      el.insertAdjacentHTML('afterbegin',svg(k,st==="draft"?"sheet":st));
+    });
+    var win=sec.querySelector('.win'),btn=sec.querySelector('.replay');
+    btn.addEventListener('click',function(){win.classList.remove('play');void win.offsetWidth;win.classList.add('play');});
+  });
+})();
+</script>
