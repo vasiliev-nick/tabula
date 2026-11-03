@@ -79,10 +79,22 @@ def rr(a,b2,n=1):
 rr("TB.tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();",
    "TB.tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();\n  TB.pal=i=>TB.tok(['--yellow','--green','--blue','--coral','--violet','--pink','--sky'][((i%7)+7)%7]);")
 rr("for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(eth,k%2?0.30:0.42);",
-   "for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(TB.pal(k-1),0.62);")
-rr("c.fillStyle=TB.rgba(eth,0.18+0.62*(1-(m-1)/7));","c.fillStyle=TB.rgba(TB.pal(m-1),0.78);")
+   "for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(eth,k%2?0.62:0.40);")
+rr("c.fillStyle=TB.rgba(eth,0.18+0.62*(1-(m-1)/7));","c.fillStyle=TB.rgba(eth,Math.max(0.3,0.92-0.1*(m-1)));")
 rr("const y=top+k*rh,col=TB.mixh(warm,eth,K?k/K:0);","const y=top+k*rh,col=TB.pal(k);")
 rr("const cols=[muted,warm,TB.mixh(warm,eth,0.5),eth];","const cols=[muted,TB.tok('--coral'),TB.tok('--green'),eth];")
+rr("for(let k=0;k<N;k++){const a=k/N,h=f(a);area+=h/N;c.fillStyle=TB.rgba(eth,k%2?0.30:0.42);",
+   "for(let k=0;k<N;k++){const a=k/N,h=f(a);area+=h/N;c.fillStyle=TB.rgba(eth,k%2?0.62:0.40);")
+# fig3: solid bars instead of thin translucent strips
+rr("c.fillStyle=TB.rgba(eth,0.55);c.fillRect(X(q),y,Math.max(1,X(e)-X(q)),rh*0.6);\n        c.fillStyle=ink;c.beginPath();c.arc(X(q),y+rh*0.3,2.2,0,7);c.fill();",
+   "c.fillStyle=eth;c.fillRect(X(q),y,Math.max(2,X(e)-X(q)),rh*0.72);\n        c.fillStyle=ink;c.beginPath();c.arc(X(q),y+rh*0.36,2.6,0,7);c.fill();")
+# fig4: flat; outer squares soft blue, the innermost square bright coral
+rr("for(let r=0;r<=M;r++){const h=Math.pow(2,-r),col=TB.mixh(warm,eth,M?r/M:0);",
+   "for(let r=0;r<=M;r++){const h=Math.pow(2,-r),last=r===M;")
+rr("c.fillStyle=TB.rgba(col,0.16);c.fillRect(P(k1*h),P(2-(k2+1)*h),h/2*S,h/2*S);\n      c.strokeStyle=TB.rgba(col,0.95);c.lineWidth=2.2;c.strokeRect(P(k1*h)+1.1,P(2-(k2+1)*h)+1.1,h/2*S-2.2,h/2*S-2.2);}",
+   "c.fillStyle=last?warm:TB.rgba(eth,0.10+0.22*(M?r/M:0));c.fillRect(P(k1*h),P(2-(k2+1)*h),h/2*S,h/2*S);\n      if(!last){c.strokeStyle=TB.rgba(eth,0.7);c.lineWidth=1.2;c.strokeRect(P(k1*h)+0.6,P(2-(k2+1)*h)+0.6,h/2*S-1.2,h/2*S-1.2);}}\n    c.strokeStyle=paper;c.lineWidth=3;c.beginPath();c.arc(P(pt[0]),P(2-pt[1]),3.5,0,7);c.stroke();")
+# fig8: full-strength rainbow
+rr("c.fillStyle=TB.rgba(col,k===K?0.95:0.55);","c.fillStyle=col;")
 css = open(css_path, encoding='utf8').read()
 tail = '''<script>
 /* Tabula: each numbered statement gets its kind, so that the card takes the colour of its kind. */

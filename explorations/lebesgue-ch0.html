@@ -1423,10 +1423,10 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
     let area=0;
     if(md==='R'){
       const N=2**n;
-      for(let k=0;k<N;k++){const a=k/N,h=f(a);area+=h/N;c.fillStyle=TB.rgba(eth,k%2?0.30:0.42);c.fillRect(X(a),Y(h),X(1/N)-X(0),B-Y(h));}
+      for(let k=0;k<N;k++){const a=k/N,h=f(a);area+=h/N;c.fillStyle=TB.rgba(eth,k%2?0.62:0.40);c.fillRect(X(a),Y(h),X(1/N)-X(0),B-Y(h));}
     }else{
       const h=2**-n,K=Math.ceil(1/h);
-      for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(TB.pal(k-1),0.62);
+      for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(eth,k%2?0.62:0.40);
         for(let i=0;i<=M;i++){const inS=i<M&&fs[i]>=lv;if(inS&&run<0)run=i;if(!inS&&run>=0){c.fillRect(X(run/M),Y(lv),X(i/M)-X(run/M),Y(lv-h)-Y(lv));run=-1;}}}
       for(let i=0;i<M;i++)area+=Math.min(n,Math.floor(fs[i]/h)*h)/M;
       c.strokeStyle=rule;c.lineWidth=1;c.setLineDash([3,5]);for(let k=1;k<=K;k++){c.beginPath();c.moveTo(L,Y(k*h));c.lineTo(R,Y(k*h));c.stroke();}c.setLineDash([]);
@@ -1464,8 +1464,8 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
     c.fillStyle=TB.tok('--paper');c.fillRect(0,0,W,H);
     const rows=Math.min(K,24),top=12,rh=(H-(sm?100:110))/24;let tot=0;const iv=[];
     for(let k=1;k<=K;k++){const q=Q[k-1][0]/Q[k-1][1],len=eps*Math.pow(2,-k),e=Math.min(1,q+len);tot+=len;iv.push([q,e]);
-      if(k<=rows){const y=top+(k-1)*rh;c.fillStyle=TB.rgba(eth,0.55);c.fillRect(X(q),y,Math.max(1,X(e)-X(q)),rh*0.6);
-        c.fillStyle=ink;c.beginPath();c.arc(X(q),y+rh*0.3,2.2,0,7);c.fill();}}
+      if(k<=rows){const y=top+(k-1)*rh;c.fillStyle=eth;c.fillRect(X(q),y,Math.max(2,X(e)-X(q)),rh*0.72);
+        c.fillStyle=ink;c.beginPath();c.arc(X(q),y+rh*0.36,2.6,0,7);c.fill();}}
     iv.sort((a,b)=>a[0]-b[0]);let cov=0,cs=-1,ce=-1;const segs=[];
     for(const [a,b] of iv){if(a>ce){if(ce>cs)segs.push([cs,ce]);cs=a;ce=b;}else ce=Math.max(ce,b);}if(ce>cs)segs.push([cs,ce]);
     for(const [a,b] of segs)cov+=b-a;
@@ -1496,9 +1496,10 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
       c.strokeStyle=r===0?ink:TB.rgba(muted,0.55-0.07*r);c.lineWidth=r===0?2:Math.max(0.6,1.6-0.25*r);
       c.beginPath();for(let v=0;v<=2+1e-9;v+=h){c.moveTo(P(v),P(0));c.lineTo(P(v),P(2));c.moveTo(P(0),P(v));c.lineTo(P(2),P(v));}c.stroke();}
     let k1=0,k2=0;
-    for(let r=0;r<=M;r++){const h=Math.pow(2,-r),col=TB.mixh(warm,eth,M?r/M:0);k1=Math.floor(pt[0]/h);k2=Math.floor(pt[1]/h);
-      c.fillStyle=TB.rgba(col,0.16);c.fillRect(P(k1*h),P(2-(k2+1)*h),h/2*S,h/2*S);
-      c.strokeStyle=TB.rgba(col,0.95);c.lineWidth=2.2;c.strokeRect(P(k1*h)+1.1,P(2-(k2+1)*h)+1.1,h/2*S-2.2,h/2*S-2.2);}
+    for(let r=0;r<=M;r++){const h=Math.pow(2,-r),last=r===M;k1=Math.floor(pt[0]/h);k2=Math.floor(pt[1]/h);
+      c.fillStyle=last?warm:TB.rgba(eth,0.10+0.22*(M?r/M:0));c.fillRect(P(k1*h),P(2-(k2+1)*h),h/2*S,h/2*S);
+      if(!last){c.strokeStyle=TB.rgba(eth,0.7);c.lineWidth=1.2;c.strokeRect(P(k1*h)+0.6,P(2-(k2+1)*h)+0.6,h/2*S-1.2,h/2*S-1.2);}}
+    c.strokeStyle=paper;c.lineWidth=3;c.beginPath();c.arc(P(pt[0]),P(2-pt[1]),3.5,0,7);c.stroke();
     c.fillStyle=ink;c.beginPath();c.arc(P(pt[0]),P(2-pt[1]),3.5,0,7);c.fill();
     c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='right';c.fillText('0',O-5,W-O+s);c.fillText('2',O-5,O+s*0.35);
     c.textAlign='center';c.fillText('2',W-O,W-O+s+3);c.textAlign='start';
@@ -1543,7 +1544,7 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
     const ink=TB.tok('--ink'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule'),paper=TB.tok('--paper');
     c.fillStyle=paper;c.fillRect(0,0,W,W);
     let inner=0;
-    for(let m=1;m<=M;m++){const h=Math.pow(2,-m),g=h*S>6?1:0.5;c.fillStyle=TB.rgba(TB.pal(m-1),0.78);
+    for(let m=1;m<=M;m++){const h=Math.pow(2,-m),g=h*S>6?1:0.5;c.fillStyle=TB.rgba(eth,Math.max(0.3,0.92-0.1*(m-1)));
       for(const [x0,y0] of maximal(m)){inner+=h*h;c.fillRect(P(x0)+g,P(1-y0-h)+g,h*S-2*g,h*S-2*g);}}
     let out=0;
     if(dout.checked){const h=Math.pow(2,-M);c.strokeStyle=TB.rgba(warm,0.9);c.lineWidth=1.1;
@@ -1614,7 +1615,7 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
     let segs=[[0,1]];
     for(let k=0;k<=K;k++){
       const y=top+k*rh,col=TB.pal(k);
-      c.fillStyle=TB.rgba(col,k===K?0.95:0.55);
+      c.fillStyle=col;
       for(const [a,b] of segs){const x0=X(a),x1=X(b);c.fillRect(x0,y,Math.max(1,x1-x0),bh);}
       TB.rich(c,[['C','i'],[String(k),'s']],4,y+bh/2+s*0.35,s,muted);
       if(k<K){const nx=[];for(const [a,b] of segs){const d=(b-a)/3;nx.push([a,a+d],[b-d,b]);}segs=nx;}
@@ -2153,9 +2154,9 @@ b{font-weight:600}
 p{margin:0 0 1.1rem}
 
 /* Страница */
-.book{max-width:42rem;margin:32px auto 64px;padding:4rem 4.5rem 4.5rem;background:var(--paper);border-radius:16px;box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 5%,transparent),0 12px 40px rgba(40,30,10,.05);box-sizing:content-box}
+.book{max-width:42rem;margin:32px auto 64px;padding:4rem 4.5rem 4.5rem;background:var(--paper);border-radius:6px;box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 5%,transparent),0 12px 40px rgba(40,30,10,.05);box-sizing:content-box}
 @media (max-width:900px){.book{margin:68px 16px 40px;padding:2.6rem 2.2rem 3rem;max-width:none}}
-@media (max-width:600px){.book{margin:64px 0 0;padding:1.8rem 16px 2.6rem;border-radius:16px 16px 0 0}}
+@media (max-width:600px){.book{margin:64px 0 0;padding:1.8rem 16px 2.6rem;border-radius:6px 6px 0 0}}
 
 /* Шапка */
 header.ch{border-bottom:none;padding-bottom:0;margin-bottom:3rem;display:grid;grid-template-columns:minmax(0,1fr) 180px;column-gap:2.5rem;align-items:start}
@@ -2184,7 +2185,7 @@ h3{font-family:var(--font-ui);font-weight:600;font-size:1.12rem;letter-spacing:-
 @media (max-width:560px){h2{font-size:1.65rem;margin-top:3.2rem}}
 
 /* Утверждения: светлая карточка, вид — цветной точкой и цветом метки */
-.stmt{--c:var(--blue);--ci:var(--blue-ink);background:var(--fill);border-radius:12px;padding:1.1rem 1.35rem 1.15rem;margin:1.8rem 0}
+.stmt{--c:var(--blue);--ci:var(--blue-ink);background:var(--fill);border-radius:6px;padding:1.1rem 1.35rem 1.15rem;margin:1.8rem 0}
 .stmt[data-k=thm]{--c:var(--coral);--ci:var(--warm-ink)}
 .stmt[data-k=lem],.stmt[data-k=cor]{--c:var(--green);--ci:var(--green-ink)}
 .stmt .lbl,.ex .lbl{display:flex;align-items:center;gap:.5rem;font-family:var(--font-ui);font-weight:600;font-size:.8rem;letter-spacing:.01em;text-transform:none;line-height:1.4;color:var(--ci);margin:0 0 .45rem}
@@ -2193,7 +2194,7 @@ h3{font-family:var(--font-ui);font-weight:600;font-size:1.12rem;letter-spacing:-
 ol[type="a"]>li::before,ol[type="i"]>li::before{color:var(--muted);font-family:var(--font-ui);font-size:.92em}
 
 /* Упражнения и вопросы: тёплая кремовая карточка */
-.ex{--c:var(--yellow);--ci:#8A6400;background:var(--cream);border-radius:12px;padding:1.1rem 1.35rem 1.15rem;margin:2rem 0 1rem}
+.ex{--c:var(--yellow);--ci:#8A6400;background:var(--cream);border-radius:6px;padding:1.1rem 1.35rem 1.15rem;margin:2rem 0 1rem}
 :root[data-theme=dark] .ex{--ci:var(--yellow)}
 @media (prefers-color-scheme: dark){:root:not([data-theme=light]) .ex{--ci:var(--yellow)}}
 
@@ -2212,7 +2213,7 @@ ol[type="a"]>li::before,ol[type="i"]>li::before{color:var(--muted);font-family:v
 .proof.sol .step .sh{color:var(--ink)}
 
 /* «Идея» и «На пальцах»: без цветных плашек, тихо */
-.plain{border-left:none;background:var(--fill);border-radius:10px;padding:.75rem 1rem;margin:.6rem 0 1rem;font-size:.96rem}
+.plain{border-left:none;background:var(--fill);border-radius:6px;padding:.75rem 1rem;margin:.6rem 0 1rem;font-size:.96rem}
 .plain .pl{text-transform:none;letter-spacing:0;font-weight:600;font-size:.8rem;color:var(--ink);margin-bottom:.2rem}
 .aside{border-left:2px solid var(--line);border-radius:0;background:none;padding:.05rem 0 .05rem .85rem;margin:.55rem 0 .35rem;font-size:.87rem;line-height:1.55;color:var(--muted)}
 p.aside{margin:.3rem 0 1.2rem}
@@ -2221,12 +2222,12 @@ header.ch>.aside{margin-top:1.2rem}
 ul>li::marker{color:var(--ink-3)}
 
 /* Рисунки: светлая подложка, белое поле, ручки управления — тихие */
-figure{background:var(--fill);border-radius:14px;padding:12px 12px 14px;margin:2.4rem 0}
-.fig1 canvas,.fig canvas{border-radius:8px}
-.svgwrap,.boxrow{background:var(--paper);border-radius:8px;padding:6px 8px}
+figure{background:var(--fill);border-radius:6px;padding:12px 12px 14px;margin:2.4rem 0}
+.fig1 canvas,.fig canvas{border-radius:6px}
+.svgwrap,.boxrow{background:var(--paper);border-radius:6px;padding:6px 8px}
 figcaption{font-family:var(--font-ui);font-size:.84rem;line-height:1.55;color:var(--muted);margin:.85rem .35rem 0}
 figure.exfig{background:color-mix(in srgb,var(--paper) 55%,transparent)}
-@media (max-width:600px){figure{padding:8px 8px 12px;border-radius:12px;margin-left:-8px;margin-right:-8px}}
+@media (max-width:600px){figure{padding:8px 8px 12px;border-radius:6px;margin-left:-8px;margin-right:-8px}}
 
 .boxfig .p1{fill:var(--blue);fill-opacity:.85}.boxfig .p2{fill:var(--yellow);fill-opacity:1}
 .boxfig .p3{fill:var(--coral);fill-opacity:.9}.boxfig .p4{fill:var(--green);fill-opacity:.85}.boxfig .p5{fill:var(--sky);fill-opacity:.8}
@@ -2253,7 +2254,7 @@ figure.exfig{background:color-mix(in srgb,var(--paper) 55%,transparent)}
 .controls{gap:.6rem 1.6rem;margin:.9rem .35rem 0;font-size:.85rem;color:var(--muted)}
 .controls label{gap:.6rem}
 .controls output{font-weight:600;color:var(--ink);min-width:2.4em}
-.controls select{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.25rem .55rem;color:var(--ink)}
+.controls select{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:.25rem .55rem;color:var(--ink)}
 .controls input[type=checkbox]{accent-color:var(--ether);width:15px;height:15px;margin:0}
 input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:20px;width:8.5rem;max-width:40vw;margin:0;cursor:pointer}
 input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--fill-2)}
@@ -2292,14 +2293,14 @@ hr{border:0;border-top:1px solid var(--line);margin:3.6rem 0 2.4rem}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tbtn .sun{display:inline}:root:not([data-theme="light"]) .tbtn .moon{display:none}}
 .gpanel{padding-top:50px}
 .gpanel>.ghead,.gpanel>.glist{background:var(--paper);border:none}
-.ghead{font-family:var(--font-display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;text-transform:none;color:var(--ink);padding:.85rem 1.1rem .35rem;border-radius:12px 12px 0 0;box-shadow:var(--pop)}
+.ghead{font-family:var(--font-display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;text-transform:none;color:var(--ink);padding:.85rem 1.1rem .35rem;border-radius:6px 6px 0 0;box-shadow:var(--pop)}
 .ghead span{font-family:var(--font-ui);font-weight:400;font-size:.8rem;letter-spacing:0}
 .ghome{font-family:var(--font-ui)}
-.glist{border-radius:0 0 12px 12px;box-shadow:var(--pop);padding:.2rem .4rem .6rem}
+.glist{border-radius:0 0 6px 6px;box-shadow:var(--pop);padding:.2rem .4rem .6rem}
 .glist li{border-top:1px solid var(--line);padding:.45rem .7rem}
 .gref{color:var(--ether-ink)}
 .nlist li{border-top:none;font-size:.9rem}
-.nlist a{border-radius:8px;padding:.42rem .7rem}
+.nlist a{border-radius:6px;padding:.42rem .7rem}
 .nlist li.sub a{padding:.22rem .7rem .28rem 1.6rem}
 .nlist a:hover{background:var(--fill);color:var(--ink)}
 .nlist a.cur{color:var(--ink);font-weight:600}
@@ -2312,17 +2313,17 @@ hr{border:0;border-top:1px solid var(--line);margin:3.6rem 0 2.4rem}
 .nlist a.npill:hover{outline:1px solid var(--ether)}
 
 /* Карточка ссылки */
-.xpop{border:none;border-radius:12px;box-shadow:var(--pop);font-family:var(--font-body)}
+.xpop{border:none;border-radius:6px;box-shadow:var(--pop);font-family:var(--font-body)}
 .xpop{--xbg:var(--fill);--xlc:var(--ink)}
-.xpop .xbody{border-radius:12px 12px 0 0}
+.xpop .xbody{border-radius:6px 6px 0 0}
 .xpop.k-ex,.xpop.k-q{--xbg:var(--cream);--xlc:var(--ink)}
 .xpop .xlbl{font-weight:600}
-.xpop .xfoot{border-top:none;background:var(--paper);border-radius:0 0 12px 12px}
-.xpop .xfoot button,.xpop .xfoot a.go{border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.xpop .xfoot{border-top:none;background:var(--paper);border-radius:0 0 6px 6px}
+.xpop .xfoot button,.xpop .xfoot a.go{border:1px solid var(--line);border-radius:6px;background:var(--paper)}
 .xpop .xfoot .go{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600}
 .xpop .xarr,.xpop.up .xarr{border:none}
-.xback{border:none;border-radius:10px;box-shadow:var(--pop)}
-.xback button{color:var(--ink);border-radius:8px}
+.xback{border:none;border-radius:6px;box-shadow:var(--pop)}
+.xback button{color:var(--ink);border-radius:6px}
 .xref{text-decoration-color:color-mix(in srgb,var(--ether) 55%,transparent);border-radius:4px}
 .xref:hover,.xref.on{background:var(--ether-soft)}
 @keyframes flash{0%{box-shadow:0 0 0 3px color-mix(in srgb,var(--ether) 45%,transparent)}100%{box-shadow:0 0 0 3px transparent}}
