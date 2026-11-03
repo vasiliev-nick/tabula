@@ -1,0 +1,48 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Антиквы для заголовков</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Noto+Serif+Display:wght@500&family=Source+Serif+4:opsz,wght@8..60,600&family=Lora:wght@500;600&family=Literata:opsz,wght@7..72,600&family=Brygada+1918:wght@600&family=Piazzolla:opsz,wght@8..30,600&family=Vollkorn:wght@600&family=Roboto+Serif:opsz,wght@8..144,500&family=Spectral:wght@600&family=Alegreya:wght@600&family=Yeseva+One&display=swap">
+<style>
+:root{--desk:#F4F1EB;--paper:#FFFEFB;--fill:#F3EFE8;--ink:#1E1C19;--muted:#6E6A63;--yellow:#FFD23F;--lift:0 1px 2px rgba(40,30,10,.05),0 10px 34px rgba(40,30,10,.06)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--desk:#191816;--paper:#232220;--fill:#2C2B28;--ink:#EFEBE4;--muted:#A8A296;color-scheme:dark}}
+:root[data-theme="dark"]{--desk:#191816;--paper:#232220;--fill:#2C2B28;--ink:#EFEBE4;--muted:#A8A296;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font:16px/1.6 Onest,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1180px;margin:0 auto;padding:40px 24px 64px}
+header h1{font:500 2.6rem/1.1 "Noto Serif Display",serif;letter-spacing:-.03em;margin:0 0 .5rem}
+header p{color:var(--muted);max-width:44rem;margin:0 0 2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.card{background:var(--paper);border-radius:22px;padding:22px 24px 24px;box-shadow:var(--lift);min-width:0}
+.tag{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted);margin-bottom:.9rem}
+.tag b{font-weight:600;color:var(--ink);background:var(--yellow);border-radius:999px;padding:.1rem .6rem;color:#1E1C19}
+.t1{font-size:2.6rem;line-height:1.06;letter-spacing:-.025em;margin:0 0 .7rem}
+.t2{font-size:1.6rem;line-height:1.15;letter-spacing:-.015em;margin:0 0 .7rem}
+.body{font-size:.95rem;color:var(--muted);margin:0}
+.now{outline:2px dashed var(--muted);outline-offset:-8px}
+@media (max-width:600px){main{padding:24px 16px 40px}.grid{grid-template-columns:minmax(0,1fr)}.t1{font-size:2.1rem}}
+</style></head><body><main>
+<header><h1>Антиквы для заголовков</h1><p>Все с полной кириллицей и плотнее нынешней. Заголовки взяты из главы о Лебеге, текст под ними набран Onest, как в книге. Пунктиром обведён шрифт, который стоит сейчас.</p></header>
+<div class="grid" id="g"></div>
+</main>
+<script>
+const F=[
+ ['Noto Serif Display','500','сейчас: контрастный, тонкие штрихи',1],
+ ['Source Serif 4','600','спокойный, книжный, оптический размер'],
+ ['Lora','600','мягкая, тёплая, каллиграфическая'],
+ ['Literata','600','плотная книжная, крупное очко'],
+ ['Brygada 1918','600','польская антиква 1918 года, характерная'],
+ ['Piazzolla','600','крепкая, острые засечки'],
+ ['Vollkorn','600','тёмная, «хлебная», уютная'],
+ ['Roboto Serif','500','ровная, современная, почти без контраста'],
+ ['Spectral','600','лёгкая элегантность, но не тонкая'],
+ ['Alegreya','600','живая, рукописный ритм'],
+ ['Yeseva One','400','жирная дисплейная, игривая']];
+const g=document.getElementById('g');
+F.forEach(([n,w,d,now],i)=>{const c=document.createElement('div');c.className='card'+(now?' now':'');
+ const ff="'"+n+"',serif";
+ c.innerHTML='<div class="tag"><b>'+(i+1)+'</b>'+n+' · '+w+' · '+d+'</div>'+
+ '<div class="t1" style="font-family:'+ff+';font-weight:'+w+'">Мера и интеграл Лебега</div>'+
+ '<div class="t2" style="font-family:'+ff+';font-weight:'+w+'">§∅.2. Мера Лебега в ℝⁿ. Что ломается без компактности</div>'+
+ '<p class="body">Идея Лебега: резать не область определения, а область значений. Возьмём уровни на оси значений и спросим, какова мера множества, где функция выше уровня.</p>';
+ g.appendChild(c);});
+</script></body></html>
