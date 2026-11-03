@@ -14,9 +14,9 @@ rep('family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,
 old_tokens = s[s.index(':root{\n  --paper:#f5eee0'):s.index('body{background:var(--paper)')]
 new_tokens = ''':root{
   --paper:#FFFEFB; --ink:#1E1C19; --muted:#6E6A63; --rule:#DDD7CC;
-  --ether:#7352F5; --ether-soft:#F0ECFF; --warm:#F45B3E; --warm-soft:#FFE9E3;
-  --desk:#F4F1EB; --fill:#F3EFE8; --fill-2:#E8E3DA; --ink-3:#9A958D;
-  --ether-ink:#5B3BE0; --warm-ink:#C7402A;
+  --ether:#4F6BFF; --ether-soft:#EEF1FF; --warm:#F45B3E; --warm-soft:#FFE9E3;
+  --desk:#F4F1EB; --fill:#F6F3EE; --fill-2:#E8E3DA; --ink-3:#9A958D; --line:#ECE7DF; --cream:#FCF7EA;
+  --ether-ink:#2C47D6; --warm-ink:#C7402A;
   --yellow:#FFD23F; --blue:#4F6BFF; --coral:#FF6F59; --green:#2FBF85; --violet:#9A6BFF; --pink:#FF7EB6; --sky:#3CC3F2;
   --blue-ink:#2C47D6; --green-ink:#12784F; --blue-soft:#EAEEFF; --green-soft:#E2F5EC; --sticky:#FFF3C2; --sky-soft:#E3F5FC;
   --lift:0 1px 2px rgba(40,30,10,.05),0 10px 34px rgba(40,30,10,.06);
@@ -27,16 +27,16 @@ new_tokens = ''':root{
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#232220; --ink:#EFEBE4; --muted:#A8A296; --rule:#3E3B36;
-  --ether:#A08BFF; --ether-soft:#2D2841; --warm:#FF8A70; --warm-soft:#3A2621;
-  --desk:#191816; --fill:#2C2B28; --fill-2:#38362F; --ink-3:#7C776E;
-  --ether-ink:#B5A4FF; --warm-ink:#FF9C85; --blue-ink:#9FB0FF; --green-ink:#6FDCAF;
+  --ether:#8EA0FF; --ether-soft:#252B42; --warm:#FF8A70; --warm-soft:#3A2621;
+  --desk:#191816; --fill:#2A2926; --fill-2:#38362F; --ink-3:#7C776E; --line:#34322E; --cream:#2E2A20;
+  --ether-ink:#A9B7FF; --warm-ink:#FF9C85; --blue-ink:#9FB0FF; --green-ink:#6FDCAF;
   --blue-soft:#232B45; --green-soft:#1D3128; --sticky:#3A3219; --sky-soft:#1C3039;
   --lift:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.25); --pop:0 16px 40px rgba(0,0,0,.45); color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#232220; --ink:#EFEBE4; --muted:#A8A296; --rule:#3E3B36;
-  --ether:#A08BFF; --ether-soft:#2D2841; --warm:#FF8A70; --warm-soft:#3A2621;
-  --desk:#191816; --fill:#2C2B28; --fill-2:#38362F; --ink-3:#7C776E;
-  --ether-ink:#B5A4FF; --warm-ink:#FF9C85; --blue-ink:#9FB0FF; --green-ink:#6FDCAF;
+  --ether:#8EA0FF; --ether-soft:#252B42; --warm:#FF8A70; --warm-soft:#3A2621;
+  --desk:#191816; --fill:#2A2926; --fill-2:#38362F; --ink-3:#7C776E; --line:#34322E; --cream:#2E2A20;
+  --ether-ink:#A9B7FF; --warm-ink:#FF9C85; --blue-ink:#9FB0FF; --green-ink:#6FDCAF;
   --blue-soft:#232B45; --green-soft:#1D3128; --sticky:#3A3219; --sky-soft:#1C3039;
   --lift:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.25); --pop:0 16px 40px rgba(0,0,0,.45); color-scheme:dark}
 '''
@@ -47,17 +47,30 @@ rep("TB.serif='Literata, Georgia, serif';TB.ui='\"PT Sans Caption\", \"PT Sans\"
 
 hero = '''<header class="ch">
   <svg class="hero" viewBox="0 0 240 150" aria-hidden="true">
-    <rect x="18" y="112" width="204" height="20" rx="10" fill="var(--yellow)"/>
-    <rect x="30" y="88" width="176" height="20" rx="10" fill="var(--green)"/>
-    <rect x="50" y="64" width="50" height="20" rx="10" fill="var(--blue)"/>
-    <rect x="130" y="64" width="62" height="20" rx="10" fill="var(--blue)"/>
-    <rect x="62" y="40" width="26" height="20" rx="10" fill="var(--coral)"/>
-    <rect x="146" y="40" width="32" height="20" rx="10" fill="var(--pink)"/>
-    <path d="M10 136 C 40 128, 44 30, 74 30 S 104 88, 115 88 S 140 22, 162 24 S 200 100, 232 134" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linecap="round"/>
-    <circle cx="74" cy="30" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.6"/>
+    <rect x="22" y="116" width="196" height="12" rx="3" fill="var(--yellow)"/>
+    <rect x="34" y="98" width="170" height="12" rx="3" fill="var(--green)"/>
+    <rect x="50" y="80" width="50" height="12" rx="3" fill="var(--blue)"/>
+    <rect x="130" y="80" width="62" height="12" rx="3" fill="var(--blue)"/>
+    <rect x="62" y="62" width="26" height="12" rx="3" fill="var(--coral)"/>
+    <rect x="146" y="62" width="32" height="12" rx="3" fill="var(--coral)"/>
+    <path d="M12 134 C 40 128, 46 40, 75 40 S 103 92, 115 92 S 140 30, 162 32 S 200 104, 230 134" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="12" y1="134.5" x2="230" y2="134.5" stroke="var(--ink-3)" stroke-width="1"/>
   </svg>'''
 rep('<header class="ch">', hero)
 
+for a,b2 in [('Фиолетовая','Синяя'),('фиолетовая','синяя'),('фиолетовым','синим'),('Фиолетовый','Синий')]:
+    s=s.replace(a,b2)
+assert 'иолет' not in s
+# new control icons
+import re
+ic_list='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 7h14M5 12h9M5 17h11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
+ic_gloss='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><text x="12" y="17" text-anchor="middle" font-family="Lora, Georgia, serif" font-style="italic" font-weight="600" font-size="17" fill="currentColor">α</text></svg>'
+ic_theme='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><g class="moon"><path d="M19.5 14.2A7.5 7.5 0 0 1 9.8 4.5a7.5 7.5 0 1 0 9.7 9.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></g><g class="sun" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></g></svg>'
+n0=len(s)
+s=re.sub(r'(<button class="gbtn" type="button" aria-label="Содержание"[^>]*>)<svg.*?</svg>',lambda m:m.group(1)+ic_list,s,count=1)
+s=re.sub(r'(<button class="gbtn" type="button" aria-label="Обозначения"[^>]*>)<svg.*?</svg>',lambda m:m.group(1)+ic_gloss,s,count=1)
+s=re.sub(r'(<button class="tbtn"[^>]*>)<svg.*?</svg>',lambda m:m.group(1)+ic_theme,s,count=1)
+assert s.count('class="moon"')==1 and 'M5 7h14M5 12h9' in s and '>α</text>' in s
 css = open(css_path, encoding='utf8').read()
 tail = '''<script>
 /* Tabula: each numbered statement gets its kind, so that the card takes the colour of its kind. */

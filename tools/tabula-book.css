@@ -1,205 +1,180 @@
-/* ===== Tabula · книжная глава в духе Miro =====
-   Стол — тёплый почти белый фон; страница — приподнятая белая панель со скруглением;
-   цвет живёт в содержании: утверждения и упражнения — цветные карточки-стикеры, рисунки — доски. */
+/* ===== Tabula · книжная глава, редакция 2 =====
+   Спокойная премиальная оболочка: тёплый стол, белая страница, мало заливок, сдержанные скругления.
+   Сочный цвет живёт только в содержании: в рисунках и в маленьких цветных метках. */
 
 html{background:var(--desk)}
-body{background:var(--desk);font-family:var(--font-body);font-size:17.5px;line-height:1.68;color:var(--ink);-webkit-font-smoothing:antialiased}
-::selection{background:color-mix(in srgb,var(--ether) 22%,transparent)}
+body{background:var(--desk);font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:color-mix(in srgb,var(--ether) 20%,transparent)}
 a{color:var(--blue-ink);text-decoration-thickness:1px;text-underline-offset:.18em}
+b{font-weight:600}
+p{margin:0 0 1.1rem}
 
 /* Страница */
-.book{max-width:44rem;margin:28px auto 56px;padding:3.2rem 3.6rem 4rem;background:var(--paper);border-radius:28px;box-shadow:var(--lift);box-sizing:content-box}
-@media (max-width:900px){.book{margin:72px 16px 40px;padding:2.4rem 2rem 3rem;max-width:none}}
-@media (max-width:600px){.book{margin:64px 8px 24px;padding:1.6rem 16px 2.4rem;border-radius:22px}}
+.book{max-width:42rem;margin:32px auto 64px;padding:4rem 4.5rem 4.5rem;background:var(--paper);border-radius:16px;box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 5%,transparent),0 12px 40px rgba(40,30,10,.05);box-sizing:content-box}
+@media (max-width:900px){.book{margin:68px 16px 40px;padding:2.6rem 2.2rem 3rem;max-width:none}}
+@media (max-width:600px){.book{margin:64px 0 0;padding:1.8rem 16px 2.6rem;border-radius:16px 16px 0 0}}
 
-/* Шапка главы */
-header.ch{border-bottom:none;padding-bottom:.4rem;margin-bottom:2.4rem;display:grid;grid-template-columns:minmax(0,1fr) 200px;column-gap:2rem;align-items:start}
+/* Шапка */
+header.ch{border-bottom:none;padding-bottom:0;margin-bottom:3rem;display:grid;grid-template-columns:minmax(0,1fr) 180px;column-gap:2.5rem;align-items:start}
 header.ch>*{grid-column:1}
-header.ch .hero{grid-column:2;grid-row:1 / span 3;width:100%;height:auto;margin-top:.4rem}
+header.ch .hero{grid-column:2;grid-row:1 / span 3;width:100%;height:auto;margin-top:.2rem}
 header.ch .toc,header.ch>.aside{grid-column:1 / -1}
-@media (max-width:600px){header.ch{padding-top:0;grid-template-columns:minmax(0,1fr)}header.ch .hero{grid-column:1;grid-row:auto;width:150px;margin:0 0 .6rem}}
-.eyebrow{display:inline-block;justify-self:start;font-family:var(--font-ui);font-weight:600;text-transform:none;letter-spacing:0;font-size:.8rem;color:var(--ink);background:var(--yellow);border-radius:999px;padding:.18rem .75rem}
-h1{font-family:var(--font-display);font-weight:600;font-size:3.1rem;line-height:1.08;letter-spacing:-.02em;margin:.9rem 0 1rem}
-.lead{font-size:1.12rem;line-height:1.6;color:var(--muted)}
-@media (max-width:560px){h1{font-size:2.35rem}}
+@media (max-width:600px){header.ch{padding-top:0;grid-template-columns:minmax(0,1fr)}header.ch .hero{grid-column:1;grid-row:auto;width:132px;margin:0 0 1rem}}
+.eyebrow{font-family:var(--font-ui);font-weight:500;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--muted)}
+h1{font-family:var(--font-display);font-weight:600;font-size:3rem;line-height:1.08;letter-spacing:-.02em;margin:.5rem 0 1rem}
+.lead{font-size:1.1rem;line-height:1.6;color:var(--muted)}
+@media (max-width:560px){h1{font-size:2.25rem}}
 
-/* Оглавление — карточки разделов с цветной точкой, как шаблоны на доске */
-.toc{grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;margin:1.6rem 0 0;font-size:.92rem;counter-reset:none}
-.toc li{margin:0}
-.toc a{display:flex;align-items:flex-start;gap:.6rem;height:100%;box-sizing:border-box;padding:.65rem .85rem;border-radius:14px;background:var(--fill);border-bottom:none;color:var(--ink);font-weight:500;line-height:1.35;transition:background .15s,transform .15s}
-.toc a::before{content:"";flex:none;width:.7rem;height:.7rem;border-radius:50%;margin-top:.28rem;background:var(--dot,var(--blue))}
-.toc a:hover{background:var(--fill-2);color:var(--ink);transform:translateY(-1px)}
+/* Оглавление: тихий список в две колонки, цвет — только маленькая точка */
+.toc{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2rem;row-gap:0;margin:2rem 0 0;font-size:.92rem;border-top:1px solid var(--line)}
+.toc li{margin:0;border-bottom:1px solid var(--line)}
+.toc a{display:flex;align-items:baseline;gap:.65rem;padding:.6rem .1rem;border-bottom:none;color:var(--ink);line-height:1.4}
+.toc a::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--dot,var(--blue));transform:translateY(-1px)}
+.toc a:hover{color:var(--ether-ink)}
 @media (max-width:560px){.toc{grid-template-columns:minmax(0,1fr)}}
-
-/* Цвета разделов: оглавление и заголовки разделов в одном порядке */
-.toc li:nth-child(1),section:nth-of-type(1){--dot:var(--yellow)}
-.toc li:nth-child(2),section:nth-of-type(2){--dot:var(--blue)}
-.toc li:nth-child(3),section:nth-of-type(3){--dot:var(--coral)}
-.toc li:nth-child(4),section:nth-of-type(4){--dot:var(--green)}
-.toc li:nth-child(5),section:nth-of-type(5){--dot:var(--violet)}
-.toc li:nth-child(6),section:nth-of-type(6){--dot:var(--pink)}
-.toc li:nth-child(7),section:nth-of-type(7){--dot:var(--sky)}
+.toc li:nth-child(1){--dot:var(--yellow)}.toc li:nth-child(2){--dot:var(--blue)}.toc li:nth-child(3){--dot:var(--coral)}
+.toc li:nth-child(4){--dot:var(--green)}.toc li:nth-child(5){--dot:var(--violet)}.toc li:nth-child(6){--dot:var(--pink)}.toc li:nth-child(7){--dot:var(--sky)}
 
 /* Заголовки */
-h2{font-family:var(--font-display);font-weight:600;font-size:2rem;line-height:1.16;letter-spacing:-.015em;margin:4rem 0 1.1rem}
-section>h2::before{content:"";display:block;width:2.6rem;height:.55rem;border-radius:999px;background:var(--dot,var(--blue));margin-bottom:.9rem}
-h3{font-family:var(--font-ui);font-weight:600;font-size:1.18rem;letter-spacing:-.01em;margin:2.4rem 0 .6rem}
-@media (max-width:560px){h2{font-size:1.75rem;margin-top:3rem}}
-p{margin:0 0 1.05rem}
-b{font-weight:600}
+h2{font-family:var(--font-display);font-weight:600;font-size:1.95rem;line-height:1.18;letter-spacing:-.015em;margin:4.2rem 0 1.2rem}
+h3{font-family:var(--font-ui);font-weight:600;font-size:1.12rem;letter-spacing:-.005em;margin:2.6rem 0 .7rem}
+@media (max-width:560px){h2{font-size:1.65rem;margin-top:3.2rem}}
 
-/* Утверждения — цветные карточки; цвет по виду */
-.stmt{--c:var(--ether);--ci:var(--ether-ink);--ct:var(--ether-soft);background:var(--ct);border-radius:18px;padding:1.05rem 1.3rem 1.1rem;margin:1.6rem 0}
-.stmt[data-k=def]{--c:var(--blue);--ci:var(--blue-ink);--ct:var(--blue-soft)}
-.stmt[data-k=lem],.stmt[data-k=cor]{--c:var(--green);--ci:var(--green-ink);--ct:var(--green-soft)}
-.stmt .lbl,.ex .lbl{display:block;width:fit-content;font-family:var(--font-ui);font-weight:600;font-size:.8rem;letter-spacing:0;text-transform:none;line-height:1.35;color:#fff;background:var(--ci);border-radius:999px;padding:.2rem .75rem;margin:0 0 .6rem}
-:root[data-theme=dark] .stmt .lbl{color:#1E1C19}
-@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .stmt .lbl{color:#1E1C19}}
-.stmt ol.ax li::marker,ol.ax>li::marker{color:var(--ci,var(--ether-ink));font-weight:600}
-ol[type="a"]>li::before,ol[type="i"]>li::before{color:var(--ci,var(--ether-ink));font-weight:600;font-family:var(--font-ui);font-size:.92em}
+/* Утверждения: светлая карточка, вид — цветной точкой и цветом метки */
+.stmt{--c:var(--blue);--ci:var(--blue-ink);background:var(--fill);border-radius:12px;padding:1.1rem 1.35rem 1.15rem;margin:1.8rem 0}
+.stmt[data-k=thm]{--c:var(--coral);--ci:var(--warm-ink)}
+.stmt[data-k=lem],.stmt[data-k=cor]{--c:var(--green);--ci:var(--green-ink)}
+.stmt .lbl,.ex .lbl{display:flex;align-items:center;gap:.5rem;font-family:var(--font-ui);font-weight:600;font-size:.8rem;letter-spacing:.01em;text-transform:none;line-height:1.4;color:var(--ci);margin:0 0 .45rem}
+.stmt .lbl::before,.ex .lbl::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--c)}
+.stmt ol.ax li::marker,ol.ax>li::marker{color:var(--muted);font-weight:500}
+ol[type="a"]>li::before,ol[type="i"]>li::before{color:var(--muted);font-family:var(--font-ui);font-size:.92em}
 
-/* Упражнения и вопросы — жёлтые стикеры */
-.ex{background:var(--sticky);border-radius:18px;padding:1.05rem 1.3rem 1.1rem;margin:1.8rem 0 1rem;box-shadow:0 1px 0 rgba(120,90,0,.06)}
-.ex .lbl{color:#1E1C19;background:var(--yellow)}
-.ex ol.ax li::marker{color:#8A6400}
-.ex ol[type="a"]>li::before{color:#8A6400}
-:root[data-theme=dark] .ex ol[type="a"]>li::before{color:var(--yellow)}
-@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .ex ol[type="a"]>li::before{color:var(--yellow)}}
+/* Упражнения и вопросы: тёплая кремовая карточка */
+.ex{--c:var(--yellow);--ci:#8A6400;background:var(--cream);border-radius:12px;padding:1.1rem 1.35rem 1.15rem;margin:2rem 0 1rem}
+:root[data-theme=dark] .ex{--ci:var(--yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .ex{--ci:var(--yellow)}}
 
-/* Доказательство: два кружка, соединённые нитью */
-.proof{padding-left:1.8rem;margin:0 0 1.4rem}
-.proof .thread{left:.38em;width:2px;border-radius:1px;background:var(--fill-2);opacity:1}
-.proof .qo,.proof .qc{width:.8em;height:.8em;border-radius:50%}
-.proof .qo{top:.42em;border:2.4px solid var(--ether);background:var(--paper)}
-.proof .qc{background:var(--ether)}
-.proof.sol .qo{border-color:var(--warm)}.proof.sol .qc{background:var(--warm)}
-.proof .lbl{font-style:normal;font-family:var(--font-ui);font-weight:600;font-size:.95rem;color:var(--ink);border-radius:999px}
-.proof .lbl:hover{color:var(--ether-ink)}
-.proof.folded .lbl::after{content:"свёрнуто";font-weight:500;font-size:.74rem;color:var(--muted);background:var(--fill);border-radius:999px;padding:.12rem .55rem;margin-left:.55em;vertical-align:.08em}
+/* Доказательство: два кружка и нить */
+.proof{padding-left:1.7rem;margin:0 0 1.5rem}
+.proof .thread{left:.33em;width:1.5px;background:var(--line);opacity:1}
+.proof .qo,.proof .qc{width:.7em;height:.7em;border-radius:50%}
+.proof .qo{top:.46em;border:1.6px solid var(--ink);background:var(--paper)}
+.proof .qc{background:var(--ink)}
+.proof .lbl{font-style:normal;font-family:var(--font-ui);font-weight:600;font-size:.92rem;color:var(--ink)}
+.proof .lbl:hover,.proof.sol .lbl:hover{color:var(--ether-ink)}
+.proof.folded .lbl::after{content:"свёрнуто";font-weight:400;font-size:.8rem;color:var(--muted);margin-left:.6em}
 .proof.sol.folded .lbl::after{content:"скрыто"}
-.proof.sol .lbl:hover{color:var(--warm-ink)}
-.step{margin:.8rem 0}
-.step .sh{font-weight:600;font-size:.9rem;color:var(--ether-ink);margin-bottom:.2rem}
-.proof.sol .step .sh{color:var(--warm-ink)}
+.step{margin:.85rem 0}
+.step .sh{font-weight:600;font-size:.88rem;color:var(--ink);margin-bottom:.15rem}
+.proof.sol .step .sh{color:var(--ink)}
 
-/* «Идея» — голубая заметка */
-.plain{border-left:none;background:var(--sky-soft);border-radius:14px;padding:.75rem 1rem;margin:.6rem 0 1rem}
-.plain .pl{display:block;width:fit-content;text-transform:none;letter-spacing:0;font-weight:600;font-size:.76rem;color:#0B4E66;background:var(--sky);border-radius:999px;padding:.1rem .6rem;margin-bottom:.35rem}
-
-/* «На пальцах» — маленький пузырь-реплика */
-.aside{border-left:none;background:var(--fill);border-radius:4px 14px 14px 14px;padding:.5rem .8rem;margin:.55rem 0 .3rem;font-size:.86rem;line-height:1.5;color:var(--muted)}
-p.aside{margin:.3rem 0 1.1rem}
-header.ch>.aside{margin-top:1rem}
+/* «Идея» и «На пальцах»: без цветных плашек, тихо */
+.plain{border-left:none;background:var(--fill);border-radius:10px;padding:.75rem 1rem;margin:.6rem 0 1rem;font-size:.96rem}
+.plain .pl{text-transform:none;letter-spacing:0;font-weight:600;font-size:.8rem;color:var(--ink);margin-bottom:.2rem}
+.aside{border-left:2px solid var(--line);border-radius:0;background:none;padding:.05rem 0 .05rem .85rem;margin:.55rem 0 .35rem;font-size:.87rem;line-height:1.55;color:var(--muted)}
+p.aside{margin:.3rem 0 1.2rem}
+header.ch>.aside{margin-top:1.2rem}
 .why{color:var(--muted);font-size:.96rem}
-
-/* Списки */
 ul>li::marker{color:var(--ink-3)}
-ul.gl>li::marker{color:var(--ether)}
 
-/* Рисунки — доски: тёплая подложка, белое поле рисунка, крупные скругления */
-figure{background:var(--fill);border-radius:22px;padding:14px 14px 12px;margin:2.2rem 0}
-.fig1 canvas,.fig canvas{border-radius:14px}
-.svgwrap{background:var(--paper);border-radius:14px;padding:8px}
-.boxrow{background:var(--paper);border-radius:14px;padding:6px 8px}
-figcaption{font-family:var(--font-ui);font-size:.85rem;line-height:1.55;color:var(--muted);margin:.8rem .3rem 0}
-figure.exfig{background:color-mix(in srgb,var(--paper) 62%,transparent)}
-@media (max-width:600px){figure{padding:10px 10px 10px;border-radius:18px;margin-left:-6px;margin-right:-6px}}
+/* Рисунки: светлая подложка, белое поле, ручки управления — тихие */
+figure{background:var(--fill);border-radius:14px;padding:12px 12px 14px;margin:2.4rem 0}
+.fig1 canvas,.fig canvas{border-radius:8px}
+.svgwrap,.boxrow{background:var(--paper);border-radius:8px;padding:6px 8px}
+figcaption{font-family:var(--font-ui);font-size:.84rem;line-height:1.55;color:var(--muted);margin:.85rem .35rem 0}
+figure.exfig{background:color-mix(in srgb,var(--paper) 55%,transparent)}
+@media (max-width:600px){figure{padding:8px 8px 12px;border-radius:12px;margin-left:-8px;margin-right:-8px}}
 
-/* Рисунок ∅.2 и иерархия: сочные заливки вместо штрихов */
-.boxfig .p1{fill:var(--blue);fill-opacity:.55}.boxfig .p2{fill:var(--yellow);fill-opacity:.75}
-.boxfig .p3{fill:var(--coral);fill-opacity:.6}.boxfig .p4{fill:var(--green);fill-opacity:.55}.boxfig .p5{fill:var(--violet);fill-opacity:.45}
-.boxfig .pc{stroke:var(--paper);stroke-width:3}
-.boxfig .frame{stroke:var(--ink);stroke-width:2.2;rx:6px}
+.boxfig .p1{fill:var(--blue);fill-opacity:.5}.boxfig .p2{fill:var(--yellow);fill-opacity:.7}
+.boxfig .p3{fill:var(--coral);fill-opacity:.55}.boxfig .p4{fill:var(--green);fill-opacity:.5}.boxfig .p5{fill:var(--sky);fill-opacity:.45}
+.boxfig .pc{stroke:var(--paper);stroke-width:2.5}
+.boxfig .frame{stroke:var(--ink);stroke-width:1.6}
+.boxfig .hole{stroke:var(--ink)}
+.boxfig .grid{stroke:var(--ink-3);opacity:.7}
 .boxfig .lab{font:600 15px var(--font-ui)}
 .boxfig .cap{font-family:var(--font-ui)}
 .hier .lv{stroke:none;fill-opacity:1}
 .hier .lv0{fill:var(--fill)}
-.hier .lv1{fill:var(--sticky)}
-.hier .lv2{fill:var(--green-soft)}
-.hier .lv3{fill:var(--blue-soft)}
-.hier .lv4{fill:var(--ether-soft)}
+.hier .lv1{fill:color-mix(in srgb,var(--yellow) 22%,var(--paper))}
+.hier .lv2{fill:color-mix(in srgb,var(--green) 22%,var(--paper))}
+.hier .lv3{fill:color-mix(in srgb,var(--blue) 18%,var(--paper))}
+.hier .lv4{fill:color-mix(in srgb,var(--coral) 22%,var(--paper))}
 .hier .lt{font-family:var(--font-ui);font-weight:600}
 .hier .le{font-family:var(--font-ui);font-style:normal;font-size:13px}
 
-/* Управление: каждая ручка — пилюля */
-.controls{gap:.5rem;margin-top:.9rem;font-size:.86rem}
-.controls label{background:var(--paper);border-radius:999px;padding:.32rem .5rem .32rem .9rem;gap:.6rem;max-width:100%;box-sizing:border-box;min-width:0}
-.controls output{font-weight:600;min-width:2.6em;font-variant-numeric:tabular-nums}
-.controls select{background:var(--fill);border:none;border-radius:999px;padding:.25rem .7rem;font-weight:500}
-.controls input[type=checkbox]{accent-color:var(--ether);width:1rem;height:1rem;margin:0}
-input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:22px;flex:1 1 7rem;min-width:4.5rem;max-width:10rem;margin:0;cursor:pointer}
-input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:var(--fill-2)}
-input[type=range]::-moz-range-track{height:6px;border-radius:3px;background:var(--fill-2)}
-input[type=range]::-moz-range-progress{height:6px;border-radius:3px;background:var(--ether)}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-6px;border-radius:50%;background:var(--paper);border:3px solid var(--ether);box-sizing:border-box;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--paper);border:3px solid var(--ether);box-sizing:border-box}
-input:focus-visible{outline:2px solid var(--ether);outline-offset:3px;border-radius:999px}
+.controls{gap:.6rem 1.6rem;margin:.9rem .35rem 0;font-size:.85rem;color:var(--muted)}
+.controls label{gap:.6rem}
+.controls output{font-weight:600;color:var(--ink);min-width:2.4em}
+.controls select{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.25rem .55rem;color:var(--ink)}
+.controls input[type=checkbox]{accent-color:var(--ether);width:15px;height:15px;margin:0}
+input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:20px;width:8.5rem;max-width:40vw;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--fill-2)}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--fill-2)}
+input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--ether)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:var(--paper);border:2px solid var(--ether);box-sizing:border-box;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--ether);box-sizing:border-box}
+input:focus-visible{outline:2px solid var(--ether);outline-offset:3px;border-radius:4px}
 
-/* Шкалы-показатели: толстая дорожка, круглый бегунок */
-.ro{background:var(--paper);border-radius:14px;padding:.35rem .6rem .5rem;margin-top:.6rem}
-.rl{font-family:var(--font-ui)}
-.gauge>.gt{top:20.5px;height:6px;border-radius:3px;background:var(--fill-2)}
-.gauge>.gf{top:20.5px;height:6px;border-radius:3px}
-.gauge>.gk{top:15.5px;width:16px;height:16px;margin-left:-8px;box-shadow:0 0 0 3px var(--paper),0 1px 4px rgba(0,0,0,.2)}
+.ro{margin:.8rem .35rem 0}
+.rl{font-family:var(--font-ui);font-size:.9rem}
+.gauge>.gt{top:21.5px;height:4px;border-radius:2px;background:var(--fill-2)}
+.gauge>.gf{top:21.5px;height:4px;border-radius:2px}
+.gauge>.gk{top:17.5px;width:12px;height:12px;margin-left:-6px;box-shadow:0 0 0 2.5px var(--fill)}
 .gauge>.gm b{font-family:var(--font-ui)}
 .rr>output.gv{font-weight:600;color:var(--ink)}
-.fx{font-family:var(--font-ui);font-size:1rem;background:var(--paper);border-radius:14px;padding:.6rem .8rem;margin-top:.6rem}
+.fx{font-family:var(--font-ui);font-size:.98rem;margin:.8rem .35rem 0}
 .fx:empty{display:none}
-figure .math-wrap{background:var(--paper);border-radius:14px;padding:.2rem .6rem}
 
-/* Подписи: кнопка «пояснение», точки списков */
-.cap-tog{font-weight:600;color:var(--ether-ink);background:var(--ether-soft)}
-.cap-tog:hover{background:color-mix(in srgb,var(--ether) 20%,var(--paper))}
-figcaption ul.capl>li::before{width:.4rem;height:.4rem;background:var(--ether);opacity:1}
+.cap-tog{font-weight:500;color:var(--ink);background:var(--paper);border-radius:6px;padding:.1rem .5rem .14rem}
+.cap-tog:hover{background:var(--fill-2)}
+figcaption ul.capl>li::before{width:5px;height:5px;background:var(--ink-3);opacity:1}
 figcaption ul.capl b{font-weight:600}
 
-/* Разделитель — три цветные точки */
-hr{border:0;height:10px;margin:3.4rem 0 2rem;background:
-  radial-gradient(circle,var(--yellow) 4.5px,transparent 5px) calc(50% - 22px) 50%/10px 10px no-repeat,
-  radial-gradient(circle,var(--coral) 4.5px,transparent 5px) 50% 50%/10px 10px no-repeat,
-  radial-gradient(circle,var(--blue) 4.5px,transparent 5px) calc(50% + 22px) 50%/10px 10px no-repeat}
+hr{border:0;border-top:1px solid var(--line);margin:3.6rem 0 2.4rem}
 
-/* Плавающие кнопки и панели: без рамок, с мягкой тенью */
-.gbtn,.tbtn{width:42px;height:42px;border:none;background:var(--paper);color:var(--ink);box-shadow:var(--pop)}
-.gloss:hover .gbtn,.gloss.open .gbtn,.tbtn:hover{transform:scale(1.06);box-shadow:var(--pop)}
-.gloss.navm .gbtn{background:var(--ink);color:var(--paper)}
-.gloss{top:62px}
-.gloss.navm{top:12px}
-.gpanel{padding-top:52px}
+/* Плавающие кнопки и панели */
+.gbtn,.tbtn{width:40px;height:40px;border:none;background:var(--paper);color:var(--ink);box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 7%,transparent),0 4px 14px rgba(40,30,10,.08)}
+.gloss:hover .gbtn,.gloss.open .gbtn,.tbtn:hover{transform:none;background:var(--fill)}
+.gloss{top:60px}.gloss.navm{top:12px}
+@media (max-width:900px){.gloss{top:12px;left:60px}.gloss.navm{left:12px}}
+:root[data-theme="dark"] .tbtn svg{transform:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tbtn svg{transform:none}}
+.tbtn .sun{display:none}
+:root[data-theme="dark"] .tbtn .sun{display:inline}:root[data-theme="dark"] .tbtn .moon{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tbtn .sun{display:inline}:root:not([data-theme="light"]) .tbtn .moon{display:none}}
+.gpanel{padding-top:50px}
 .gpanel>.ghead,.gpanel>.glist{background:var(--paper);border:none}
-.ghead{font-family:var(--font-display);font-weight:600;font-size:1.35rem;letter-spacing:-.02em;text-transform:none;color:var(--ink);padding:.9rem 1.1rem .4rem;border-radius:18px 18px 0 0;box-shadow:var(--pop)}
-.ghead span{font-family:var(--font-ui);font-size:.8rem;letter-spacing:0}
+.ghead{font-family:var(--font-display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;text-transform:none;color:var(--ink);padding:.85rem 1.1rem .35rem;border-radius:12px 12px 0 0;box-shadow:var(--pop)}
+.ghead span{font-family:var(--font-ui);font-weight:400;font-size:.8rem;letter-spacing:0}
 .ghome{font-family:var(--font-ui)}
-.glist{border-radius:0 0 18px 18px;box-shadow:var(--pop);padding:.2rem .4rem .7rem}
-.glist li{border-top:none;border-radius:10px;padding:.42rem .7rem}
-.glist li:hover{background:var(--fill)}
-.gref{color:var(--ether-ink);font-weight:500}
+.glist{border-radius:0 0 12px 12px;box-shadow:var(--pop);padding:.2rem .4rem .6rem}
+.glist li{border-top:1px solid var(--line);padding:.45rem .7rem}
+.gref{color:var(--ether-ink)}
 .nlist li{border-top:none;font-size:.9rem}
-.nlist a{border-radius:10px;padding:.45rem .7rem;font-weight:500}
-.nlist li.sub a{padding:.25rem .7rem .3rem 1.7rem;font-weight:400}
+.nlist a{border-radius:8px;padding:.42rem .7rem}
+.nlist li.sub a{padding:.22rem .7rem .28rem 1.6rem}
 .nlist a:hover{background:var(--fill);color:var(--ink)}
-.nlist a.cur{color:var(--ink);background:var(--fill);font-weight:600}
-.nlist li.sub a.cur{background:none;color:var(--ether-ink)}
-.nlist li.pills{padding:.15rem .7rem .55rem 1.7rem}
-.nlist a.npill{border-radius:999px;padding:.08rem .55rem;font-weight:500}
-.nlist a.npill.p-ex{background:var(--sticky)}
-.nlist a.npill.p-fg{background:var(--fill)}
-.nlist a.npill:hover{outline:2px solid var(--ether)}
+.nlist a.cur{color:var(--ink);font-weight:600}
+.nlist li.sub a.cur{color:var(--ether-ink)}
+.nlist li.pills{padding:.1rem .7rem .5rem 1.6rem}
+.nlist a.npill{border-radius:5px;padding:.05rem .45rem}
+.nlist a.npill.p-st{background:var(--fill)}
+.nlist a.npill.p-ex{background:var(--cream)}
+.nlist a.npill.p-fg{background:none;outline:1px solid var(--line)}
+.nlist a.npill:hover{outline:1px solid var(--ether)}
 
-/* Карточка ссылки на утверждение */
-.xpop{border:none;border-radius:18px;box-shadow:var(--pop);font-family:var(--font-body)}
-.xpop .xbody{border-radius:18px 18px 0 0}
-.xpop.k-ex,.xpop.k-q{--xbg:var(--sticky);--xlc:#1E1C19}
+/* Карточка ссылки */
+.xpop{border:none;border-radius:12px;box-shadow:var(--pop);font-family:var(--font-body)}
+.xpop{--xbg:var(--fill);--xlc:var(--ink)}
+.xpop .xbody{border-radius:12px 12px 0 0}
+.xpop.k-ex,.xpop.k-q{--xbg:var(--cream);--xlc:var(--ink)}
 .xpop .xlbl{font-weight:600}
-.xpop .xfoot{border-top:none;background:var(--paper);border-radius:0 0 18px 18px}
-.xpop .xfoot button,.xpop .xfoot a.go{border:none;background:var(--fill);font-weight:500}
-.xpop .xfoot .go{background:var(--ink);color:var(--paper)}
-.xpop .xarr{border:none}
-.xpop.up .xarr{border:none}
-.xback{border:none;box-shadow:var(--pop)}
-.xback button{color:var(--ink);font-weight:500}
-.xref{text-decoration-color:color-mix(in srgb,var(--ether) 60%,transparent);border-radius:6px}
+.xpop .xfoot{border-top:none;background:var(--paper);border-radius:0 0 12px 12px}
+.xpop .xfoot button,.xpop .xfoot a.go{border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.xpop .xfoot .go{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600}
+.xpop .xarr,.xpop.up .xarr{border:none}
+.xback{border:none;border-radius:10px;box-shadow:var(--pop)}
+.xback button{color:var(--ink);border-radius:8px}
+.xref{text-decoration-color:color-mix(in srgb,var(--ether) 55%,transparent);border-radius:4px}
 .xref:hover,.xref.on{background:var(--ether-soft)}
-.flash{animation:flash 1.6s ease-out}
-@keyframes flash{0%{box-shadow:0 0 0 4px var(--yellow)}100%{box-shadow:0 0 0 4px transparent}}
-@media (max-width:900px){.gloss{top:12px;left:62px}.gloss.navm{left:12px}}
+@keyframes flash{0%{box-shadow:0 0 0 3px color-mix(in srgb,var(--ether) 45%,transparent)}100%{box-shadow:0 0 0 3px transparent}}
