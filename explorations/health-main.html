@@ -1,0 +1,456 @@
+<title>Карта здоровья</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
+<style>
+/* Layout: a character sheet on beige paper. Rail of modes on the left, the body in the centre, stat blocks either side, a footer that sits "behind" the sheet. Single light paper look by choice. */
+:root{
+  --paper:#EFE6D4;      /* the desk / footer paper */
+  --sheet:#F6F0E3;      /* the sheet the blocks sit on */
+  --block:#F9F4EA;      /* block fill */
+  --frame:#8B6A4E;      /* thin brown frame */
+  --ink:#2E2419;        /* text */
+  --ink-2:#76665A;      /* secondary text */
+  --hair:#D8CBB4;       /* hairlines inside blocks */
+  --band:#E7DCC6;       /* norm band on scales */
+  --ok:#5F7548; --warn:#A8701A; --crit:#9E3622;
+  --shade:#6E5541;      /* ink for drawn shadows */
+  --f-disp:"Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --f-ui:"Alegreya Sans", "Gill Sans", "Segoe UI", sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:var(--f-ui);font-size:15px;line-height:1.45;font-variant-numeric:oldstyle-nums proportional-nums;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 0}
+button{font:inherit;color:inherit}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+
+/* paper grain on every paper surface */
+.grain{position:relative;isolation:isolate}
+.grain::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.55;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .26 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.app{max-width:1320px;margin:0 auto;position:relative}
+.sheet{position:relative;z-index:2;background:var(--sheet);border:1px solid var(--frame);display:grid;grid-template-columns:auto minmax(0,1fr)}
+
+/* ---- rail ---- */
+.rail{position:relative;z-index:3;width:228px;border-right:1px solid var(--frame);background:var(--block);display:flex;flex-direction:column;transition:width .24s cubic-bezier(.2,0,0,1)}
+.rail.closed{width:58px}
+.rail-top{display:flex;align-items:center;gap:10px;padding:16px 14px 14px;border-bottom:1px solid var(--hair)}
+.toggle{width:30px;height:30px;display:grid;place-items:center;background:none;border:1px solid var(--frame);cursor:pointer;flex:none}
+.toggle svg{width:14px;height:14px}
+.brand{font-family:var(--f-disp);font-size:21px;font-weight:600;white-space:nowrap;overflow:hidden}
+.modes{list-style:none;margin:0;padding:10px 8px;display:grid;gap:2px}
+.modes button{width:100%;display:flex;align-items:center;gap:12px;padding:8px 9px;background:none;border:1px solid transparent;cursor:pointer;text-align:left;white-space:nowrap;overflow:hidden}
+.modes button svg{width:20px;height:20px;flex:none;stroke:var(--ink);fill:none;stroke-width:1.2}
+.modes button:hover{border-color:var(--hair)}
+.modes button[aria-current="page"]{border-color:var(--frame);background:var(--sheet)}
+.modes .lbl{transition:opacity .15s}
+.rail.closed .lbl,.rail.closed .brand,.rail.closed .rail-foot{opacity:0;pointer-events:none}
+.rail-foot{margin-top:auto;padding:14px;border-top:1px solid var(--hair);font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden}
+/* engraved shadow the rail casts onto the sheet */
+.rail-shadow{position:absolute;top:0;bottom:0;left:100%;width:16px;pointer-events:none;z-index:1}
+
+/* ---- main ---- */
+.main{min-width:0;padding:22px 24px 26px;display:grid;gap:18px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;padding-left:10px}
+.head h1{margin:0;font-family:var(--f-disp);font-weight:500;font-size:40px;line-height:1.05;letter-spacing:.005em}
+.head .meta{color:var(--ink-2);font-style:italic}
+.grid{display:grid;grid-template-columns:minmax(230px,1fr) minmax(0,1.55fr) minmax(230px,1fr);gap:16px;align-items:start}
+.col{display:grid;gap:16px;min-width:0}
+
+.block{background:var(--block);border:1px solid var(--frame);padding:16px 18px 18px;min-width:0}
+.block h2{margin:0 0 12px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-family:var(--f-ui);font-weight:500;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--frame)}
+.block h2 small{font-size:12.5px;letter-spacing:0;text-transform:none;font-style:italic;color:var(--ink-2);font-weight:400}
+
+/* stats with leaders and norm scales */
+.stats{display:grid;gap:13px}
+.stat .row{display:flex;align-items:baseline;gap:6px}
+.stat .k{white-space:nowrap}
+.stat .dots{flex:1;min-width:12px;border-bottom:1px dotted var(--ink-2);opacity:.55;transform:translateY(-4px)}
+.stat .v{font-family:var(--f-disp);font-size:22px;line-height:1;font-weight:600;white-space:nowrap}
+.stat .v small{font-family:var(--f-ui);font-size:12.5px;font-weight:400;color:var(--ink-2);margin-left:3px}
+.scale{position:relative;height:9px;margin-top:6px}
+.scale::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;background:var(--hair)}
+.scale .band{position:absolute;top:2px;height:5px;background:var(--band);border-left:1px solid var(--hair);border-right:1px solid var(--hair)}
+.scale .mk{position:absolute;top:0;width:7px;height:7px;margin-left:-3.5px;transform:translateY(1px) rotate(45deg);background:var(--ink)}
+.stat.warn .mk{background:var(--warn)} .stat.warn .v{color:var(--warn)}
+
+/* body block */
+.body-block{padding:14px 10px 16px}
+.body-block h2{padding:0 8px}
+.figure{display:block;width:100%;height:auto;max-width:100%}
+.figure .ring{fill:none;stroke:var(--hair);stroke-width:1}
+.figure .ticks line{stroke:var(--hair);stroke-width:1}
+.figure .silhouette{fill:var(--sheet);stroke:var(--frame);stroke-width:1.3;stroke-linejoin:round}
+.figure .organ{fill:none;stroke:var(--frame);stroke-width:.9;opacity:.55}
+.spot{cursor:pointer}
+.spot .lead{stroke:var(--ink-2);stroke-width:.8}
+.spot .dot{fill:var(--block);stroke:var(--ink);stroke-width:1.1}
+.spot .core{fill:var(--ink)}
+.spot text{font-family:var(--f-ui);font-size:17px;fill:var(--ink)}
+.spot text.sub{font-size:15px;fill:var(--ink-2);font-style:italic}
+.spot.warn .core{fill:var(--warn)} .spot.warn .dot{stroke:var(--warn)} .spot.warn text.sub{fill:var(--warn)}
+.spot:hover .dot,.spot.on .dot{fill:var(--ink)} .spot.warn:hover .dot,.spot.warn.on .dot{fill:var(--warn)}
+.spot:focus{outline:none} .spot:focus-visible .dot{stroke-width:2.4}
+.caption{margin:2px 8px 0;padding-top:10px;border-top:1px solid var(--hair);display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.caption b{font-family:var(--f-disp);font-size:20px;font-weight:600}
+.caption span{color:var(--ink-2)}
+
+/* pulse chart */
+.chart{width:100%;height:auto;display:block}
+.chart .grid-l{stroke:var(--hair);stroke-width:1}
+.chart .line{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.chart .lbl{font:12px var(--f-ui);fill:var(--ink-2)}
+.chart .end{fill:var(--ink)}
+.bignum{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.bignum b{font-family:var(--f-disp);font-size:38px;line-height:1;font-weight:600}
+.bignum span{color:var(--ink-2);font-style:italic}
+
+/* lab table */
+table.lab{width:100%;border-collapse:collapse;font-size:14px}
+.lab td{padding:7px 0;border-top:1px solid var(--hair);vertical-align:baseline}
+.lab tr:first-child td{border-top:0}
+.lab td.n{text-align:right;font-family:var(--f-disp);font-size:18px;font-weight:600;white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}
+.lab td.n small{font-family:var(--f-ui);font-size:12px;color:var(--ink-2);font-weight:400}
+.lab .ref{display:block;font-size:12px;color:var(--ink-2);font-style:italic}
+.lab tr.warn td.n,.lab tr.warn .flag{color:var(--warn)}
+.flag{font-size:12px;font-style:italic}
+
+/* upcoming */
+.next{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.next li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:start}
+.date{border:1px solid var(--frame);text-align:center;padding:3px 0 4px;line-height:1.05;background:var(--sheet)}
+.date b{display:block;font-family:var(--f-disp);font-size:22px;font-weight:600;font-variant-numeric:lining-nums}
+.date span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.next p{margin:0}.next p + p{color:var(--ink-2);font-size:13.5px;font-style:italic}
+
+/* ---- footer behind the sheet ---- */
+.foot{position:relative;z-index:1;background:var(--paper);margin:0 auto;max-width:1320px;padding:34px 24px 34px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:baseline;justify-content:space-between;color:var(--ink-2);font-size:13.5px}
+.foot-shadow{position:absolute;left:0;right:0;top:0;height:26px;pointer-events:none}
+.seg{display:inline-flex;border:1px solid var(--frame)}
+.seg button{background:none;border:0;padding:4px 11px;cursor:pointer;font-size:13.5px;color:var(--ink)}
+.seg button + button{border-left:1px solid var(--frame)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+
+@media (max-width:1100px){
+  .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .col.center{grid-column:1 / -1;order:-1}
+}
+@media (max-width:760px){
+  .sheet{grid-template-columns:minmax(0,1fr)}
+  .rail,.rail.closed{width:auto;border-right:0;border-bottom:1px solid var(--frame)}
+  .rail-shadow{display:none}
+  .modes{display:flex;overflow-x:auto;padding:8px}
+  .rail.closed .lbl{opacity:1;pointer-events:auto}
+  .rail-foot{display:none}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .main{padding:16px 12px 20px}
+  .head h1{font-size:32px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== v2: materials — backdrop with depth, glass blocks, a saturated rust accent ===== */
+:root{
+  --accent:#D4561E;            /* рыжий */
+  --accent-ink:#FFF6EC;
+  --accent-soft:rgba(212,86,30,.14);
+  --glass:rgba(250,245,236,.40);
+  --glass-strong:rgba(250,245,236,.62);
+  --glass-edge:rgba(139,106,78,.55);
+  --glass-hi:rgba(255,255,255,.65);
+  --warn:#A07A12;              /* attention moves to dark gold so it never reads as the accent */
+  --bg-1:#EADCC4; --bg-2:#E3CFAF;
+}
+html,body{background:var(--bg-1)}
+.backdrop{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
+  background:radial-gradient(120% 90% at 15% 0%,#F3E9D8 0%,var(--bg-1) 55%,var(--bg-2) 100%)}
+.backdrop .blob{position:absolute;border-radius:50%;filter:blur(70px)}
+.backdrop .b1{width:52vw;height:52vw;left:48%;top:-8vw;background:radial-gradient(circle,rgba(226,98,38,.85),rgba(226,98,38,0) 66%)}
+.backdrop .b2{width:44vw;height:44vw;left:-8vw;top:30%;background:radial-gradient(circle,rgba(201,138,62,.75),rgba(201,138,62,0) 68%)}
+.backdrop .b3{width:34vw;height:34vw;left:30%;top:46%;background:radial-gradient(circle,rgba(214,86,30,.55),rgba(214,86,30,0) 68%)}
+.backdrop canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.backdrop::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .26 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.sheet{background:rgba(246,240,227,.18);border-color:var(--glass-edge)}
+.sheet.grain::before{opacity:0}
+.rail{background:var(--glass-strong);-webkit-backdrop-filter:blur(22px) saturate(1.25);backdrop-filter:blur(22px) saturate(1.25);border-right-color:var(--glass-edge);box-shadow:inset -1px 0 0 var(--glass-hi)}
+.rail-top{border-bottom-color:rgba(139,106,78,.25)}
+.modes button[aria-current="page"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.modes button[aria-current="page"] svg{stroke:var(--accent-ink)}
+.modes button:hover:not([aria-current]){background:rgba(255,255,255,.35);border-color:transparent}
+.toggle{background:rgba(255,255,255,.35)}
+
+.block{background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);
+  border-color:var(--glass-edge);box-shadow:inset 0 1px 0 var(--glass-hi)}
+.block h2{color:var(--ink-2)}
+.block h2::before{content:"";display:inline-block;width:6px;height:6px;background:var(--accent);margin-right:10px;transform:translateY(-2px)}
+.block h2{justify-content:flex-start}
+.block h2 small{margin-left:auto}
+
+.head h1{font-size:46px}
+.head h1 em{font-style:italic;color:var(--accent)}
+
+.stat .dots{opacity:.35}
+.scale .band{background:rgba(139,106,78,.16);border-color:transparent}
+.scale::before{background:rgba(139,106,78,.25)}
+
+.figure .silhouette{fill:rgba(255,250,242,.55);stroke:var(--ink-2)}
+.figure .ring{stroke:rgba(139,106,78,.35)}
+.figure .ticks line{stroke:rgba(139,106,78,.35)}
+.figure .ticks line.major{stroke:var(--accent);stroke-width:1.4}
+.figure .organ{stroke:var(--accent);opacity:.45}
+.spot.on .dot,.spot:hover .dot{fill:var(--accent);stroke:var(--accent)}
+.spot.on .core,.spot:hover .core{fill:var(--accent-ink)}
+.spot.on .lead{stroke:var(--accent)}
+.spot.on text:not(.sub){fill:var(--accent)}
+.caption b{color:var(--accent)}
+
+.chart .line{stroke:var(--accent);stroke-width:1.6}
+.chart .end{fill:var(--accent)}
+.chart .area{fill:url(#pulseFill)}
+.bignum b{color:var(--ink)}
+
+.date{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.date span{color:var(--accent-ink);opacity:.85}
+.next li + li .date{background:transparent;color:var(--ink);border-color:var(--glass-edge)}
+.next li + li .date span{color:var(--ink-2)}
+
+.foot{background:rgba(234,220,196,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.foot.grain::before{opacity:.3}
+.seg{border-color:var(--glass-edge)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+</style>
+<div class="backdrop" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><canvas id="guilloche"></canvas></div>
+
+<div class="app">
+  <div class="sheet grain">
+    <!-- rail of modes -->
+    <nav class="rail closed-not" id="rail" aria-label="Режимы">
+      <div class="rail-top">
+        <button class="toggle" id="toggle" type="button" aria-expanded="true" aria-controls="rail" aria-label="Свернуть панель">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 3h12M1 7h12M1 11h12"/></svg>
+        </button>
+        <span class="brand">Здоровье</span>
+      </div>
+      <ul class="modes">
+        <li><button type="button" aria-current="page"><svg viewBox="0 0 20 20"><circle cx="10" cy="4.5" r="2.5"/><path d="M10 7v6M6 9.5l4-1.5 4 1.5M7.5 18l2.5-5 2.5 5"/></svg><span class="lbl">Обзор</span></button></li>
+        <li><button type="button"><svg viewBox="0 0 20 20"><path d="M5 2.5h7l3 3v12H5z M12 2.5v3h3 M7.5 9h5M7.5 12h5M7.5 15h3"/></svg><span class="lbl">Медкарты</span></button></li>
+        <li><button type="button"><svg viewBox="0 0 20 20"><path d="M8 2.5h4M9 2.5v5L4.5 16a1 1 0 0 0 .9 1.5h9.2a1 1 0 0 0 .9-1.5L11 7.5v-5"/><path d="M6.5 12.5h7"/></svg><span class="lbl">Анализы</span></button></li>
+        <li><button type="button"><svg viewBox="0 0 20 20"><rect x="3" y="7.5" width="14" height="5" rx="2.5" transform="rotate(-40 10 10)"/><path d="M8 7.5l4 5" transform="rotate(0)"/></svg><span class="lbl">Лекарства</span></button></li>
+        <li><button type="button"><svg viewBox="0 0 20 20"><path d="M2 10h3.5l2-5 3 10 2-5H18"/></svg><span class="lbl">Дневник</span></button></li>
+      </ul>
+      <div class="rail-foot">Данные на странице примерные</div>
+      <div class="rail-shadow" data-shadow="v" aria-hidden="true"></div>
+    </nav>
+
+    <main class="main">
+      <header class="head">
+        <h1>Карта <em>здоровья</em></h1>
+        <span class="meta">Обновлено 31 октября 2026, 9:40</span>
+      </header>
+
+      <div class="grid">
+        <!-- left: characteristics -->
+        <div class="col">
+          <section class="block">
+            <h2>Основные показатели</h2>
+            <div class="stats">
+              <div class="stat"><div class="row"><span class="k">Возраст</span><i class="dots"></i><span class="v">34<small>года</small></span></div></div>
+              <div class="stat"><div class="row"><span class="k">Рост</span><i class="dots"></i><span class="v">182<small>см</small></span></div></div>
+              <div class="stat" data-scale="15,35,18.5,25,23.7"><div class="row"><span class="k">Вес</span><i class="dots"></i><span class="v">78,4<small>кг</small></span></div><div class="scale"></div></div>
+              <div class="stat" data-scale="40,100,50,80,58"><div class="row"><span class="k">Пульс покоя</span><i class="dots"></i><span class="v">58<small>уд/мин</small></span></div><div class="scale"></div></div>
+              <div class="stat" data-scale="90,160,100,130,118"><div class="row"><span class="k">Давление</span><i class="dots"></i><span class="v">118/76<small>мм рт. ст.</small></span></div><div class="scale"></div></div>
+              <div class="stat warn" data-scale="3,9,3.9,5.5,5.9"><div class="row"><span class="k">Глюкоза натощак</span><i class="dots"></i><span class="v">5,9<small>ммоль/л</small></span></div><div class="scale"></div></div>
+            </div>
+          </section>
+          <section class="block">
+            <h2>Образ жизни <small>за неделю</small></h2>
+            <div class="stats">
+              <div class="stat" data-scale="4,10,7,9,7.3"><div class="row"><span class="k">Сон</span><i class="dots"></i><span class="v">7 ч 20<small>мин</small></span></div><div class="scale"></div></div>
+              <div class="stat" data-scale="0,15000,7000,15000,9140"><div class="row"><span class="k">Шаги в день</span><i class="dots"></i><span class="v">9 140</span></div><div class="scale"></div></div>
+              <div class="stat" data-scale="20,60,40,60,46"><div class="row"><span class="k">МПК (VO₂max)</span><i class="dots"></i><span class="v">46<small>мл/кг·мин</small></span></div><div class="scale"></div></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- centre: the body widget -->
+        <div class="col center">
+          <section class="block body-block">
+            <h2>Тело <small>выберите область</small></h2>
+            <svg class="figure" viewBox="0 0 560 520" role="group" aria-label="Схема тела">
+              <circle class="ring" cx="280" cy="262" r="230"/>
+              <g class="ticks" id="ticks"></g>
+              <defs>
+                <path id="half" d="M92 69 C92 76 92 82 90 88 C80 93 64 95 54 100 C44 105 40 116 39 130 C37 160 34 190 33 215 C32 235 30 250 29 262 C27 272 25 282 28 290 C31 296 37 294 38 287 C39 278 40 270 41 262 C44 240 47 210 50 185 C52 165 55 148 59 136 C62 160 64 185 65 205 C66 225 62 245 61 262 C60 300 62 340 65 375 C67 400 67 425 69 448 C70 458 66 466 64 470 C63 475 70 476 80 475 C86 474 89 470 88 462 C87 445 88 420 89 395 C90 360 93 320 96 295 C97 288 99 284 100 283"/>
+              </defs>
+              <g transform="translate(180 22)">
+                <g class="silhouette">
+                  <path d="M92 69 C92 76 92 82 90 88 C80 93 64 95 54 100 C44 105 40 116 39 130 C37 160 34 190 33 215 C32 235 30 250 29 262 C27 272 25 282 28 290 C31 296 37 294 38 287 C39 278 40 270 41 262 C44 240 47 210 50 185 C52 165 55 148 59 136 C62 160 64 185 65 205 C66 225 62 245 61 262 C60 300 62 340 65 375 C67 400 67 425 69 448 C70 458 66 466 64 470 C63 475 70 476 80 475 C86 474 89 470 88 462 C87 445 88 420 89 395 C90 360 93 320 96 295 C97 288 99 284 100 283 C101 284 103 288 104 295 C107 320 110 360 111 395 C112 420 113 445 112 462 C111 470 114 474 120 475 C130 476 137 475 136 470 C134 466 130 458 131 448 C133 425 133 400 135 375 C138 340 140 300 139 262 C138 245 134 225 135 205 C136 185 138 160 141 136 C145 148 148 165 150 185 C153 210 156 240 159 262 C160 270 161 278 162 287 C163 294 169 296 172 290 C175 282 173 272 171 262 C170 250 168 235 167 215 C166 190 163 160 161 130 C160 116 156 105 146 100 C136 95 120 93 110 88 C108 82 108 76 108 69 Z"/>
+                  <ellipse cx="100" cy="43" rx="21" ry="26"/>
+                </g>
+                <!-- quiet anatomical hints -->
+                <path class="organ" d="M84 112 C76 118 74 140 78 156 C84 158 92 150 94 138 C95 126 92 114 84 112 Z M116 112 C124 118 126 140 122 156 C116 158 108 150 106 138 C105 126 108 114 116 112 Z"/>
+                <path class="organ" d="M104 128 C108 122 116 124 116 131 C116 138 108 144 104 148 C100 144 94 138 95 132 C96 126 101 125 104 128 Z"/>
+                <path class="organ" d="M82 178 C90 170 112 170 120 178 C124 190 118 204 100 206 C84 204 78 190 82 178 Z"/>
+              </g>
+              <!-- hotspots: leaders run to the ring's sides -->
+              <g class="spot" tabindex="0" data-t="Голова и нервная система" data-d="МРТ не требуется. Последний осмотр невролога: 3 марта 2026, без замечаний.">
+                <line class="lead" x1="280" y1="62" x2="372" y2="62"/><line class="lead" x1="372" y1="62" x2="388" y2="46"/>
+                <circle class="dot" cx="280" cy="62" r="6"/><circle class="core" cx="280" cy="62" r="2"/>
+                <text x="392" y="42">Голова</text><text class="sub" x="392" y="61">без замечаний</text></g>
+              <g class="spot" tabindex="0" data-t="Сердце" data-d="ЭКГ от 12 октября: синусовый ритм, 58 уд/мин. Отклонений нет.">
+                <line class="lead" x1="285" y1="157" x2="400" y2="157"/><line class="lead" x1="400" y1="157" x2="414" y2="143"/>
+                <circle class="dot" cx="285" cy="157" r="6"/><circle class="core" cx="285" cy="157" r="2"/>
+                <text x="418" y="139">Сердце</text><text class="sub" x="418" y="158">ЭКГ в норме</text></g>
+              <g class="spot" tabindex="0" data-t="Лёгкие" data-d="Флюорография от 20 января 2026: без патологии. Следующая — январь 2027.">
+                <line class="lead" x1="262" y1="152" x2="166" y2="152"/><line class="lead" x1="166" y1="152" x2="152" y2="138"/>
+                <circle class="dot" cx="262" cy="152" r="6"/><circle class="core" cx="262" cy="152" r="2"/>
+                <text x="148" y="134" text-anchor="end">Лёгкие</text><text class="sub" x="148" y="153" text-anchor="end">без патологии</text></g>
+              <g class="spot warn" tabindex="0" data-t="Обмен веществ" data-d="Глюкоза натощак 5,9 ммоль/л при норме до 5,5. Терапевт предлагает пересдать анализ и сдать гликированный гемоглобин.">
+                <line class="lead" x1="280" y1="211" x2="404" y2="211"/><line class="lead" x1="404" y1="211" x2="418" y2="225"/>
+                <circle class="dot" cx="280" cy="211" r="6"/><circle class="core" cx="280" cy="211" r="2"/>
+                <text x="422" y="232">Обмен веществ</text><text class="sub" x="422" y="251">глюкоза выше нормы</text></g>
+              <g class="spot" tabindex="0" data-t="Опорно-двигательная система" data-d="Лёгкая боль в правом колене после бега, отмечена в дневнике 3 раза за месяц.">
+                <line class="lead" x1="246" y1="400" x2="150" y2="400"/><line class="lead" x1="150" y1="400" x2="136" y2="386"/>
+                <circle class="dot" cx="246" cy="400" r="6"/><circle class="core" cx="246" cy="400" r="2"/>
+                <text x="132" y="382" text-anchor="end">Колени</text><text class="sub" x="132" y="401" text-anchor="end">заметки в дневнике</text></g>
+            </svg>
+            <div class="caption" id="caption" aria-live="polite"><b>Сердце</b><span>ЭКГ от 12 октября: синусовый ритм, 58 уд/мин. Отклонений нет.</span></div>
+          </section>
+        </div>
+
+        <!-- right: infographics -->
+        <div class="col">
+          <section class="block">
+            <h2>Пульс покоя <small>30 дней</small></h2>
+            <div class="bignum"><b>58</b><span>уд/мин, на 3 ниже, чем месяц назад</span></div>
+            <svg class="chart" id="pulse" viewBox="0 0 300 110" aria-label="Пульс покоя за 30 дней: от 61 до 57 ударов в минуту"></svg>
+          </section>
+          <section class="block">
+            <h2>Анализ крови <small>12 октября</small></h2>
+            <table class="lab">
+              <tr><td>Гемоглобин<span class="ref">норма 130–170</span></td><td class="n">148 <small>г/л</small></td></tr>
+              <tr class="warn"><td>Глюкоза<span class="ref">норма 3,9–5,5</span><span class="flag">выше нормы</span></td><td class="n">5,9 <small>ммоль/л</small></td></tr>
+              <tr><td>Холестерин ЛПНП<span class="ref">цель ниже 3,0</span></td><td class="n">2,8 <small>ммоль/л</small></td></tr>
+              <tr><td>Ферритин<span class="ref">норма 30–400</span></td><td class="n">82 <small>мкг/л</small></td></tr>
+            </table>
+          </section>
+          <section class="block">
+            <h2>Ближайшее</h2>
+            <ul class="next">
+              <li><div class="date"><b>14</b><span>нояб</span></div><div><p>Приём терапевта</p><p>Пересдать глюкозу и HbA1c</p></div></li>
+              <li><div class="date"><b>02</b><span>дек</span></div><div><p>Прививка от гриппа</p><p>Поликлиника № 3, каб. 112</p></div></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="foot grain">
+    <div class="foot-shadow" data-shadow="h" aria-hidden="true"></div>
+    <span>Карта здоровья · черновик на системе Tabula</span>
+    <span style="display:inline-flex;gap:10px;align-items:center;flex-wrap:wrap">Тень:
+      <span class="seg" role="group" aria-label="Способ рисования тени">
+        <button type="button" data-mode="lines" aria-pressed="true">штрих</button>
+        <button type="button" data-mode="diamonds" aria-pressed="false">ромбы</button>
+        <button type="button" data-mode="gradient" aria-pressed="false">градиент</button>
+      </span>
+    </span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var NS="http://www.w3.org/2000/svg";
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+  var shade=getComputedStyle(document.documentElement).getPropertyValue('--shade').trim()||'#6E5541';
+
+  /* norm scales: min,max,normLo,normHi,value */
+  document.querySelectorAll('.stat[data-scale]').forEach(function(s){
+    var p=s.getAttribute('data-scale').split(',').map(Number),sc=s.querySelector('.scale');
+    function pc(x){return Math.max(0,Math.min(100,(x-p[0])/(p[1]-p[0])*100))}
+    var b=document.createElement('i');b.className='band';b.style.left=pc(p[2])+'%';b.style.width=(pc(p[3])-pc(p[2]))+'%';sc.appendChild(b);
+    var m=document.createElement('i');m.className='mk';m.style.left=pc(p[4])+'%';sc.appendChild(m);
+  });
+
+  /* ring ticks, like a dial */
+  var t=document.getElementById('ticks');
+  for(var i=0;i<72;i++){var a=i/72*Math.PI*2,r1=230,r2=i%6===0?240:235;
+    var ln=el('line',{x1:280+Math.cos(a)*r1,y1:262+Math.sin(a)*r1,x2:280+Math.cos(a)*r2,y2:262+Math.sin(a)*r2});if(i%18===0)ln.setAttribute('class','major');t.appendChild(ln)}
+
+  /* guilloche engraving on the backdrop — classic banknote line-work, drawn once */
+  var cv=document.getElementById('guilloche');
+  function engrave(){
+    var dpr=Math.min(2,window.devicePixelRatio||1),W=cv.clientWidth,H=cv.clientHeight;if(!W||!H)return;
+    cv.width=W*dpr;cv.height=H*dpr;var g=cv.getContext('2d');g.scale(dpr,dpr);g.clearRect(0,0,W,H);
+    g.lineWidth=.7;g.strokeStyle='rgba(110,70,40,.24)';
+    var cx=W*.5,cy=H*.48,R=Math.max(W,H)*.5;
+    for(var k=0;k<34;k++){var r=R*(.35+k*.02);g.beginPath();
+      for(var s=0;s<=720;s++){var th=s/720*Math.PI*2,rr=r+Math.sin(th*12+k*.35)*R*.035+Math.sin(th*5)*R*.012;
+        var px=cx+Math.cos(th)*rr,py=cy+Math.sin(th)*rr;s?g.lineTo(px,py):g.moveTo(px,py)}g.stroke()}
+  }
+  engrave();window.addEventListener('resize',engrave);
+
+  /* hotspots */
+  var cap=document.getElementById('caption');
+  document.querySelectorAll('.spot').forEach(function(g){
+    function pick(){document.querySelectorAll('.spot.on').forEach(function(x){x.classList.remove('on')});g.classList.add('on');
+      cap.innerHTML='';var b=document.createElement('b');b.textContent=g.dataset.t;var s=document.createElement('span');s.textContent=g.dataset.d;cap.append(b,s)}
+    g.addEventListener('click',pick);g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
+    if(g.dataset.t==='Сердце')g.classList.add('on');
+  });
+
+  /* pulse chart */
+  var v=[61,62,61,60,61,60,60,59,61,60,59,59,60,58,59,59,58,59,58,57,58,58,59,57,58,57,58,58,57,58];
+  var c=document.getElementById('pulse'),L=26,R=292,T=8,B=90,lo=55,hi=64;
+  function x(i){return L+i*(R-L)/(v.length-1)} function y(n){return B-(n-lo)/(hi-lo)*(B-T)}
+  [56,60,64].forEach(function(n){c.appendChild(el('line',{class:'grid-l',x1:L,x2:R,y1:y(n),y2:y(n)}));
+    var tx=el('text',{class:'lbl',x:L-6,y:y(n)+4,'text-anchor':'end'});tx.textContent=n;c.appendChild(tx)});
+  var df=el('defs',{}),lg=el('linearGradient',{id:'pulseFill',x1:0,y1:0,x2:0,y2:1});
+  lg.appendChild(el('stop',{offset:0,'stop-color':'#D4561E','stop-opacity':.22}));lg.appendChild(el('stop',{offset:1,'stop-color':'#D4561E','stop-opacity':0}));
+  df.appendChild(lg);c.appendChild(df);
+  c.appendChild(el('path',{class:'area',d:'M'+x(0)+' '+B+' '+v.map(function(n,i){return 'L'+x(i)+' '+y(n)}).join(' ')+' L'+x(v.length-1)+' '+B+' Z'}));
+  c.appendChild(el('polyline',{class:'line',points:v.map(function(n,i){return x(i)+','+y(n)}).join(' ')}));
+  c.appendChild(el('circle',{class:'end',cx:x(v.length-1),cy:y(v[v.length-1]),r:3}));
+  [['1 окт',0,'start'],['31 окт',v.length-1,'end']].forEach(function(d){var tx=el('text',{class:'lbl',x:x(d[1]),y:106,'text-anchor':d[2]});tx.textContent=d[0];c.appendChild(tx)});
+
+  /* drawn shadows: lines of growing weight, growing diamonds, or a plain gradient */
+  var mode='lines';
+  function draw(box){
+    var dir=box.dataset.shadow,w=box.clientWidth,h=box.clientHeight;box.innerHTML='';if(!w||!h)return;
+    if(mode==='gradient'){box.style.background=dir==='h'
+      ?'linear-gradient(to bottom, rgba(110,85,65,.38), rgba(110,85,65,0))'
+      :'linear-gradient(to right, rgba(110,85,65,.30), rgba(110,85,65,0))';return}
+    box.style.background='none';
+    var s=el('svg',{width:w,height:h,viewBox:'0 0 '+w+' '+h});s.style.display='block';
+    var depth=dir==='h'?h:w, len=dir==='h'?w:h;
+    if(mode==='lines'){
+      var n=8,step=depth/n;
+      for(var k=0;k<n;k++){var wgt=Math.max(.25,(1-k/n)*(1-k/n)*step*.92),pos=k*step+wgt/2;
+        s.appendChild(dir==='h'?el('rect',{x:0,y:pos-wgt/2,width:len,height:wgt,fill:shade})
+                               :el('rect',{x:pos-wgt/2,y:0,width:wgt,height:len,fill:shade}))}
+    } else {
+      var rows=6,cell=depth/rows;
+      for(var r=0;r<rows;r++){var sz=(1-r/rows)*cell*.62, off=(r%2)*cell/2;
+        for(var q=-cell+off;q<len+cell;q+=cell){var cx=dir==='h'?q:r*cell+cell/2,cy=dir==='h'?r*cell+cell/2:q;
+          s.appendChild(el('path',{d:'M'+cx+' '+(cy-sz)+'L'+(cx+sz)+' '+cy+'L'+cx+' '+(cy+sz)+'L'+(cx-sz)+' '+cy+'Z',fill:shade}))}}
+    }
+    box.appendChild(s);
+  }
+  function drawAll(){document.querySelectorAll('[data-shadow]').forEach(draw)}
+  drawAll();
+  if('ResizeObserver' in window){var ro=new ResizeObserver(drawAll);document.querySelectorAll('[data-shadow]').forEach(function(b){ro.observe(b)})}
+  document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
+    mode=b.dataset.mode;document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});drawAll()})});
+
+  /* rail toggle */
+  var rail=document.getElementById('rail'),tg=document.getElementById('toggle');
+  tg.addEventListener('click',function(){var c=rail.classList.toggle('closed');tg.setAttribute('aria-expanded',String(!c));tg.setAttribute('aria-label',c?'Развернуть панель':'Свернуть панель');setTimeout(drawAll,260)});
+})();
+</script>
