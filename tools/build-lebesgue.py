@@ -71,11 +71,25 @@ s=re.sub(r'(<button class="gbtn" type="button" aria-label="Содержание"
 s=re.sub(r'(<button class="gbtn" type="button" aria-label="Обозначения"[^>]*>)<svg.*?</svg>',lambda m:m.group(1)+ic_gloss,s,count=1)
 s=re.sub(r'(<button class="tbtn"[^>]*>)<svg.*?</svg>',lambda m:m.group(1)+ic_theme,s,count=1)
 assert s.count('class="moon"')==1 and 'M5 7h14M5 12h9' in s and '>α</text>' in s
+# Tabula: selective bright colours in the figures
+def rr(a,b2,n=1):
+    global s
+    assert s.count(a)==n,(a,s.count(a))
+    s=s.replace(a,b2)
+rr("TB.tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();",
+   "TB.tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();\n  TB.pal=i=>TB.tok(['--yellow','--green','--blue','--coral','--violet','--pink','--sky'][((i%7)+7)%7]);")
+rr("for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(eth,k%2?0.30:0.42);",
+   "for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(TB.pal(k-1),0.62);")
+rr("c.fillStyle=TB.rgba(eth,0.18+0.62*(1-(m-1)/7));","c.fillStyle=TB.rgba(TB.pal(m-1),0.78);")
+rr("const y=top+k*rh,col=TB.mixh(warm,eth,K?k/K:0);","const y=top+k*rh,col=TB.pal(k);")
+rr("const cols=[muted,warm,TB.mixh(warm,eth,0.5),eth];","const cols=[muted,TB.tok('--coral'),TB.tok('--green'),eth];")
 css = open(css_path, encoding='utf8').read()
 tail = '''<script>
 /* Tabula: each numbered statement gets its kind, so that the card takes the colour of its kind. */
 (function(){var K={'Определение':'def','Теорема':'thm','Факт':'thm','Лемма':'lem','Предложение':'lem','Следствие':'cor'};
 document.querySelectorAll('.stmt>.lbl').forEach(function(l){var w=l.textContent.trim().split(/\\s+/)[0];l.parentNode.dataset.k=K[w]||'thm';});})();
+/* Tabula: pills in the contents take the colour of their kind. */
+(function(){var P={'Опр.':'def','Теор.':'thm','Факт':'thm','Лемма':'lem','Предл.':'lem','След.':'lem','Упр.':'ex','Вопр.':'ex'};document.querySelectorAll('.nlist a.npill').forEach(function(a){var w=a.textContent.trim().split(/\\s+/)[0];if(P[w])a.dataset.k=P[w];});})();
 </script>
 <style id="tabula">
 ''' + css + '''

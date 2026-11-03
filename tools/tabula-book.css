@@ -85,8 +85,8 @@ figcaption{font-family:var(--font-ui);font-size:.84rem;line-height:1.55;color:va
 figure.exfig{background:color-mix(in srgb,var(--paper) 55%,transparent)}
 @media (max-width:600px){figure{padding:8px 8px 12px;border-radius:12px;margin-left:-8px;margin-right:-8px}}
 
-.boxfig .p1{fill:var(--blue);fill-opacity:.5}.boxfig .p2{fill:var(--yellow);fill-opacity:.7}
-.boxfig .p3{fill:var(--coral);fill-opacity:.55}.boxfig .p4{fill:var(--green);fill-opacity:.5}.boxfig .p5{fill:var(--sky);fill-opacity:.45}
+.boxfig .p1{fill:var(--blue);fill-opacity:.85}.boxfig .p2{fill:var(--yellow);fill-opacity:1}
+.boxfig .p3{fill:var(--coral);fill-opacity:.9}.boxfig .p4{fill:var(--green);fill-opacity:.85}.boxfig .p5{fill:var(--sky);fill-opacity:.8}
 .boxfig .pc{stroke:var(--paper);stroke-width:2.5}
 .boxfig .frame{stroke:var(--ink);stroke-width:1.6}
 .boxfig .hole{stroke:var(--ink)}
@@ -95,12 +95,17 @@ figure.exfig{background:color-mix(in srgb,var(--paper) 55%,transparent)}
 .boxfig .cap{font-family:var(--font-ui)}
 .hier .lv{stroke:none;fill-opacity:1}
 .hier .lv0{fill:var(--fill)}
-.hier .lv1{fill:color-mix(in srgb,var(--yellow) 22%,var(--paper))}
-.hier .lv2{fill:color-mix(in srgb,var(--green) 22%,var(--paper))}
-.hier .lv3{fill:color-mix(in srgb,var(--blue) 18%,var(--paper))}
-.hier .lv4{fill:color-mix(in srgb,var(--coral) 22%,var(--paper))}
-.hier .lt{font-family:var(--font-ui);font-weight:600}
-.hier .le{font-family:var(--font-ui);font-style:normal;font-size:13px}
+.hier .lv1{fill:var(--yellow)}
+.hier .lv2{fill:var(--green)}
+.hier .lv3{fill:var(--blue)}
+.hier .lv4{fill:var(--coral)}
+.hier .lt{font-family:var(--font-ui);font-weight:600;fill:#1E1C19}
+.hier .le{font-family:var(--font-ui);font-style:normal;font-size:13px;fill:#1E1C19;fill-opacity:.72}
+.hier .lv0 ~ .lt,.hier .lv0 ~ .le{fill:var(--ink)}
+.hier .lv1 ~ .lt,.hier .lv1 ~ .le,.hier .lv2 ~ .lt,.hier .lv2 ~ .le{fill:#1E1C19}
+.hier .lv3 ~ .lt,.hier .lv3 ~ .le{fill:#fff;fill-opacity:1}
+.hier .lv3 ~ .le{fill-opacity:.85}
+.hier .lv4 ~ .lt,.hier .lv4 ~ .le{fill:#1E1C19}
 
 .controls{gap:.6rem 1.6rem;margin:.9rem .35rem 0;font-size:.85rem;color:var(--muted)}
 .controls label{gap:.6rem}
@@ -178,3 +183,12 @@ hr{border:0;border-top:1px solid var(--line);margin:3.6rem 0 2.4rem}
 .xref{text-decoration-color:color-mix(in srgb,var(--ether) 55%,transparent);border-radius:4px}
 .xref:hover,.xref.on{background:var(--ether-soft)}
 @keyframes flash{0%{box-shadow:0 0 0 3px color-mix(in srgb,var(--ether) 45%,transparent)}100%{box-shadow:0 0 0 3px transparent}}
+
+/* Пилюли во всплывающем содержании — акцентными цветами по виду */
+.nlist a.npill{font-weight:500}
+.nlist a.npill[data-k=def]{background:var(--blue);color:#fff}
+.nlist a.npill[data-k=thm]{background:var(--coral);color:#1E1C19}
+.nlist a.npill[data-k=lem]{background:var(--green);color:#1E1C19}
+.nlist a.npill[data-k=ex]{background:var(--yellow);color:#1E1C19}
+.nlist a.npill.p-fg{color:var(--muted)}
+.nlist a.npill:hover{outline:2px solid var(--ink);outline-offset:1px}

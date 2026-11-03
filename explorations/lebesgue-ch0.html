@@ -1329,6 +1329,7 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
   /* Shared helpers for the figures: theme tokens, number format with a decimal comma, read-only gauges. */
   const TB=window.TB={};
   TB.tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  TB.pal=i=>TB.tok(['--yellow','--green','--blue','--coral','--violet','--pink','--sky'][((i%7)+7)%7]);
   TB.hex=c=>{const m=c.replace('#','');return [0,2,4].map(i=>parseInt(m.substr(i,2),16));};
   TB.rgba=(c,a)=>{const h=TB.hex(c);return 'rgba('+h[0]+','+h[1]+','+h[2]+','+a+')';};
   TB.mixh=(a,b,t)=>{const A=TB.hex(a),B=TB.hex(b);return '#'+A.map((u,i)=>Math.round(u+(B[i]-u)*t).toString(16).padStart(2,'0')).join('');};
@@ -1425,7 +1426,7 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
       for(let k=0;k<N;k++){const a=k/N,h=f(a);area+=h/N;c.fillStyle=TB.rgba(eth,k%2?0.30:0.42);c.fillRect(X(a),Y(h),X(1/N)-X(0),B-Y(h));}
     }else{
       const h=2**-n,K=Math.ceil(1/h);
-      for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(eth,k%2?0.30:0.42);
+      for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(TB.pal(k-1),0.62);
         for(let i=0;i<=M;i++){const inS=i<M&&fs[i]>=lv;if(inS&&run<0)run=i;if(!inS&&run>=0){c.fillRect(X(run/M),Y(lv),X(i/M)-X(run/M),Y(lv-h)-Y(lv));run=-1;}}}
       for(let i=0;i<M;i++)area+=Math.min(n,Math.floor(fs[i]/h)*h)/M;
       c.strokeStyle=rule;c.lineWidth=1;c.setLineDash([3,5]);for(let k=1;k<=K;k++){c.beginPath();c.moveTo(L,Y(k*h));c.lineTo(R,Y(k*h));c.stroke();}c.setLineDash([]);
@@ -1542,7 +1543,7 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
     const ink=TB.tok('--ink'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule'),paper=TB.tok('--paper');
     c.fillStyle=paper;c.fillRect(0,0,W,W);
     let inner=0;
-    for(let m=1;m<=M;m++){const h=Math.pow(2,-m),g=h*S>6?1:0.5;c.fillStyle=TB.rgba(eth,0.18+0.62*(1-(m-1)/7));
+    for(let m=1;m<=M;m++){const h=Math.pow(2,-m),g=h*S>6?1:0.5;c.fillStyle=TB.rgba(TB.pal(m-1),0.78);
       for(const [x0,y0] of maximal(m)){inner+=h*h;c.fillRect(P(x0)+g,P(1-y0-h)+g,h*S-2*g,h*S-2*g);}}
     let out=0;
     if(dout.checked){const h=Math.pow(2,-M);c.strokeStyle=TB.rgba(warm,0.9);c.lineWidth=1.1;
@@ -1612,7 +1613,7 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
     const rows=K+1,top=12,rh=(H-(sm?56:64))/rows,bh=Math.min(18,rh*0.6);
     let segs=[[0,1]];
     for(let k=0;k<=K;k++){
-      const y=top+k*rh,col=TB.mixh(warm,eth,K?k/K:0);
+      const y=top+k*rh,col=TB.pal(k);
       c.fillStyle=TB.rgba(col,k===K?0.95:0.55);
       for(const [a,b] of segs){const x0=X(a),x1=X(b);c.fillRect(x0,y,Math.max(1,x1-x0),bh);}
       TB.rich(c,[['C','i'],[String(k),'s']],4,y+bh/2+s*0.35,s,muted);
@@ -1708,7 +1709,7 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
     const hb=sm?10:12,B=H-(s+19+hb+s+8+ls+7+(nr-1)*(ls+4)+8),Y=y=>B-y/1.25*(B-T);
     const eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule'),paper=TB.tok('--paper'),muted=TB.tok('--muted');
     c.fillStyle=paper;c.fillRect(0,0,W,H);
-    const cols=[muted,warm,TB.mixh(warm,eth,0.5),eth];
+    const cols=[muted,TB.tok('--coral'),TB.tok('--green'),eth];
     c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,T);c.lineTo(L,B);
     for(const v of [0.5,1]){c.moveTo(L-5,Y(v));c.lineTo(L,Y(v));}c.stroke();
     c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='right';c.fillText('0,5',L-7,Y(0.5)+s*0.35);c.fillText('1',L-7,Y(1)+s*0.35);
@@ -2136,6 +2137,8 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
 /* Tabula: each numbered statement gets its kind, so that the card takes the colour of its kind. */
 (function(){var K={'Определение':'def','Теорема':'thm','Факт':'thm','Лемма':'lem','Предложение':'lem','Следствие':'cor'};
 document.querySelectorAll('.stmt>.lbl').forEach(function(l){var w=l.textContent.trim().split(/\s+/)[0];l.parentNode.dataset.k=K[w]||'thm';});})();
+/* Tabula: pills in the contents take the colour of their kind. */
+(function(){var P={'Опр.':'def','Теор.':'thm','Факт':'thm','Лемма':'lem','Предл.':'lem','След.':'lem','Упр.':'ex','Вопр.':'ex'};document.querySelectorAll('.nlist a.npill').forEach(function(a){var w=a.textContent.trim().split(/\s+/)[0];if(P[w])a.dataset.k=P[w];});})();
 </script>
 <style id="tabula">
 /* ===== Tabula · книжная глава, редакция 2 =====
@@ -2225,8 +2228,8 @@ figcaption{font-family:var(--font-ui);font-size:.84rem;line-height:1.55;color:va
 figure.exfig{background:color-mix(in srgb,var(--paper) 55%,transparent)}
 @media (max-width:600px){figure{padding:8px 8px 12px;border-radius:12px;margin-left:-8px;margin-right:-8px}}
 
-.boxfig .p1{fill:var(--blue);fill-opacity:.5}.boxfig .p2{fill:var(--yellow);fill-opacity:.7}
-.boxfig .p3{fill:var(--coral);fill-opacity:.55}.boxfig .p4{fill:var(--green);fill-opacity:.5}.boxfig .p5{fill:var(--sky);fill-opacity:.45}
+.boxfig .p1{fill:var(--blue);fill-opacity:.85}.boxfig .p2{fill:var(--yellow);fill-opacity:1}
+.boxfig .p3{fill:var(--coral);fill-opacity:.9}.boxfig .p4{fill:var(--green);fill-opacity:.85}.boxfig .p5{fill:var(--sky);fill-opacity:.8}
 .boxfig .pc{stroke:var(--paper);stroke-width:2.5}
 .boxfig .frame{stroke:var(--ink);stroke-width:1.6}
 .boxfig .hole{stroke:var(--ink)}
@@ -2235,12 +2238,17 @@ figure.exfig{background:color-mix(in srgb,var(--paper) 55%,transparent)}
 .boxfig .cap{font-family:var(--font-ui)}
 .hier .lv{stroke:none;fill-opacity:1}
 .hier .lv0{fill:var(--fill)}
-.hier .lv1{fill:color-mix(in srgb,var(--yellow) 22%,var(--paper))}
-.hier .lv2{fill:color-mix(in srgb,var(--green) 22%,var(--paper))}
-.hier .lv3{fill:color-mix(in srgb,var(--blue) 18%,var(--paper))}
-.hier .lv4{fill:color-mix(in srgb,var(--coral) 22%,var(--paper))}
-.hier .lt{font-family:var(--font-ui);font-weight:600}
-.hier .le{font-family:var(--font-ui);font-style:normal;font-size:13px}
+.hier .lv1{fill:var(--yellow)}
+.hier .lv2{fill:var(--green)}
+.hier .lv3{fill:var(--blue)}
+.hier .lv4{fill:var(--coral)}
+.hier .lt{font-family:var(--font-ui);font-weight:600;fill:#1E1C19}
+.hier .le{font-family:var(--font-ui);font-style:normal;font-size:13px;fill:#1E1C19;fill-opacity:.72}
+.hier .lv0 ~ .lt,.hier .lv0 ~ .le{fill:var(--ink)}
+.hier .lv1 ~ .lt,.hier .lv1 ~ .le,.hier .lv2 ~ .lt,.hier .lv2 ~ .le{fill:#1E1C19}
+.hier .lv3 ~ .lt,.hier .lv3 ~ .le{fill:#fff;fill-opacity:1}
+.hier .lv3 ~ .le{fill-opacity:.85}
+.hier .lv4 ~ .lt,.hier .lv4 ~ .le{fill:#1E1C19}
 
 .controls{gap:.6rem 1.6rem;margin:.9rem .35rem 0;font-size:.85rem;color:var(--muted)}
 .controls label{gap:.6rem}
@@ -2318,6 +2326,15 @@ hr{border:0;border-top:1px solid var(--line);margin:3.6rem 0 2.4rem}
 .xref{text-decoration-color:color-mix(in srgb,var(--ether) 55%,transparent);border-radius:4px}
 .xref:hover,.xref.on{background:var(--ether-soft)}
 @keyframes flash{0%{box-shadow:0 0 0 3px color-mix(in srgb,var(--ether) 45%,transparent)}100%{box-shadow:0 0 0 3px transparent}}
+
+/* Пилюли во всплывающем содержании — акцентными цветами по виду */
+.nlist a.npill{font-weight:500}
+.nlist a.npill[data-k=def]{background:var(--blue);color:#fff}
+.nlist a.npill[data-k=thm]{background:var(--coral);color:#1E1C19}
+.nlist a.npill[data-k=lem]{background:var(--green);color:#1E1C19}
+.nlist a.npill[data-k=ex]{background:var(--yellow);color:#1E1C19}
+.nlist a.npill.p-fg{color:var(--muted)}
+.nlist a.npill:hover{outline:2px solid var(--ink);outline-offset:1px}
 
 </style>
 </body></html>

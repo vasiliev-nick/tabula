@@ -1,0 +1,1742 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Рисунки главы ∅</title>
+<script>try{var t=localStorage.getItem("book-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Onest:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one book column (~66ch), figures may break wider; numbered statements set like a printed textbook. */
+:root{
+  --paper:#FFFEFB; --ink:#1E1C19; --muted:#6E6A63; --rule:#DDD7CC;
+  --ether:#4F6BFF; --ether-soft:#EEF1FF; --warm:#F45B3E; --warm-soft:#FFE9E3;
+  --desk:#F4F1EB; --fill:#F6F3EE; --fill-2:#E8E3DA; --ink-3:#9A958D; --line:#ECE7DF; --cream:#FCF7EA;
+  --ether-ink:#2C47D6; --warm-ink:#C7402A;
+  --yellow:#FFD23F; --blue:#4F6BFF; --coral:#FF6F59; --green:#2FBF85; --violet:#9A6BFF; --pink:#FF7EB6; --sky:#3CC3F2;
+  --blue-ink:#2C47D6; --green-ink:#12784F; --blue-soft:#EAEEFF; --green-soft:#E2F5EC; --sticky:#FFF3C2; --sky-soft:#E3F5FC;
+  --lift:0 1px 2px rgba(40,30,10,.05),0 10px 34px rgba(40,30,10,.06);
+  --pop:0 2px 6px rgba(40,30,10,.07),0 16px 40px rgba(40,30,10,.13);
+  --font-body:"Onest", system-ui, sans-serif;
+  --font-ui:"Onest", system-ui, sans-serif;
+  --font-display:"Lora", Georgia, serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#232220; --ink:#EFEBE4; --muted:#A8A296; --rule:#3E3B36;
+  --ether:#8EA0FF; --ether-soft:#252B42; --warm:#FF8A70; --warm-soft:#3A2621;
+  --desk:#191816; --fill:#2A2926; --fill-2:#38362F; --ink-3:#7C776E; --line:#34322E; --cream:#2E2A20;
+  --ether-ink:#A9B7FF; --warm-ink:#FF9C85; --blue-ink:#9FB0FF; --green-ink:#6FDCAF;
+  --blue-soft:#232B45; --green-soft:#1D3128; --sticky:#3A3219; --sky-soft:#1C3039;
+  --lift:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.25); --pop:0 16px 40px rgba(0,0,0,.45); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#232220; --ink:#EFEBE4; --muted:#A8A296; --rule:#3E3B36;
+  --ether:#8EA0FF; --ether-soft:#252B42; --warm:#FF8A70; --warm-soft:#3A2621;
+  --desk:#191816; --fill:#2A2926; --fill-2:#38362F; --ink-3:#7C776E; --line:#34322E; --cream:#2E2A20;
+  --ether-ink:#A9B7FF; --warm-ink:#FF9C85; --blue-ink:#9FB0FF; --green-ink:#6FDCAF;
+  --blue-soft:#232B45; --green-soft:#1D3128; --sticky:#3A3219; --sky-soft:#1C3039;
+  --lift:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.25); --pop:0 16px 40px rgba(0,0,0,.45); color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.62}
+.book{max-width:44rem;margin:0 auto;padding-inline:20px;padding-block:3rem 5rem}
+header.ch{border-bottom:1px solid var(--rule);padding-bottom:1.6rem;margin-bottom:2rem}
+.eyebrow{font-family:var(--font-ui);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--muted)}
+h1{font-size:2.3rem;line-height:1.15;margin:.4rem 0 .6rem;text-wrap:balance;font-weight:700}
+h2{font-size:1.45rem;margin:3rem 0 .8rem;text-wrap:balance}
+h3{font-size:1.1rem;margin:2rem 0 .5rem}
+p{margin:0 0 1rem;hyphens:auto}
+.lead{font-size:1.1rem;color:var(--muted)}
+.stmt{margin:1.4rem 0;padding:.9rem 1.1rem;background:var(--ether-soft);border-radius:4px}
+.stmt .lbl{font-family:var(--font-ui);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ether);display:block;margin-bottom:.3rem}
+.proof{position:relative;margin:0 0 1.2rem;padding-left:1.6rem;padding-bottom:1em;transition:padding-bottom .5s cubic-bezier(.5,0,.2,1)}
+.proof .thread{position:absolute;left:.3em;top:1.06em;bottom:.64em;width:1px;background:var(--muted);transition:opacity .4s}
+.proof .qo,.proof .qc{position:absolute;left:0;width:.64em;height:.64em;box-sizing:border-box;cursor:pointer;z-index:1}
+.proof .qo{top:.42em;border:1.4px solid var(--ink);background:var(--paper)}
+.proof .qc{bottom:0;background:var(--ink)}
+.proof .qo::before,.proof .qc::before{content:"";position:absolute;inset:-.45em}
+.proof .lbl{font-style:italic;cursor:pointer;user-select:none;border-radius:3px;outline-offset:2px}
+.proof .lbl:hover{color:var(--ether)}
+.proof .lbl::after{content:"";font-style:normal;color:var(--muted);font-family:var(--font-ui);font-size:.8rem;margin-left:.5em;opacity:0;transition:opacity .3s}
+.proof .pbody{display:grid;grid-template-rows:1fr;transition:grid-template-rows .5s cubic-bezier(.5,0,.2,1),opacity .35s}
+.proof .pin{min-height:0;overflow:hidden}
+.proof .pin>:last-child{margin-bottom:0}
+.proof.folded{padding-bottom:.08em}
+.proof.folded .pbody{grid-template-rows:0fr;opacity:0}
+.proof.folded .thread{opacity:0}
+.proof.folded .lbl::after{content:"свёрнуто";opacity:1}
+.proof.snap .qc{animation:tug .42s ease-out}
+@keyframes tug{0%{transform:translateY(0)}40%{transform:translateY(-.14em)}70%{transform:translateY(.05em)}100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.proof,.proof .pbody{transition:none}.proof.snap .qc{animation:none}}
+.ex{margin:1.4rem 0;padding:.9rem 1.1rem;background:var(--warm-soft);border-radius:4px}
+.ex>p:last-child,.ex>ol:last-child{margin-bottom:0}
+.proof.sol .lbl:hover{color:var(--warm)}
+.proof.sol .step .sh{color:var(--warm)}
+.proof.sol.folded .lbl::after{content:"скрыто"}
+.ex .lbl{font-family:var(--font-ui);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:.3rem}
+.d3{margin:1.4rem 0;padding:.8rem 1.1rem;border:1px dashed var(--ether);border-radius:4px;font-size:.95rem}
+.d3 .lbl{font-family:var(--font-ui);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ether);display:block;margin-bottom:.25rem}
+.fig1 canvas{width:100%;height:auto;display:block;border-radius:4px;cursor:crosshair}
+.stmt ol.ax,ol.ax{margin:.5rem 0 .4rem;padding-left:1.6rem}
+.stmt ol.ax li{margin:.3rem 0}
+/* Item letters match the references in the text: (а), (б), (в) and (i), (ii). */
+ol[type="a"],ol[type="i"]{list-style:none;padding-left:2.1rem}
+ol[type="a"]>li,ol[type="i"]>li{position:relative}
+ol[type="a"]>li::before,ol[type="i"]>li::before{position:absolute;right:calc(100% + .45rem);white-space:nowrap}
+ol[type="a"]>li:nth-child(1)::before{content:"(а)"}ol[type="a"]>li:nth-child(2)::before{content:"(б)"}
+ol[type="a"]>li:nth-child(3)::before{content:"(в)"}ol[type="a"]>li:nth-child(4)::before{content:"(г)"}
+ol[type="a"]>li:nth-child(5)::before{content:"(д)"}ol[type="a"]>li:nth-child(6)::before{content:"(е)"}
+ol[type="i"]{counter-reset:ri}ol[type="i"]>li{counter-increment:ri}
+ol[type="i"]>li::before{content:"(" counter(ri,lower-roman) ")"}
+.svgwrap{overflow-x:auto}
+.boxfig{width:100%;min-width:520px;height:auto;display:block}
+.boxfig .pc{stroke:var(--paper);stroke-width:2}
+.boxfig .p1{fill:var(--ether);fill-opacity:.45}.boxfig .p2{fill:var(--ether);fill-opacity:.25}
+.boxfig .p3{fill:var(--warm);fill-opacity:.35}.boxfig .p4{fill:var(--warm);fill-opacity:.2}.boxfig .p5{fill:var(--ether);fill-opacity:.12}
+.boxfig .frame{fill:none;stroke:var(--ink);stroke-width:2}
+.boxfig .hole{fill:var(--paper);stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 4}
+.boxfig .grid{stroke:var(--ink);stroke-width:1;stroke-dasharray:4 4;opacity:.55}
+.boxfig .dot{fill:var(--ink)}
+.boxfig .lab{fill:var(--ink);font:600 15px var(--font-body)}
+.boxfig .cap{fill:var(--muted);font-family:var(--font-ui);font-size:13px}
+.step{margin:.7rem 0}
+.step .sh{display:block;font-family:var(--font-ui);font-weight:700;font-size:.86rem;color:var(--ether);margin-bottom:.15rem}
+.step ol.ax{margin:.3rem 0}
+.proof>p{margin:.4rem 0 .6rem}
+.fig1.sq{max-width:560px;margin:0 auto}
+.hier{width:100%;min-width:560px;height:auto;display:block}
+.hier .lv{fill:var(--ether);fill-opacity:.07;stroke:var(--ether);stroke-opacity:.5;stroke-width:1.2}
+.hier .lv0{fill-opacity:.03;stroke-dasharray:6 5}
+.hier .lt{fill:var(--ink);font-family:var(--font-ui);font-size:15px;font-weight:700}
+.hier .le{fill:var(--muted);font-family:var(--font-body);font-size:14px;font-style:italic}
+.plain{margin:.5rem 0 .9rem;padding:.55rem .9rem;border-left:2px solid var(--ether);background:var(--ether-soft);border-radius:0 4px 4px 0;font-size:.97rem}
+.plain p{margin:.3rem 0}
+.plain .pl{font-family:var(--font-ui);font-weight:700;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ether);display:block;margin-bottom:.2rem}
+ul.gl{margin:.3rem 0 1rem;padding-left:1.3rem}
+ul.gl li{margin:.25rem 0}
+.aside{display:block;font-family:var(--font-ui);font-size:.84rem;line-height:1.5;color:var(--muted);margin:.4rem 0 .2rem;padding-left:.7rem;border-left:1px solid var(--rule)}
+p.aside{margin:.2rem 0 1rem}
+.gloss{position:fixed;top:12px;left:12px;z-index:50}
+.gbtn{position:relative;z-index:2;width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--paper);color:var(--ether);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s}
+.gloss:hover .gbtn,.gloss.open .gbtn{transform:scale(1.06);box-shadow:0 2px 10px rgba(0,0,0,.14)}
+.gpanel{position:absolute;top:0;left:0;padding:48px 0 0;width:min(420px,calc(100vw - 24px));visibility:hidden;opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s,visibility 0s .2s;pointer-events:none}
+.gloss:hover .gpanel,.gloss:has(:focus-visible) .gpanel,.gloss.open .gpanel{visibility:visible;opacity:1;transform:none;transition:opacity .2s,transform .2s;pointer-events:auto}
+.gloss.shut .gpanel.gpanel{visibility:hidden;opacity:0;pointer-events:none}
+.gpanel>.ghead,.gpanel>.glist{background:var(--paper);border:1px solid var(--rule)}
+.ghead{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ether);padding:.7rem 1rem .5rem;border-radius:8px 8px 0 0;border-bottom:none!important;box-shadow:0 8px 28px rgba(0,0,0,.12)}
+.ghead span{font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-left:.4em}
+.glist{list-style:none;margin:0;padding:.2rem 0 .6rem;max-height:min(70vh,560px);overflow-y:auto;border-radius:0 0 8px 8px;border-top:none!important;box-shadow:0 12px 28px rgba(0,0,0,.12)}
+.glist li{display:grid;grid-template-columns:7.2rem 1fr;gap:.8rem;padding:.42rem 1rem;border-top:1px solid var(--rule);font-size:.86rem;line-height:1.45}
+.glist li:first-child{border-top:none}
+.gs{text-align:right;color:var(--ink)}
+.gd{color:var(--ink)}
+.gref{font-family:var(--font-ui);font-size:.74rem;color:var(--ether);text-decoration:none;white-space:nowrap;margin-left:.3em}
+.gref:hover{text-decoration:underline}
+.flash{animation:flash 1.6s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 3px var(--ether)}100%{box-shadow:0 0 0 3px transparent}}
+@media (max-width:600px){.glist li{grid-template-columns:5.4rem 1fr}}
+.say{display:block;font-style:italic;color:var(--muted);margin-bottom:.15rem}
+.why{color:var(--muted);font-size:.95rem}
+ol,ul{padding-left:1.4rem;margin:0 0 1rem}
+li{margin:.25rem 0}
+.toc{font-family:var(--font-ui);font-size:.92rem;display:grid;gap:.25rem;margin:1rem 0 0;padding:0;list-style:none}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dotted var(--rule)}
+.toc a:hover{color:var(--ether)}
+.math-wrap{display:block;overflow-x:auto;overflow-y:hidden}
+figure{margin:2rem 0}
+figcaption{font-family:var(--font-ui);font-size:.85rem;color:var(--muted);margin-top:.6rem}
+.fig{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:12px;align-items:stretch}
+.fig canvas{width:100%;height:auto;display:block;border-radius:4px}
+.controls{display:flex;flex-wrap:wrap;gap:1rem 1.6rem;font-family:var(--font-ui);font-size:.85rem;margin-top:.8rem}
+.controls label{display:flex;align-items:center;gap:.5rem}
+.controls select{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.15rem .3rem}
+.controls output{font-variant-numeric:tabular-nums;min-width:3.2em}
+input[type=range]{accent-color:var(--ether)}
+input:focus-visible{outline:2px solid var(--ether);outline-offset:2px}
+/* Figure readouts: a formula on the left, a read-only gauge, and the value in small print. */
+.ro{margin:.9rem 0 0;display:grid;gap:.1rem}
+.rr{display:grid;grid-template-columns:var(--lw,8rem) minmax(0,1fr) 3.4rem;align-items:center;column-gap:1rem}
+.rr[hidden]{display:none}
+.rl{text-align:right;font-size:.95rem;line-height:1.25;font-family:var(--font-body)}
+.gauge{position:relative;display:block;height:46px;margin:0 .5rem}
+.gauge>i{position:absolute;display:block;font-style:normal}
+.gauge>.gt{left:0;right:0;top:22px;height:3px;border-radius:2px;background:var(--rule)}
+.gauge>.gf{top:22px;height:3px;border-radius:2px;background:var(--warm);transition:left .18s ease-out,width .18s ease-out}
+.gauge>.gk{top:17px;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;background:var(--warm);box-shadow:0 0 0 3px var(--paper);transition:left .18s ease-out}
+.gauge>.gm{top:14px;width:0;height:19px;border-left:1.5px solid var(--ink);margin-left:-.75px;opacity:.8;transition:left .18s ease-out}
+.gauge>.gm b{position:absolute;bottom:100%;left:0;transform:translateX(-50%);font:400 .86rem/1.15 var(--font-body);color:var(--ink);white-space:nowrap}
+.gauge>.gm b i{font-style:italic}
+.gauge>.gm.gb b{bottom:auto;top:100%;font:400 .72rem/1.3 var(--font-ui);color:var(--muted)}
+.gauge>.ge{top:32px;transform:translateX(-50%);font:400 .72rem/1 var(--font-ui);color:var(--muted)}
+.rr>output.gv{font-family:var(--font-ui);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.fx{font-family:var(--font-body);font-size:1.02rem;line-height:1.6;margin:.8rem 0 0;display:flex;flex-direction:column;align-items:center;gap:.35rem;text-align:center;font-variant-numeric:tabular-nums}
+.fx i{font-style:italic}
+.nw{white-space:nowrap}
+.fx sub,.fx sup{font-size:.72em;line-height:0}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.8em;line-height:1.15;margin:0 .12em}
+.fr>span:first-child{border-bottom:1px solid currentColor;padding:0 .22em .06em}
+.fr>span:last-child{padding:.06em .22em 0}
+figure .math-wrap{margin-top:.6rem}
+figure .math-wrap mjx-container[display="true"]{margin:.3em 0!important}
+@media (max-width:560px){.rr{grid-template-columns:minmax(0,1fr) 3.2rem}.rl{grid-column:1/-1;text-align:left;margin:.5rem 0 .45rem}}
+hr{border:0;border-top:1px solid var(--rule);margin:3rem 0}
+@media (max-width:560px){body{font-size:17px}.fig{grid-template-columns:1fr}h1{font-size:1.8rem}}
+figure.exfig{margin:1rem 0 1.2rem}
+.ex>figure.exfig:last-child{margin-bottom:0}
+.boxrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 .4rem}
+.boxrow .boxfig{min-width:0}
+.hier.nar{display:none;min-width:0}
+@media (max-width:560px){.boxrow{grid-template-columns:minmax(0,1fr);max-width:300px;margin:0 auto;gap:.6rem}.hier.wide{display:none}.hier.nar{display:block}}
+/* Catalogue of named examples (FORMAT.md «Примеры»): a group label with a hairline, then one card per example: number badge and name, text, its own figure. */
+.xgrp{display:flex;align-items:center;gap:.8rem;margin:2.2rem 0 .3rem;font-family:var(--font-ui);font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.xgrp::after{content:"";flex:1;height:1px;background:var(--rule)}
+.xmp{margin:1rem 0 1.4rem;padding:.9rem 1.1rem .2rem;border:1px solid var(--rule);border-radius:8px}
+.xmp .xh{display:flex;align-items:center;gap:.65rem;margin:0 0 .55rem}
+.xmp .xn{flex:none;display:inline-flex;align-items:center;justify-content:center;width:1.75rem;height:1.75rem;border-radius:50%;background:var(--ether-soft);color:var(--ether);font-family:var(--font-ui);font-weight:700;font-size:.86rem}
+.xmp .xt{font-family:var(--font-ui);font-weight:700;font-size:.92rem;letter-spacing:.02em;color:var(--ink)}
+.xmp>p:first-of-type{margin-top:0}
+.xmp figure{margin:1.2rem 0 .8rem}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:560px){.xmp{padding:.8rem .7rem .1rem;margin-left:-.3rem;margin-right:-.3rem}}
+/* Book controls (FORMAT.md): contents and glossary circles on the left, a round theme switch on the right. */
+.tbtn{position:fixed;top:12px;left:12px;z-index:51;width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--paper);color:var(--ether);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s}
+.tbtn:hover{transform:scale(1.06);box-shadow:0 2px 10px rgba(0,0,0,.14)}
+.tbtn:focus-visible{outline:2px solid var(--ether);outline-offset:2px}
+.tbtn svg{transition:transform .5s cubic-bezier(.5,0,.2,1)}
+:root[data-theme="dark"] .tbtn svg{transform:rotate(180deg)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tbtn svg{transform:rotate(180deg)}}
+.gloss{top:58px}
+.tbtn{top:12px;left:auto;right:12px}
+.gloss.navm{top:12px;z-index:52}
+.nlist li{display:block;padding:0;border-top:1px solid var(--rule);font-family:var(--font-ui);font-size:.88rem;line-height:1.35}
+.nlist li.sub{border-top:none;font-size:.8rem}
+.nlist a{display:block;padding:.45rem 1rem;color:var(--ink);text-decoration:none}
+.nlist li.sub a{padding:.2rem 1rem .3rem 2.2rem;color:var(--muted)}
+.nlist a:hover{color:var(--ether);background:color-mix(in srgb,var(--ether) 7%,transparent)}
+.nlist a.cur{color:var(--ether);font-weight:700}
+.nlist li.sub a.cur{font-weight:400;color:var(--ether)}
+.nlist li.pills{display:flex;flex-wrap:wrap;align-items:flex-start;gap:.28rem;padding:.15rem 1rem .5rem 2.2rem;border-top:none}
+.nlist a.npill{display:inline-block;margin:0;padding:.06rem .42rem;border-radius:3px;font-size:.72rem;line-height:1.35;color:var(--ink);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nlist a.npill.p-st{background:var(--ether-soft)}
+.nlist a.npill.p-ex{background:var(--warm-soft)}
+.nlist a.npill.p-fg{background:color-mix(in srgb,var(--muted) 16%,transparent);color:var(--muted)}
+.nlist a.npill:hover{outline:1px solid var(--ether);background-image:none}
+/* Comparison tables (FORMAT.md): thin rules, row headers in the interface font, a scroll box on narrow screens instead of a wide page. */
+.tbl{overflow-x:auto;margin:1.3rem 0;-webkit-overflow-scrolling:touch}
+table.cmp{border-collapse:collapse;width:100%;min-width:30rem;font-size:.93em;line-height:1.45}
+table.cmp th,table.cmp td{padding:.5rem .65rem;border-bottom:1px solid var(--rule);vertical-align:top;text-align:left}
+table.cmp thead th{font-family:var(--font-ui);font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--muted)}
+table.cmp tbody th{font-family:var(--font-ui);font-weight:500;color:var(--muted);font-size:.92em;width:24%}
+table.cmp tbody tr:last-child th,table.cmp tbody tr:last-child td{border-bottom:none}
+@media (max-width:600px){header.ch{padding-top:100px}}
+/* Action buttons under figures (FORMAT.md): «+100», «заново», «Бросить монеты». */
+button.act{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:.18rem .7rem;cursor:pointer;line-height:1.4}
+button.act:hover{border-color:var(--ether);color:var(--ether)}
+button.act:focus-visible{outline:2px solid var(--ether);outline-offset:2px}
+button.act[hidden]{display:none}
+.btns{display:flex;flex-wrap:wrap;gap:.4rem}
+
+/* «Все учебники» in the contents panel: a quiet link to the library page (index.html) */
+.navm .ghead{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.ghome{font-weight:400;text-transform:none;letter-spacing:0;font-size:.8rem;color:var(--muted);text-decoration:none;white-space:nowrap}
+.ghome:hover,.ghome:focus-visible{color:var(--ether);text-decoration:underline;text-underline-offset:2px}
+</style>
+<script>
+window.MathJax={tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']],tags:'none'},svg:{fontCache:'global'}};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"></script>
+
+<script>/* «Все учебники»: a local copy of the books opens the library page that lies next to it */if(location.protocol==='file:')document.querySelectorAll('a.ghome[data-file]').forEach(a=>{a.href=a.dataset.file;a.removeAttribute('target');});</script>
+<button class="tbtn" type="button" aria-label="Переключить тему: светлая или тёмная" title="Светлая или тёмная тема"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><g class="moon"><path d="M19.5 14.2A7.5 7.5 0 0 1 9.8 4.5a7.5 7.5 0 1 0 9.7 9.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></g><g class="sun" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></g></svg></button>
+
+<article class="book figs">
+<header class="ch"><div class="eyebrow">Глава ∅ · Мера и интеграл Лебега</div>
+<h1>Рисунки главы</h1>
+<p class="lead">Все рисунки главы на одной странице, живые. Цвета справа меняют токены, и рисунки перерисовываются сразу. Набор можно скопировать кнопкой внизу панели.</p></header>
+<h2>§∅.0. Зачем нужен ещё один интеграл</h2>
+<figure>
+  <div class="fig1"><canvas id="slices" width="760" height="520" aria-label="Разбиение по Риману и по Лебегу"></canvas></div>
+  <div class="controls">
+    <label for="mode">Способ <select id="mode"><option value="R">Риман: режем ось x</option><option value="L" selected>Лебег: режем ось значений</option></select></label>
+    <label for="nst">Мелкость $n$ <input id="nst" type="range" min="1" max="6" step="1" value="3"><output id="nOut">3</output></label>
+    <label for="tlv">Уровень $t$ <input id="tlv" type="range" min="0" max="1" step="0.005" value="0.5"><output id="tOut">0,50</output></label>
+  </div>
+  <div class="ro" style="--lw:10.5rem">
+    <div class="rr" id="rowR" hidden><span class="rl">$\sum_k f(x_k)\,\Delta x$</span><span class="gauge" id="gSumR" data-min="0" data-max="1"></span><output class="gv"></output></div>
+    <div class="rr" id="rowL"><span class="rl">площадь под $\varphi_n$</span><span class="gauge" id="gSumL" data-min="0" data-max="1"></span><output class="gv"></output></div>
+    <div class="rr"><span class="rl">длина $\{x: f(x)&gt;t\}$</span><span class="gauge" id="gLev" data-min="0" data-max="1"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.1. Функция $f$ на $[0,1]$. Два режима:
+<ul class="capl">
+<li><b>«Риман»</b> — отрезок разбит на $2^n$ частей $[x_k,x_k+\Delta x)$, высота столбика — значение $f(x_k)$ в левом конце.</li>
+<li><b>«Лебег»</b> — ось значений разбита на уровни с шагом $2^{-n}$ (пунктир), и под графиком закрашена лестница $\varphi_n$: в каждой точке $x$ значение $f(x)$ округлено вниз до ближайшего уровня. В §∅.4 такие функции будут названы простыми, а эта лестница — стандартным приближением (лемма ∅.27).</li>
+</ul>
+Полоса под осью и утолщённые куски горизонтали $t$ — множество $\{x: f(x)&gt;t\}$ для выбранного уровня $t$. Шкалы:
+<ul class="capl">
+<li><b>первая</b> — площадь под столбиками или под лестницей, метка на ней — точное значение $\int_0^1f(x)\,dx$;</li>
+<li><b>вторая</b> — длина множества $\{x: f(x)&gt;t\}$, то есть сумма длин его кусков. Именно такие длины и складывает Лебег.</li>
+</ul>
+Вторая шкала может показывать больше первой: длина и площадь — разные величины. Связаны они только неравенством $t\cdot\ell\le\int_0^1f(x)\,dx$, где $\ell$ — длина множества $\{x: f(x)&gt;t\}$: над этим множеством график выше уровня $t$, поэтому площадь под ним не меньше $t\ell$.</figcaption>
+</figure>
+<h2>§∅.2. Мера Лебега в $\mathbb R^n$</h2>
+<figure>
+<div class="boxrow" role="group" aria-label="Разбиение бруса, решётка через концы и разность двух брусов"><svg class="boxfig" viewBox="0 0 260 235" role="img" aria-label="Брус P, разбитый на пять брусов"><rect class="pc p1" x="30" y="90" width="80" height="100" /><text class="lab" x="70.0" y="140.0" text-anchor="middle" dominant-baseline="middle">P₁</text><rect class="pc p2" x="110" y="130" width="120" height="60" /><text class="lab" x="170.0" y="160.0" text-anchor="middle" dominant-baseline="middle">P₂</text><rect class="pc p3" x="110" y="30" width="60" height="100" /><text class="lab" x="140.0" y="80.0" text-anchor="middle" dominant-baseline="middle">P₃</text><rect class="pc p4" x="170" y="30" width="60" height="100" /><text class="lab" x="200.0" y="80.0" text-anchor="middle" dominant-baseline="middle">P₄</text><rect class="pc p5" x="30" y="30" width="80" height="60" /><text class="lab" x="70.0" y="60.0" text-anchor="middle" dominant-baseline="middle">P₅</text><rect class="frame" x="30" y="30" width="200" height="160" /><text class="cap" x="130" y="220" text-anchor="middle">1. Брус P разбит на P₁, …, P₅</text></svg><svg class="boxfig" viewBox="270 0 260 235" role="img" aria-label="Прямые через все концы брусов режут P на девять клеток"><rect class="pc p1" x="300" y="90" width="80" height="100" /><rect class="pc p2" x="380" y="130" width="120" height="60" /><rect class="pc p3" x="380" y="30" width="60" height="100" /><rect class="pc p4" x="440" y="30" width="60" height="100" /><rect class="pc p5" x="300" y="30" width="80" height="60" /><line class="grid" x1="300" y1="16" x2="300" y2="204"/><line class="grid" x1="380" y1="16" x2="380" y2="204"/><line class="grid" x1="440" y1="16" x2="440" y2="204"/><line class="grid" x1="500" y1="16" x2="500" y2="204"/><line class="grid" x1="286" y1="190" x2="514" y2="190"/><line class="grid" x1="286" y1="130" x2="514" y2="130"/><line class="grid" x1="286" y1="90" x2="514" y2="90"/><line class="grid" x1="286" y1="30" x2="514" y2="30"/><circle class="dot" cx="340.0" cy="160.0" r="3"/><circle class="dot" cx="340.0" cy="110.0" r="3"/><circle class="dot" cx="340.0" cy="60.0" r="3"/><circle class="dot" cx="410.0" cy="160.0" r="3"/><circle class="dot" cx="410.0" cy="110.0" r="3"/><circle class="dot" cx="410.0" cy="60.0" r="3"/><circle class="dot" cx="470.0" cy="160.0" r="3"/><circle class="dot" cx="470.0" cy="110.0" r="3"/><circle class="dot" cx="470.0" cy="60.0" r="3"/><rect class="frame" x="300" y="30" width="200" height="160" /><text class="cap" x="400" y="220" text-anchor="middle">2. Прямые через концы: 9 клеток</text></svg><svg class="boxfig" viewBox="540 0 260 235" role="img" aria-label="Разность A∖B, составленная из восьми брусов"><rect class="pc p1" x="570" y="150" width="60" height="40" /><rect class="pc p2" x="570" y="90" width="60" height="60" /><rect class="pc p1" x="570" y="30" width="60" height="60" /><rect class="pc p2" x="630" y="150" width="80" height="40" /><rect class="pc p2" x="630" y="30" width="80" height="60" /><rect class="pc p1" x="710" y="150" width="60" height="40" /><rect class="pc p2" x="710" y="90" width="60" height="60" /><rect class="pc p1" x="710" y="30" width="60" height="60" /><rect class="hole" x="630" y="90" width="80" height="60" /><text class="lab" x="670" y="120.0" text-anchor="middle" dominant-baseline="middle">B</text><line class="grid" x1="570" y1="16" x2="570" y2="204"/><line class="grid" x1="630" y1="16" x2="630" y2="204"/><line class="grid" x1="710" y1="16" x2="710" y2="204"/><line class="grid" x1="770" y1="16" x2="770" y2="204"/><line class="grid" x1="556" y1="190" x2="784" y2="190"/><line class="grid" x1="556" y1="150" x2="784" y2="150"/><line class="grid" x1="556" y1="90" x2="784" y2="90"/><line class="grid" x1="556" y1="30" x2="784" y2="30"/><rect class="frame" x="570" y="30" width="200" height="160" /><text class="cap" x="670" y="220" text-anchor="middle">3. A∖B = 8 брусов (3² − 1)</text></svg></div>
+<figcaption>Рис. ∅.2. Лемма ∅.7 на плоскости.
+<ul class="capl">
+<li><b>(1)</b> Брус $P$ разбит на пять брусов.</li>
+<li><b>(2)</b> Через все концы проведены прямые. Они режут $P$ на клетки (отмечены точками), и каждая клетка целиком лежит в одном $P_k$. Например, $P_1$ состоит из двух клеток, потому что его режет одна из прямых, проведённых через концы $P_2$.</li>
+<li><b>(3)</b> Шаг 3: прямые через концы $A$ и $B$ делят $A$ на $3\times3$ клеток; центральная — это $A\cap B$, остальные $3^2-1=8$ составляют $A\setminus B$. В $\mathbb R^n$ клеток $3^n$.</li>
+</ul></figcaption>
+</figure>
+<figure>
+  <div class="fig1"><canvas id="qcover" width="760" height="300" aria-label="Покрытие рациональных точек интервалами малой суммарной длины"></canvas></div>
+  <div class="controls">
+    <label for="qeps">$\varepsilon$ <input id="qeps" type="range" min="0.05" max="2" step="0.01" value="0.5"><output id="qepsOut">0,50</output></label>
+    <label for="qK">Число интервалов $K$ <input id="qK" type="range" min="1" max="40" step="1" value="20"><output id="qKOut">20</output></label>
+  </div>
+  <div class="ro" style="--lw:8.5rem">
+    <div class="rr"><span class="rl">$\sum_{k\le K}|I_k|$</span><span class="gauge" id="gQs" data-min="0" data-max="2"></span><output class="gv"></output></div>
+    <div class="rr"><span class="rl">накрыто от $[0,1)$</span><span class="gauge" id="gQc" data-min="0" data-max="2"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.3. Рациональные точки отрезка $[0,1)$ в порядке $0,\tfrac12,\tfrac13,\tfrac23,\tfrac14,\tfrac34,\dots$ и интервалы $I_k=[q_k,q_k+\varepsilon2^{-k})$.
+<ul class="capl">
+<li><b>Сверху</b> — первые интервалы (не больше $24$), каждый на своей строке и с точкой $q_k$ на левом конце.</li>
+<li><b>Снизу</b> — объединение первых $K$ интервалов на прямой, штрихи под ним — сами точки $q_1,\dots,q_K$.</li>
+</ul>
+Шкалы: суммарная длина интервалов (она всегда меньше $\varepsilon$) и длина накрытой части $[0,1)$, которая не больше суммарной длины. Поэтому при $\varepsilon&lt;1$ объединение не может накрыть весь отрезок. При $\varepsilon\ge1$ противоречия нет: например, при $\varepsilon=2$ уже первый интервал $I_1=[0,1)$ накрывает всё.</figcaption>
+</figure>
+<figure>
+  <div class="fig1 sq"><canvas id="dyadic" width="640" height="640" aria-label="Двоичные брусы разных рангов, вложенные друг в друга"></canvas></div>
+  <div class="controls">
+    <label for="dyM">Ранг $m$ <input id="dyM" type="range" min="0" max="5" step="1" value="3"><output id="dyMOut">3</output></label>
+  </div>
+  <div id="dyStat" class="fx" aria-live="polite"></div>
+  <figcaption>Рис. ∅.4. Квадрат $[0,2)^2$ и двоичные сетки рангов $0,\dots,m$: чем мельче сетка, тем тоньше её линии. Нажмите или проведите пальцем по картинке: подсветится цепочка двоичных квадратов, содержащих выбранную точку, от ранга $0$ (крупный) до ранга $m$ (мелкий). Квадраты цепочки вложены друг в друга, как матрёшки, — это пункт (г). Под рисунком — номера $k_1,k_2$ из леммы ∅.15(а) и сам квадрат ранга $m$, содержащий точку.</figcaption>
+</figure>
+<figure>
+  <div class="fig1 sq"><canvas id="dyad" width="640" height="640" aria-label="Открытое множество, заполненное двоичными квадратами"></canvas></div>
+  <div class="controls">
+    <label for="dm">Наибольший ранг $m$ <input id="dm" type="range" min="1" max="7" step="1" value="4"><output id="dmOut">4</output></label>
+    <label for="dout"><input id="dout" type="checkbox"> Внешнее приближение</label>
+  </div>
+  <div class="ro" style="--lw:8.5rem">
+    <div class="rr"><span class="rl">$\sum_j v(D_j)$</span><span class="gauge" id="gDin" data-min="0" data-max="1"></span><output class="gv"></output></div>
+    <div class="rr" id="rowDout" hidden><span class="rl">$\sum_{D\cap U\ne\varnothing}v(D)$</span><span class="gauge" id="gDout" data-min="0" data-max="1"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.5. Открытое множество $U$ в квадрате $[0,1)^2$ и максимальные двоичные квадраты $D_j$ рангов $1,\dots,m$ внутри него; цвет зависит от ранга. Крупные квадраты заполняют середину, мелкие уходят к границе. Это и есть объединение из леммы ∅.16, оборванное на ранге $m$. Внешнее приближение — все квадраты $D$ ранга $m$, пересекающие $U$. Шкалы показывают суммарную площадь квадратов, метка на них — площадь $U$.</figcaption>
+</figure>
+<figure>
+  <div class="fig1 sq"><canvas id="inflate" width="640" height="640" aria-label="Покрытие множества квадратами и их раздувание до открытых"></canvas></div>
+  <div class="controls">
+    <label for="infEps">$\varepsilon$ <input id="infEps" type="range" min="0.005" max="0.17" step="0.005" value="0.05"><output id="infEpsOut">0,050</output></label>
+    <label for="infM">Ранг квадратов <input id="infM" type="range" min="2" max="5" step="1" value="3"><output id="infMOut">3</output></label>
+  </div>
+  <div class="ro" style="--lw:11rem">
+    <div class="rr"><span class="rl">$\sum_k v(P_k)$</span><span class="gauge" id="gIs" data-min="0" data-max="1"></span><output class="gv"></output></div>
+    <div class="rr"><span class="rl">$\sum_k\bigl(\lambda_2(U_k)-v(P_k)\bigr)$</span><span class="gauge" id="gIe" data-min="0" data-max="0.2"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.6. Множество $E$ (пунктир) покрыто двоичными квадратами $P_1,P_2,\dots$ выбранного ранга (тонкие рамки, номера у первых). Вокруг $P_k$ — открытый квадрат $U_k\supset P_k$, площадь которого больше $v(P_k)$ ровно на $\varepsilon2^{-k}$. Первые расширения заметны, дальше они быстро становятся неразличимы. Первая шкала — суммарная площадь квадратов, метка на ней — площадь $E$: с ростом ранга покрытие становится экономнее. Вторая шкала — суммарная добавка от раздувания; она меньше $\varepsilon$ при любом числе квадратов.</figcaption>
+</figure>
+<figure>
+<div class="svgwrap"><svg class="hier nar" viewBox="0 0 360 346" role="img" aria-label="Иерархия классов множеств"><rect class="lv lv0" x="4" y="6" width="352" height="334" rx="12"/><text class="lt" x="14" y="32">Все подмножества ℝ</text><text class="le" x="14" y="52">множество Витали</text><rect class="lv lv1" x="13" y="66" width="334" height="262" rx="12"/><text class="lt" x="23" y="92">Измеримые по Лебегу</text><text class="le" x="23" y="112">неборелевское подмножество C</text><rect class="lv lv2" x="22" y="126" width="316" height="190" rx="12"/><text class="lt" x="32" y="152">Борелевские</text><rect class="lv lv3" x="31" y="168" width="298" height="136" rx="12"/><text class="lt" x="41" y="194">F<tspan baseline-shift="sub" font-size="75%">σ</tspan> и G<tspan baseline-shift="sub" font-size="75%">δ</tspan></text><text class="le" x="41" y="214">ℚ ∈ F<tspan baseline-shift="sub" font-size="75%">σ</tspan> · ℝ∖ℚ ∈ G<tspan baseline-shift="sub" font-size="75%">δ</tspan></text><rect class="lv lv4" x="40" y="228" width="280" height="64" rx="12"/><text class="lt" x="50" y="254">Открытые, замкнутые, брусы</text><text class="le" x="50" y="276">(0,1) · [0,1] · [0,1) · C</text></svg><svg class="hier wide" viewBox="0 0 760 394" role="img" aria-label="Иерархия классов множеств"><rect class="lv lv0" x="10" y="10" width="740" height="374" rx="14"/><text class="lt" x="30" y="38">Все подмножества ℝ</text><text class="le" x="30" y="59">множество Витали</text><rect class="lv lv1" x="44" y="74" width="672" height="290" rx="14"/><text class="lt" x="64" y="102">Измеримые по Лебегу</text><text class="le" x="64" y="123">неборелевское подмножество C</text><rect class="lv lv2" x="78" y="138" width="604" height="206" rx="14"/><text class="lt" x="98" y="166">Борелевские</text><rect class="lv lv3" x="112" y="182" width="536" height="142" rx="14"/><text class="lt" x="132" y="210">F<tspan baseline-shift="sub" font-size="75%">σ</tspan> и G<tspan baseline-shift="sub" font-size="75%">δ</tspan></text><text class="le" x="132" y="231">ℚ ∈ F<tspan baseline-shift="sub" font-size="75%">σ</tspan> · ℝ∖ℚ ∈ G<tspan baseline-shift="sub" font-size="75%">δ</tspan></text><rect class="lv lv4" x="146" y="246" width="468" height="58" rx="14"/><text class="lt" x="166" y="272">Открытые, замкнутые, брусы</text><text class="le" x="166" y="293">(0,1) · [0,1] · [0,1) · C</text></svg></div>
+<figcaption>Рис. ∅.7. Вложенные классы подмножеств $\mathbb R$ с примерами. $\mathbb Q$ — счётное объединение точек, то есть $F_\sigma$; иррациональные числа — дополнение, то есть $G_\delta$. Подмножества канторова множества $C$ (оно построено ниже) все измеримы по лемме ∅.18, но среди них есть неборелевские. Множество Витали (оно описано сразу после рисунка) неизмеримо.</figcaption>
+</figure>
+<figure>
+  <div class="fig1"><canvas id="cantor" width="760" height="300" aria-label="Построение канторова множества"></canvas></div>
+  <div class="controls">
+    <label for="cK">Шаг $k$ <input id="cK" type="range" min="0" max="8" step="1" value="4"><output id="cKOut">4</output></label>
+  </div>
+  <figcaption>Рис. ∅.8. Множества $C_0\supset C_1\supset\dots\supset C_k$ сверху вниз. На каждом шаге из каждого отрезка выбрасывается открытая средняя треть; цвет строки меняется от первого шага к последнему.</figcaption>
+</figure>
+<figure class="exfig">
+  <div class="fig1"><canvas id="exTern" width="760" height="236" aria-label="Троичная запись точки: вложенные трети отрезка"></canvas></div>
+  <div class="controls"><label for="exTernX">Точка $x$ <input id="exTernX" type="range" min="0" max="0.999" step="0.001" value="0.27"><output id="exTernXOut">0,270</output></label></div>
+  <div id="exTernFx" class="fx" aria-live="polite"></div>
+  <figcaption>Рис. ∅.9. Троичная запись точки $x\in[0,1)$. Верхняя полоса — отрезок $[0,1]$, разделённый на три равные части. Каждая следующая полоса — та треть предыдущей, в которой лежит $x$ (она залита синим), растянутая во всю ширину и снова разделённая на три части; трапеции показывают растяжение. Точка — положение $x$ в каждой полосе. Номер $0$, $1$ или $2$ части, в которую попала точка, — очередная цифра $d_k$ записи $x=\sum_jd_j3^{-j}$; он подписан слева от полосы, а номера двух других частей — внутри них. Точку выбирают ползунком или касанием верхней полосы. Под рисунком — первые пять цифр и соответствующая частичная сумма.</figcaption>
+</figure>
+<h2>§∅.3. Измеримые функции</h2>
+<figure>
+  <div class="fig1"><canvas id="lvl" width="760" height="380" aria-label="Множество {f>t} для разных функций"></canvas></div>
+  <div class="controls">
+    <label for="lvF">Функция <select id="lvF"><option value="c">непрерывная</option><option value="m">монотонная со скачками</option><option value="i">индикатор промежутка</option></select></label>
+    <label for="lvT">Уровень $t$ <input id="lvT" type="range" min="-0.4" max="1.4" step="0.01" value="0.55"><output id="lvTOut">0,55</output></label>
+  </div>
+  <div id="lvSet" class="fx" aria-live="polite"></div>
+  <div class="ro" style="--lw:7rem">
+    <div class="rr"><span class="rl">$\lambda_1(\{f&gt;t\})$</span><span class="gauge" id="gLv" data-min="0" data-max="1"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.10. График $f$ на отрезке $[0,1]$, горизонталь на уровне $t$ и множество $\{f&gt;t\}$ — тёплые отрезки на оси; под рисунком записано само множество и показана его длина. Функций три:
+<ul class="capl">
+<li><b>непрерывная</b> — множество $\{f&gt;t\}$ есть объединение интервалов (концы найдены численно);</li>
+<li><b>неубывающая</b> — промежуток с правым концом $1$;</li>
+<li><b>индикатор</b> $A=[0{,}3;\,0{,}65)$ — одно из трёх множеств: $\varnothing$, $A$ или весь отрезок.</li>
+</ul>
+Во всех трёх случаях множество борелевское при любом $t$.</figcaption>
+</figure>
+<h2>§∅.4. Интеграл Лебега</h2>
+<figure>
+  <div class="fig1"><canvas id="simpleF" width="760" height="340" aria-label="Простая функция"></canvas></div>
+  <div class="controls">
+    <label for="sc1">$c_1$ <input id="sc1" type="range" min="0" max="1.2" step="0.05" value="0.8"><output id="sc1Out">0,80</output></label>
+    <label for="sc2">$c_2$ <input id="sc2" type="range" min="0" max="1.2" step="0.05" value="0.45"><output id="sc2Out">0,45</output></label>
+    <label for="sc3">$c_3$ <input id="sc3" type="range" min="0" max="1.2" step="0.05" value="1.15"><output id="sc3Out">1,15</output></label>
+  </div>
+  <div class="math-wrap">$$\begin{aligned}\int\varphi\,d\lambda_1&amp;=c_1\,\lambda_1(A_1)+c_2\,\lambda_1(A_2)\\&amp;\quad+c_3\,\lambda_1(A_3)+0\cdot\lambda_1(A_0)\end{aligned}$$</div>
+  <div id="simpleStat" class="fx" aria-live="polite"></div>
+  <div class="ro" style="--lw:5.5rem">
+    <div class="rr"><span class="rl">$\int\varphi\,d\lambda_1$</span><span class="gauge" id="gSi" data-min="0" data-max="1.2"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.11. Простая функция $\varphi$ на $[0,1)$: три ненулевых значения $c_1,c_2,c_3$ и значение $0$ на остальной части отрезка. Множество $A_i=\{\varphi=c_i\}$ не обязано быть отрезком: $A_1$ и $A_2$ состоят из двух кусков. Деления на оси — через $\tfrac1{20}$, под каждым куском подписана его длина, и мера $A_i$ — сумма длин его кусков, например $\lambda_1(A_1)=\tfrac4{20}+\tfrac3{20}=\tfrac7{20}$. Значение $0$ принимается на $A_0$ (серые куски) и даёт в сумме слагаемое $0\cdot\lambda_1(A_0)=0$, поэтому в формулах его обычно не пишут. Ползунки меняют высоты $c_i$, а меры $A_i$ остаются прежними.</figcaption>
+</figure>
+<figure>
+  <div class="fig1"><canvas id="belowF" width="760" height="300" aria-label="Простые функции под графиком"></canvas></div>
+  <div class="controls"><label for="bn">Номер лестницы $n$ <input id="bn" type="range" min="1" max="6" step="1" value="2"><output id="bnOut">2</output></label></div>
+  <div class="ro" style="--lw:5.5rem">
+    <div class="rr"><span class="rl">$\int\varphi_n\,d\lambda_1$</span><span class="gauge" id="gBn" data-min="0" data-max="1"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.12. Неотрицательная $f$ и простые функции под её графиком — лестницы $\varphi_n=\min\bigl(n,\,2^{-n}\lfloor2^nf\rfloor\bigr)$ с шагом $2^{-n}$, которые подробно разобраны в лемме ∅.27 ниже. Синяя область — лестница $\varphi_{n-1}$ (при $n=1$ её нет), тёплая — то, что к ней добавляет $\varphi_n$. Площадь под лестницей растёт к $\int f$; это метка на шкале. Интеграл $f$ по определению ∅.26 — точная верхняя грань площадей под <em>всеми</em> простыми $0\le\varphi\le f$, а не только под этими.</figcaption>
+</figure>
+<figure>
+  <div class="fig1"><canvas id="stdap" width="760" height="390" aria-label="Стандартное приближение в одной точке: растяжение оси значений, округление вниз, сжатие и потолок"></canvas></div>
+  <div class="controls">
+    <label for="saN">Номер $n$ <input id="saN" type="range" min="1" max="5" step="1" value="3"><output id="saNOut">3</output></label>
+    <label for="saX">Точка $x$ <input id="saX" type="range" min="0" max="1" step="0.001" value="0.3"><output id="saXOut">0,30</output></label>
+  </div>
+  <div id="saFx" class="fx" aria-live="polite"></div>
+  <div class="ro" style="--lw:8rem">
+    <div class="rr"><span class="rl">$f(x)-\varphi_n(x)$</span><span class="gauge" id="gSa" data-min="0" data-max="0.5"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.13. Стандартное приближение в одной точке.
+<ul class="capl">
+<li><b>Слева</b> — функция $f$ на $[0,1]$, горизонтальные линии — сетка уровней $k2^{-n}$, штрих — потолок на высоте $n$, синяя область — подграфик $\varphi_n$. Точку $x$ можно выбрать касанием или ползунком.</li>
+<li><b>Справа</b> — лупа: окно оси значений возле $f(x)$, растянутое в $2^n$ раз. В лупе линии сетки стали целыми числами, тёплый луч переносит туда число $2^nf(x)$, а целая часть опускает его на ближайшее целое $k$ снизу. Все числа тёплой клетки $[k,k+1)$ округляются в одно и то же $k$. Синий луч сжимает $k$ обратно в $k2^{-n}$, то есть на линию сетки слева. Если эта линия выше потолка, минимум опускает значение до $n$.</li>
+</ul>
+Под рисунком та же цепочка в числах. Шкала показывает погрешность $f(x)-\varphi_n(x)$, метка на ней — шаг сетки $2^{-n}$: ниже потолка погрешность меньше шага, как в лемме ∅.27(в). Эту же лестницу закрашивает рис. ∅.1 в режиме «Лебег».</figcaption>
+</figure>
+<figure>
+  <div class="fig1"><canvas id="signF" width="760" height="300" aria-label="Положительная и отрицательная части функции"></canvas></div>
+  <div class="controls"><label for="gc">Сдвиг графика $c$ <input id="gc" type="range" min="-0.5" max="0.5" step="0.01" value="0"><output id="gcOut">0,00</output></label></div>
+  <div class="ro" style="--lw:5.5rem">
+    <div class="rr"><span class="rl">$\int f^+\,d\lambda_1$</span><span class="gauge" id="gP" data-min="0" data-max="1"></span><output class="gv"></output></div>
+    <div class="rr"><span class="rl">$\int f^-\,d\lambda_1$</span><span class="gauge" id="gM" data-min="0" data-max="1"></span><output class="gv"></output></div>
+    <div class="rr"><span class="rl">$\int f\,d\lambda_1$</span><span class="gauge" id="gI" data-min="-1" data-max="1" data-zero="0"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.14. Слева функция $f$ любого знака на $[0,1)$: тёплая область — где $f&gt;0$, синяя — где $f&lt;0$. Справа обе части как неотрицательные функции, $f^+$ и $f^-$. Каждую интегрируем по шагу 2, а $\int f=\int f^+-\int f^-$. Ползунок прибавляет к $f$ постоянную $c$: площадь перетекает между $f^+$ и $f^-$, а $\int f$ меняется ровно на $c$.</figcaption>
+</figure>
+<h2>§∅.5. Теорема о монотонной сходимости</h2>
+<figure class="exfig">
+  <div class="fig1"><canvas id="exSplit" width="760" height="300" aria-label="Простая функция под суммой двух функций и остаток после вычитания лестницы"></canvas></div>
+  <div class="controls"><label for="exSplitM">Ступеней $m$ <input id="exSplitM" type="range" min="1" max="12" step="1" value="4"><output id="exSplitMOut">4</output></label></div>
+  <div class="ro" style="--lw:8rem">
+    <div class="rr"><span class="rl">$\int(1-\chi)\,d\lambda_1$</span><span class="gauge" id="gExSplit" data-min="0" data-max="1"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.15. Функции $f(x)=x$ и $g(x)=1-x$ на $[0,1)$. Их сумма равна $1$ (тонкая линия), и постоянная $1$ — простая функция, не превосходящая $f+g$. Синяя лестница $\chi(x)=\lfloor mx\rfloor/m$ из $m$ ступеней — простая функция, не превосходящая $f$; тёплая штриховая лестница $1-\chi$ — то, что остаётся от простой функции $1$ после вычитания $\chi$. Тёплая заливка — область между $g$ и $1-\chi$, где остаток больше $g$; полоса под осью — множество таких точек, пустые кружки на ней — точки $k/m$, где остаток равен $g$. Ползунок меняет число ступеней $m$. Шкала — интеграл остатка, метка на ней — $\int g\,d\lambda_1=\tfrac12$.</figcaption>
+</figure>
+<figure class="exfig">
+  <div class="fig1"><canvas id="exEsc" width="760" height="170" aria-label="Функции f_n — индикаторы полуинтервалов [n,n+1)"></canvas></div>
+  <div class="controls"><label for="exEscN">Номер $n$ <input id="exEscN" type="range" min="1" max="10" step="1" value="2"><output id="exEscNOut">2</output></label></div>
+  <figcaption>Рис. ∅.16. Начальный кусок $[0,12)$ луча $[0,\infty)$ и график $f_n=\mathbf 1_{[n,n+1)}$ при выбранном $n$: тёплая заливка высоты $1$ над полуинтервалом $[n,n+1)$, заполненный кружок — значение $1$ в точке $n$, пустой — точка $n+1$, где $f_n$ уже равна $0$. Тонкие рамки — графики $f_1,\dots,f_{n-1}$. Ползунок меняет $n$.</figcaption>
+</figure>
+<h2>§∅.6. Связь с интегралом Римана и с вероятностью</h2>
+<figure class="exfig">
+  <div class="fig1"><canvas id="exTwo" width="760" height="270" aria-label="Две последовательности лестниц под одной функцией"></canvas></div>
+  <div class="controls"><label for="exTwoN">Номер $n$ <input id="exTwoN" type="range" min="1" max="6" step="1" value="2"><output id="exTwoNOut">2</output></label></div>
+  <div class="ro" style="--lw:6rem">
+    <div class="rr"><span class="rl">$\int\varphi_n\,d\lambda_1$</span><span class="gauge" id="gExTwoA" data-min="0" data-max="1"></span><output class="gv"></output></div>
+    <div class="rr"><span class="rl">$\int\tilde\varphi_n\,d\lambda_1$</span><span class="gauge" id="gExTwoB" data-min="0" data-max="1"></span><output class="gv"></output></div>
+  </div>
+  <figcaption>Рис. ∅.17. Одна и та же функция $f\ge0$ на $[0,1]$ (линия) и две последовательности простых функций под ней. Слева стандартные лестницы $\varphi_n$ из леммы ∅.27 с шагом уровней $2^{-n}$, справа лестницы $\tilde\varphi_n=\min\bigl(n,\,3^{-n}\lfloor3^nf\rfloor\bigr)$ с шагом уровней $3^{-n}$. Обе последовательности не убывают и сходятся к $f$ в каждой точке. Ползунок меняет номер $n$ сразу для обеих; шкалы показывают площади под лестницами.</figcaption>
+</figure>
+</article>
+<aside class="lab" aria-label="Цвета">
+<div class="lab-h">Цвета <button type="button" class="lab-x" aria-label="Свернуть панель">−</button></div>
+<div class="lab-b"><label class="sw"><input type="color" data-t="--blue"><span>Синий: основной акцент рисунков (--ether)</span><code>--blue</code></label><label class="sw"><input type="color" data-t="--coral"><span>Коралловый: тёплый акцент (--warm)</span><code>--coral</code></label><label class="sw"><input type="color" data-t="--yellow"><span>Жёлтый</span><code>--yellow</code></label><label class="sw"><input type="color" data-t="--green"><span>Зелёный</span><code>--green</code></label><label class="sw"><input type="color" data-t="--violet"><span>Фиолетовый</span><code>--violet</code></label><label class="sw"><input type="color" data-t="--pink"><span>Розовый</span><code>--pink</code></label><label class="sw"><input type="color" data-t="--sky"><span>Голубой</span><code>--sky</code></label><label class="sw"><input type="color" data-t="--ink"><span>Чернила</span><code>--ink</code></label><label class="sw"><input type="color" data-t="--muted"><span>Приглушённый</span><code>--muted</code></label><label class="sw"><input type="color" data-t="--rule"><span>Оси и сетка</span><code>--rule</code></label><label class="sw"><input type="color" data-t="--paper"><span>Поле рисунка</span><code>--paper</code></label><label class="sw"><input type="color" data-t="--fill"><span>Подложка рисунка</span><code>--fill</code></label>
+<div class="lab-a"><button type="button" class="lab-r">Сбросить</button><button type="button" class="lab-c">Скопировать CSS</button></div>
+<pre class="lab-o" hidden></pre></div>
+</aside>
+<script>
+(function(){
+  const R=document.documentElement,inp=[...document.querySelectorAll('.lab input[type=color]')];
+  const cs=()=>getComputedStyle(R);
+  const base={};
+  function sync(){inp.forEach(i=>{const v=cs().getPropertyValue(i.dataset.t).trim();base[i.dataset.t]=base[i.dataset.t]||v;i.value=/^#[0-9a-f]{6}$/i.test(v)?v:'#000000';});}
+  /* --ether and --warm follow the blue and coral pickers, so the canvases pick them up */
+  const LINK={'--blue':['--ether'],'--coral':['--warm']};
+  function poke(){const t=R.getAttribute('data-theme');if(t)R.setAttribute('data-theme',t);else{R.setAttribute('data-theme','x');R.removeAttribute('data-theme');}}
+  inp.forEach(i=>i.addEventListener('input',()=>{R.style.setProperty(i.dataset.t,i.value);(LINK[i.dataset.t]||[]).forEach(k=>R.style.setProperty(k,i.value));poke();}));
+  document.querySelector('.lab-r').onclick=()=>{R.removeAttribute('style');poke();setTimeout(sync,30);};
+  document.querySelector('.lab-c').onclick=()=>{const o=document.querySelector('.lab-o');
+    o.textContent=':root{\n'+inp.map(i=>'  '+i.dataset.t+':'+i.value.toUpperCase()+';').join('\n')+'\n}';o.hidden=false;
+    try{navigator.clipboard.writeText(o.textContent);}catch(e){}};
+  document.querySelector('.lab-x').onclick=e=>{const l=document.querySelector('.lab');l.classList.toggle('min');e.target.textContent=l.classList.contains('min')?'+':'−';};
+  new MutationObserver(()=>{if(!R.getAttribute('style'))setTimeout(sync,30);}).observe(R,{attributes:true,attributeFilter:['data-theme']});
+  if(innerWidth<1180){document.querySelector('.lab').classList.add('min');document.querySelector('.lab-x').textContent='+';}
+  sync();
+})();
+</script>
+<style>
+@media (min-width:1181px){.book.figs{margin-left:max(16px,calc((100vw - 296px - 51rem)/2));margin-right:auto}}
+.figs h2{margin-top:3.2rem}
+.figs figure{margin:1.4rem 0 2rem}
+.lab{position:fixed;right:16px;top:64px;z-index:40;width:264px;max-height:calc(100vh - 80px);overflow:auto;background:var(--paper);border-radius:12px;box-shadow:var(--pop);font-family:var(--font-ui);font-size:.82rem}
+.lab-h{display:flex;justify-content:space-between;align-items:center;padding:.7rem .9rem .4rem;font-family:var(--font-display);font-weight:600;font-size:1.05rem}
+.lab-x{border:none;background:var(--fill);color:var(--ink);border-radius:6px;width:26px;height:26px;cursor:pointer;font:600 16px/1 var(--font-ui)}
+.lab.min .lab-b{display:none}
+.lab-b{padding:0 .5rem .7rem}
+.sw{display:grid;grid-template-columns:28px 1fr;grid-template-rows:auto auto;column-gap:.6rem;align-items:center;padding:.3rem .4rem;border-radius:8px;cursor:pointer}
+.sw:hover{background:var(--fill)}
+.sw input{grid-row:1 / span 2;width:28px;height:28px;padding:0;border:none;border-radius:6px;background:none;cursor:pointer}
+.sw input::-webkit-color-swatch-wrapper{padding:0}.sw input::-webkit-color-swatch{border:1px solid var(--line);border-radius:6px}
+.sw span{color:var(--ink);line-height:1.25}.sw code{color:var(--muted);font-size:.72rem}
+.lab-a{display:flex;gap:.4rem;padding:.6rem .4rem 0}
+.lab-a button{flex:1;font:500 .8rem var(--font-ui);border-radius:8px;padding:.4rem .5rem;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.lab-a .lab-c{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lab-o{margin:.6rem .4rem 0;padding:.6rem;background:var(--fill);border-radius:8px;font-size:.72rem;white-space:pre-wrap}
+@media (max-width:1180px){.lab{top:auto;bottom:12px;right:12px;left:12px;width:auto;max-height:45vh}}
+@media (max-width:1180px){.figs{margin-bottom:80px}}
+</style>
+<script type="application/json" id="xref-data">{"pages": {"p2": {"url": "https://claude.ai/artifact/3ZgbjUtid9jhJmE82rvcbx", "file": "ch0_part2_limits.html", "name": "глава ∅, часть 2"}, "p3": {"url": "https://claude.ai/artifact/KrtzyBg1TSog8xqn48wGRf", "file": "ch0_part3_fubini.html", "name": "глава ∅, часть 3"}}, "items": {"ex:∅.7": {"lab": "Упражнение ∅.7", "html": "\u003cp>\u003cb>Контекст.\u003c/b> В теореме ∅.40 условие мажоранты, существование одной функции $g\\in\\mathcal L^1(\\mu)$ с $|f(x,\\theta)|\\le g(x)$ при всех \u003cspan class=\"nw\">$\\theta$,\u003c/span> нельзя заменить непрерывностью по $\\theta$ и интегрируемостью при каждом $\\theta$ по отдельности. Пример даёт экспоненциальное распределение: при $\\theta\\to0$ вероятность каждого отрезка $[0,R]$ стремится к нулю.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Для $\\theta\\ge0$ положим $F(\\theta)={}$\u003cwbr>\u003cspan class=\"nw\">$\\int_{(0,\\infty)}\\theta e^{-\\theta x}\\,d\\lambda_1(x)$.\u003c/span>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Найдите $F(\\theta)$ при всех $\\theta\\ge0$ и убедитесь, что $F$ разрывна в точке \u003cspan class=\"nw\">$0$.\u003c/span>\u003c/li>\n\u003cli>Какие условия теоремы ∅.40 выполнены на промежутке \u003cspan class=\"nw\">$\\Theta=[0,b)$,\u003c/span> \u003cspan class=\"nw\">$b&gt;0$,\u003c/span> и какое нарушено? \u003cspan class=\"why\">Подсказка: найдите $\\sup_{\\theta&gt;0}\\theta e^{-\\theta x}$ при фиксированном \u003cspan class=\"nw\">$x&gt;0$.\u003c/span>\u003c/span>\u003c/li>\n\u003cli>Проверьте, что на каждом отрезке $[a,b]$ с $0&lt;a&lt;b$ теорема ∅.40 применима.\u003c/li>\n\u003c/ol>", "p": "p2"}, "ex:∅.15": {"lab": "Упражнение ∅.15", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Плотность суммы независимых величин и разница между независимостью и некоррелированностью. Величины $\\xi$ и $\\eta$ с конечными вторыми моментами некоррелированы (§∅.10), если их ковариация $\\operatorname{Cov}(\\xi,\\eta)={}$\u003cwbr>$\\mathbb E[\\xi\\eta]-\\mathbb E\\xi\\,\\mathbb E\\eta$ равна нулю, то есть $\\mathbb E[\\xi\\eta]={}$\u003cwbr>\u003cspan class=\"nw\">$\\mathbb E\\xi\\,\\mathbb E\\eta$;\u003c/span> по следствию ∅.90(б) независимые величины некоррелированы. В главе о гауссовских процессах доказывается, что для совместно гауссовских величин верно и обратное; пункт (в) показывает, что без гауссовости это неверно.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Пусть $\\xi,\\eta$ независимы и имеют плотности $p,q$ на \u003cspan class=\"nw\">$\\mathbb R$.\u003c/span> Докажите, что $\\xi+\\eta$ имеет плотность $r(z)={}$\u003cwbr>$\\int p(z-y)\\,q(y)\\,dy$ (точнее, функцию, равную $r$ там, где $r$ конечна, и нулю в остальных точках).\u003c/li>\n\u003cli>Найдите плотность суммы двух независимых величин с законом $\\operatorname{Exp}(1)$ из упражнения ∅.12.\u003c/li>\n\u003cli>Пусть $\\zeta\\sim\\mathcal N(0,1)$ и \u003cspan class=\"nw\">$\\eta=\\zeta^2$.\u003c/span> Докажите, что $\\mathbb E[\\zeta\\eta]={}$\u003cwbr>\u003cspan class=\"nw\">$\\mathbb E\\zeta\\,\\mathbb E\\eta$,\u003c/span> но $\\zeta$ и $\\eta$ зависимы.\u003c/li>\n\u003c/ol>", "p": "p3"}, "ex:∅.17": {"lab": "Упражнение ∅.17", "html": "\u003cp>\u003cb>Контекст.\u003c/b> В главе о гауссовских процессах условное распределение $x$ при данном $y$ определено как функция $Q(y_0,B)$ со свойствами: (1) при каждом $y_0$ функция $B\\mapsto Q(y_0,B)$ — вероятностная мера на \u003cspan class=\"nw\">$\\mathcal B(\\mathbb R^p)$;\u003c/span> (2) при каждом $B$ функция $y_0\\mapsto Q(y_0,B)$ борелевская; (3) $P(x\\in B,\\ y\\in C)={}$\u003cwbr>$\\int_CQ(y_0,B)\\,dP_y(y_0)$ для всех борелевских \u003cspan class=\"nw\">$B,C$.\u003c/span> Там же сказано, что при наличии совместной плотности подходит $Q(y_0,dx)={}$\u003cwbr>\u003cspan class=\"nw\">$\\frac{p(x,y_0)}{p_y(y_0)}\\,dx$,\u003c/span> и предложено проверить это по теореме Фубини.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Пусть пара $(x,y)$ случайных векторов в $\\mathbb R^p$ и $\\mathbb R^q$ имеет плотность \u003cspan class=\"nw\">$p(u,v)$,\u003c/span> и $p_y(v)=\\int p(u,v)\\,du$ там, где интеграл конечен, и $p_y(v)=0$ там, где он бесконечен (лемма ∅.86). Положим\n\u003cspan class=\"math-wrap\">$$Q(v,B)=\\begin{cases}\\dfrac1{p_y(v)}\\displaystyle\\int_Bp(u,v)\\,du,&amp;p_y(v)&gt;0,\\\\[1ex]\\delta_0(B),&amp;p_y(v)=0.\\end{cases}$$\u003c/span>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Проверьте свойство (1).\u003c/li>\n\u003cli>Проверьте свойство (2).\u003c/li>\n\u003cli>Проверьте свойство (3).\u003c/li>\n\u003c/ol>", "p": "p3"}, "ex:∅.11": {"lab": "Упражнение ∅.11", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Теорема ∅.37 для считающей меры позволяет переходить к пределу под знаком суммы ряда, когда члены зависят от номера предела.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Докажите, что $\\lim_{j\\to\\infty}\\bigl(1+\\frac1j\\bigr)^j={}$\u003cwbr>\u003cspan class=\"nw\">$\\sum_{n=0}^\\infty\\frac1{n!}$.\u003c/span>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>По формуле бинома запишите $\\bigl(1+\\frac1j\\bigr)^j={}$\u003cwbr>$\\sum_{n\\ge0}a^{(j)}_n$ с $a^{(j)}_n=0$ при \u003cspan class=\"nw\">$n&gt;j$.\u003c/span>\u003c/li>\n\u003cli>Найдите $\\lim_ja^{(j)}_n$ при фиксированном $n$ и мажоранту $b_n$ с \u003cspan class=\"nw\">$\\sum_nb_n&lt;\\infty$.\u003c/span>\u003c/li>\n\u003cli>Примените словарь, пункт 3.\u003c/li>\n\u003c/ol>", "p": "p2"}, "ex:∅.13": {"lab": "Упражнение ∅.13", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Из стандартной нормальной величины получают все нормальные законы, а квадрат нормальной величины — закон квадрата ошибки. Для квадрата теорема ∅.77 прямо неприменима: функция $x^2$ не монотонна на \u003cspan class=\"nw\">$\\mathbb R$.\u003c/span>\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Пусть \u003cspan class=\"nw\">$\\zeta\\sim\\mathcal N(0,1)$.\u003c/span>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Докажите, что $\\sigma\\zeta+m\\sim\\mathcal N(m,\\sigma^2)$ при \u003cspan class=\"nw\">$\\sigma&gt;0$.\u003c/span>\u003c/li>\n\u003cli>Докажите, что $|\\zeta|$ имеет плотность \u003cspan class=\"nw\">$2\\varphi(x)\\mathbf 1_{(0,\\infty)}(x)$,\u003c/span> а $\\zeta^2$ — плотность $\\dfrac{e^{-y/2}}{\\sqrt{2\\pi y}}$ при $y&gt;0$ и $0$ при \u003cspan class=\"nw\">$y\\le0$.\u003c/span>\u003c/li>\n\u003cli>Докажите, что $\\mathbb Ee^{t\\zeta}={}$\u003cwbr>$e^{t^2/2}$ при всех \u003cspan class=\"nw\">$t\\in\\mathbb R$,\u003c/span> и найдите математическое ожидание логнормальной величины \u003cspan class=\"nw\">$e^\\zeta$,\u003c/span> не пользуясь её плотностью.\u003c/li>\n\u003c/ol>", "p": "p3"}, "ex:∅.10": {"lab": "Упражнение ∅.10", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Перестановка порядка суммирования в неотрицательном двойном ряде превращает трудную сумму в телескопическую.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Для целого $s\\ge2$ положим $\\zeta(s)={}$\u003cwbr>\u003cspan class=\"nw\">$\\sum_{m=1}^\\infty m^{-s}$.\u003c/span>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Докажите, что $\\sum_{s=2}^\\infty\\bigl(\\zeta(s)-1\\bigr)={}$\u003cwbr>\u003cspan class=\"nw\">$1$.\u003c/span> \u003cspan class=\"why\">Подсказка: запишите $\\zeta(s)-1$ как ряд по $m\\ge2$ и поменяйте порядок суммирования.\u003c/span>\u003c/li>\n\u003cli>Почему здесь применимо следствие ∅.53(а) без каких-либо проверок сходимости?\u003c/li>\n\u003c/ol>", "p": "p2"}, "ex:∅.18": {"lab": "Упражнение ∅.18", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Формула $\\mathbb E\\xi={}$\u003cwbr>$\\int_0^\\infty P(\\xi&gt;{}$\u003cwbr>$t)\\,dt$ особенно удобна для целочисленных величин и для оценки, конечно ли математическое ожидание.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Пусть $\\xi$ принимает значения $0,1,2,\\dots$ Докажите, что $\\mathbb E\\xi={}$\u003cwbr>$\\sum_{k=0}^\\infty P(\\xi&gt;{}$\u003cwbr>\u003cspan class=\"nw\">$k)$.\u003c/span>\u003c/li>\n\u003cli>Пусть \u003cspan class=\"nw\">$\\xi\\ge0$.\u003c/span> Докажите, что $\\sum_{k=1}^\\infty P(\\xi&gt;{}$\u003cwbr>$k)\\le{}$\u003cwbr>$\\mathbb E\\xi\\le{}$\u003cwbr>$\\sum_{k=0}^\\infty P(\\xi&gt;{}$\u003cwbr>\u003cspan class=\"nw\">$k)$,\u003c/span> и выведите: $\\mathbb E\\xi&lt;\\infty$ тогда и только тогда, когда $\\sum_kP(\\xi&gt;{}$\u003cwbr>$k)&lt;{}$\u003cwbr>\u003cspan class=\"nw\">$\\infty$.\u003c/span>\u003c/li>\n\u003cli>Пусть \u003cspan class=\"nw\">$\\xi\\sim\\operatorname{Exp}(1)$.\u003c/span> Найдите $\\mathbb E\\xi$ и $\\mathbb E\\xi^2$ по следствию ∅.97 и дисперсию $\\mathbb D\\xi={}$\u003cwbr>\u003cspan class=\"nw\">$\\mathbb E(\\xi-\\mathbb E\\xi)^2$.\u003c/span>\u003c/li>\n\u003c/ol>", "p": "p3"}, "ex:∅.16": {"lab": "Упражнение ∅.16", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Во второй части гауссов интеграл $\\int e^{-\\theta x^2/2}\\,dx={}$\u003cwbr>$\\sqrt{2\\pi/\\theta}$ (факт ∅.42) был приведён без доказательства. Теорема Тонелли и полярные координаты доказывают его, если принять факт ∅.94.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Пусть $I={}$\u003cwbr>\u003cspan class=\"nw\">$\\int_{\\mathbb R}e^{-x^2/2}\\,d\\lambda_1(x)$.\u003c/span>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Докажите, что $I^2={}$\u003cwbr>\u003cspan class=\"nw\">$\\int_{\\mathbb R^2}e^{-(x^2+y^2)/2}\\,d\\lambda_2$.\u003c/span>\u003c/li>\n\u003cli>С помощью полярных координат (пример после факта ∅.94) вычислите этот интеграл и найдите \u003cspan class=\"nw\">$I$.\u003c/span>\u003c/li>\n\u003cli>Выведите факт ∅.42 для всех \u003cspan class=\"nw\">$\\theta&gt;0$.\u003c/span>\u003c/li>\n\u003c/ol>", "p": "p3"}, "ex:∅.9": {"lab": "Упражнение ∅.9", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Есть ещё один вид сходимости, более слабый, чем сходимость в среднем. В теории вероятностей он называется сходимостью по вероятности, $P(|\\xi_n-\\xi|&gt;{}$\u003cwbr>$\\varepsilon)\\to{}$\u003cwbr>\u003cspan class=\"nw\">$0$,\u003c/span> и в нём формулируется закон больших чисел в форме Чебышёва.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Говорят, что измеримые функции $f_n:X\\to\\mathbb R$ \u003cb>сходятся по мере\u003c/b> к измеримой \u003cspan class=\"nw\">$f:X\\to\\mathbb R$,\u003c/span> если $\\mu(\\{|f_n-f|&gt;{}$\u003cwbr>$\\varepsilon\\})\\to{}$\u003cwbr>$0$ при каждом \u003cspan class=\"nw\">$\\varepsilon&gt;0$.\u003c/span>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Докажите, что из сходимости в $L^1$ следует сходимость по мере.\u003c/li>\n\u003cli>Докажите, что бегущий горб $f_n=\\mathbf 1_{I_n}$ из §∅.10, где $I_n={}$\u003cwbr>$[j2^{-m},(j+1)2^{-m})$ при \u003cspan class=\"nw\">$n=2^m+j$,\u003c/span> \u003cspan class=\"nw\">$0\\le j&lt;2^m$,\u003c/span> сходится к нулю по мере, хотя не сходится ни в одной точке \u003cspan class=\"nw\">$[0,1)$.\u003c/span>\u003c/li>\n\u003cli>Докажите, что иголка $n\\mathbf 1_{(0,1/n)}$ сходится к нулю по мере, но не сходится в $L^1$ ни к какой функции.\u003c/li>\n\u003c/ol>", "p": "p2"}, "ex:∅.6": {"lab": "Упражнение ∅.6", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Дифференцирование под знаком интеграла позволяет вычислять интегралы, которые трудно взять напрямую. Здесь так вычисляется дисперсия стандартного нормального распределения.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Пусть $F(\\theta)={}$\u003cwbr>$\\int_{\\mathbb R}e^{-\\theta x^2/2}\\,d\\lambda_1(x)$ при \u003cspan class=\"nw\">$\\theta&gt;0$,\u003c/span> как в примере к теореме ∅.41 в §∅.9.\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Докажите, что функция $\\frac{x^2}2e^{-\\theta_0x^2/2}$ интегрируема по $\\lambda_1$ при каждом \u003cspan class=\"nw\">$\\theta_0&gt;0$,\u003c/span> так что теорема ∅.41 применима на \u003cspan class=\"nw\">$(\\theta_0,+\\infty)$.\u003c/span> \u003cspan class=\"why\">Подсказка: $s\\,e^{-s}\\le e^{-1}$ при \u003cspan class=\"nw\">$s\\ge0$.\u003c/span>\u003c/span>\u003c/li>\n\u003cli>Выведите, что $\\int_{\\mathbb R}x^2e^{-\\theta x^2/2}\\,d\\lambda_1(x)={}$\u003cwbr>$\\sqrt{2\\pi}\\,\\theta^{-3/2}$ при \u003cspan class=\"nw\">$\\theta&gt;0$,\u003c/span> и в частности $\\int_{\\mathbb R}x^2e^{-x^2/2}\\,d\\lambda_1(x)={}$\u003cwbr>\u003cspan class=\"nw\">$\\sqrt{2\\pi}$.\u003c/span>\u003c/li>\n\u003cli>Пусть $p(x)={}$\u003cwbr>$\\frac1{\\sqrt{2\\pi}}e^{-x^2/2}$ — плотность стандартного нормального распределения. Проверьте, что \u003cspan class=\"nw\">$\\int p\\,d\\lambda_1=1$,\u003c/span> $\\int x\\,p(x)\\,d\\lambda_1(x)={}$\u003cwbr>$0$ и $\\int x^2p(x)\\,d\\lambda_1(x)={}$\u003cwbr>\u003cspan class=\"nw\">$1$.\u003c/span> Объясните, почему отсюда следует, что дисперсия $\\mathbb D\\xi={}$\u003cwbr>$\\mathbb E(\\xi-\\mathbb E\\xi)^2$ стандартной нормальной случайной величины $\\xi$ равна \u003cspan class=\"nw\">$1$.\u003c/span> Плотности строго разбираются в части 3; здесь можно пользоваться формулой $\\mathbb Eg(\\xi)={}$\u003cwbr>\u003cspan class=\"nw\">$\\int g(x)\\,p(x)\\,d\\lambda_1(x)$,\u003c/span> которая будет там доказана.\u003c/li>\n\u003c/ol>", "p": "p2"}, "ex:∅.14": {"lab": "Упражнение ∅.14", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Ещё один пример, где повторные интегралы различны, на этот раз на неограниченной области. Попутно теорема Тонелли вычисляет интеграл, у которого нет элементарной первообразной.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Пусть $f(x,y)=e^{-xy}-2e^{-2xy}$ при \u003cspan class=\"nw\">$x&gt;0$,\u003c/span> \u003cspan class=\"nw\">$0&lt;y\\le1$,\u003c/span> и $f=0$ вне этой полосы.\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Докажите, что $\\int_0^\\infty f(x,y)\\,dx={}$\u003cwbr>$0$ при каждом \u003cspan class=\"nw\">$y\\in(0,1]$,\u003c/span> так что повторный интеграл «сначала по \u003cspan class=\"nw\">$x$»\u003c/span> равен \u003cspan class=\"nw\">$0$.\u003c/span>\u003c/li>\n\u003cli>Докажите, что $\\int_0^1f(x,y)\\,dy={}$\u003cwbr>$\\dfrac{e^{-2x}-e^{-x}}x$ при каждом \u003cspan class=\"nw\">$x&gt;0$.\u003c/span>\u003c/li>\n\u003cli>Применив теорему ∅.84 к функции $e^{-xy}$ на \u003cspan class=\"nw\">$(0,\\infty)\\times[1,2]$,\u003c/span> докажите, что $\\int_0^\\infty\\frac{e^{-x}-e^{-2x}}x\\,dx={}$\u003cwbr>\u003cspan class=\"nw\">$\\ln2$.\u003c/span> Выведите, что повторный интеграл «сначала по \u003cspan class=\"nw\">$y$»\u003c/span> равен $-\\ln2$ и что \u003cspan class=\"nw\">$f\\notin\\mathcal L^1(\\lambda_2)$.\u003c/span>\u003c/li>\n\u003c/ol>", "p": "p3"}, "ex:∅.5": {"lab": "Упражнение ∅.5", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Лемма Фату — неравенство, и полезно видеть, где именно оно строгое, без какого условия перестаёт быть верным и насколько слабы её требования: поточечной сходимости она не требует вовсе.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Для иголки $f_n=n\\mathbf 1_{(0,1/n)}$ и для $f_n=\\mathbf 1_{[n,n+1)}$ на $\\mathbb R$ найдите функции $g_n=\\inf_{k\\ge n}f_k$ и $\\liminf_nf_n$ и обе части неравенства Фату. На каком шаге доказательства леммы ∅.36 возникает разница между ними?\u003c/li>\n\u003cli>Для $x\\in[0,1)$ и $n\\ge1$ положим $d_n(x)={}$\u003cwbr>$\\lfloor2^nx\\rfloor-2\\lfloor2^{n-1}x\\rfloor$ ($n$-я цифра двоичной записи \u003cspan class=\"nw\">$x$)\u003c/span> и $f_n=2d_n$ на \u003cspan class=\"nw\">$[0,1)$.\u003c/span> Докажите, что $\\int_{[0,1)}f_n\\,d\\lambda_1={}$\u003cwbr>$1$ при всех $n$ и $\\liminf_nf_n(x)=0$ при каждом \u003cspan class=\"nw\">$x\\in[0,1)$.\u003c/span> Докажите, что ни одна подпоследовательность $f_{n_k}$ не сходится ни на каком множестве положительной меры. \u003cspan class=\"why\">Подсказка: множество точек, где $d_{n_k}(x)=c$ при \u003cspan class=\"nw\">$k=K,\\dots,K+L$,\u003c/span> — объединение двоичных полуинтервалов ранга \u003cspan class=\"nw\">$n_{K+L}$;\u003c/span> найдите его меру.\u003c/span>\u003c/li>\n\u003cli>Покажите, что для $f_n=-\\mathbf 1_{[n,n+1)}$ на $\\mathbb R$ заключение леммы Фату неверно.\u003c/li>\n\u003cli>Пусть \u003cspan class=\"nw\">$h,f_n\\in\\mathcal L^1(\\mu)$,\u003c/span> $f_n\\ge-h$ при всех \u003cspan class=\"nw\">$n$,\u003c/span> и \u003cspan class=\"nw\">$\\liminf_nf_n\\in\\mathcal L^1(\\mu)$.\u003c/span> Докажите, что $\\int\\liminf_nf_n\\,d\\mu\\le{}$\u003cwbr>\u003cspan class=\"nw\">$\\liminf_n\\int f_n\\,d\\mu$.\u003c/span> Объясните, почему для последовательности из пункта (в) и для $f_n={}$\u003cwbr>$-n\\mathbf 1_{(0,1/n)}$ такой функции $h$ нет.\u003c/li>\n\u003c/ol>", "p": "p2"}, "ex:∅.8": {"lab": "Упражнение ∅.8", "html": "\u003cp>\u003cb>Контекст.\u003c/b> На вероятностном пространстве из конечности второго момента следует конечность первого (лемма ∅.45(д)). Здесь выясняется, какое свойство меры для этого нужно.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Пусть \u003cspan class=\"nw\">$\\mu(X)&lt;\\infty$.\u003c/span> Докажите, что $\\mathcal L^2(\\mu)\\subset{}$\u003cwbr>$\\mathcal L^1(\\mu)$ и $\\|f\\|_1\\le{}$\u003cwbr>\u003cspan class=\"nw\">$\\mu(X)^{1/2}\\|f\\|_2$.\u003c/span>\u003c/li>\n\u003cli>На $\\mathbb R$ с мерой $\\lambda_1$ пусть $f(x)=1/x$ при $x\\ge1$ и $f(x)=0$ при \u003cspan class=\"nw\">$x&lt;1$.\u003c/span> Докажите, что \u003cspan class=\"nw\">$f\\in\\mathcal L^2$,\u003c/span> но \u003cspan class=\"nw\">$f\\notin\\mathcal L^1$.\u003c/span>\u003c/li>\n\u003cli>Пусть $g(x)=x^{-1/2}$ при $x\\in(0,1]$ и $g(x)=0$ в остальных точках. Докажите, что \u003cspan class=\"nw\">$g\\in\\mathcal L^1$,\u003c/span> но \u003cspan class=\"nw\">$g\\notin\\mathcal L^2$.\u003c/span>\u003c/li>\n\u003cli>Выведите, что на $(\\mathbb R,\\lambda_1)$ не выполнено ни одно из включений $\\mathcal L^1\\subset{}$\u003cwbr>$\\mathcal L^2$ и $\\mathcal L^2\\subset{}$\u003cwbr>\u003cspan class=\"nw\">$\\mathcal L^1$.\u003c/span> Какое свойство меры использовано в пункте (б) и какое в пункте (в)?\u003c/li>\n\u003c/ol>", "p": "p2"}, "ex:∅.12": {"lab": "Упражнение ∅.12", "html": "\u003cp>\u003cb>Контекст.\u003c/b> Генераторы случайных чисел выдают равномерно распределённые числа, а нужны выборки из других законов. Стандартный способ — подставить равномерную величину в функцию, обратную к функции распределения. Заодно математическое ожидание образа считается двумя способами из теоремы ∅.61.\u003c/p>\n\u003cp>\u003cb>Задача.\u003c/b> Пусть $U$ равномерно распределена на $[0,1]$ и $\\eta=-\\ln U$ (на событии $\\{U\\in\\{0,1\\}\\}$ вероятности ноль положим \u003cspan class=\"nw\">$\\eta=0$).\u003c/span>\u003c/p>\n\u003col class=\"ax\" type=\"a\">\n\u003cli>Найдите $F_\\eta$ и докажите, что $\\eta$ имеет плотность $e^{-y}$ при $y&gt;0$ и $0$ при \u003cspan class=\"nw\">$y\\le0$.\u003c/span> Этот закон называют экспоненциальным и обозначают \u003cspan class=\"nw\">$\\operatorname{Exp}(1)$.\u003c/span>\u003c/li>\n\u003cli>Вычислите $\\mathbb E\\eta$ двумя способами: как интеграл по распределению $U$ и как интеграл по распределению \u003cspan class=\"nw\">$\\eta$.\u003c/span>\u003c/li>\n\u003cli>Пусть $F:\\mathbb R\\to(0,1)$ — непрерывная строго возрастающая функция с пределами $0$ и $1$ на \u003cspan class=\"nw\">$\\mp\\infty$,\u003c/span> и $\\xi=F^{-1}(U)$ на \u003cspan class=\"nw\">$\\{U\\in(0,1)\\}$.\u003c/span> Докажите, что \u003cspan class=\"nw\">$F_\\xi=F$.\u003c/span>\u003c/li>\n\u003c/ol>", "p": "p3"}, "sec:∅.12": {"lab": "§∅.12. Приложение: ряды как интегралы", "html": "", "p": "p2"}}}</script>
+<style>
+/* Clickable mentions of numbered items (FORMAT.md): a click shows the item in a card, with a jump to it and a way back to the text. */
+.xref{cursor:pointer;text-decoration:underline dotted;text-decoration-color:color-mix(in srgb,var(--ether) 55%,transparent);text-decoration-thickness:1px;text-underline-offset:.2em;border-radius:3px;transition:background-color .15s}
+.xref:hover,.xref.on{background:color-mix(in srgb,var(--ether) 11%,transparent);text-decoration-color:var(--ether)}
+.xref:focus-visible{outline:2px solid var(--ether);outline-offset:1px}
+.xpop{font-family:var(--font-body);position:absolute;z-index:60;width:min(36rem,calc(100vw - 24px));background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:10px;box-shadow:0 12px 34px rgba(0,0,0,.2),0 2px 6px rgba(0,0,0,.08);font-size:.95rem;line-height:1.55;opacity:0;transform:translateY(-4px);transition:opacity .16s ease,transform .16s ease}
+.xpop.up{transform:translateY(4px)}
+.xpop.show{opacity:1;transform:none}
+.xpop .xbody{max-height:min(55vh,28rem);overflow:auto;padding:.7rem .95rem .45rem;border-radius:10px 10px 0 0;background:var(--xbg)}
+.xpop{--xbg:var(--ether-soft);--xlc:var(--ether)}
+.xpop.k-ex,.xpop.k-q{--xbg:var(--warm-soft);--xlc:var(--warm)}
+.xpop.k-fig{--xbg:color-mix(in srgb,var(--muted) 11%,var(--paper));--xlc:var(--muted)}
+.xpop .xlbl{display:block;font-family:var(--font-ui);font-weight:700;font-size:.86rem;color:var(--xlc);margin-bottom:.3rem}
+.xpop .xwhere{font-weight:400;color:var(--muted);margin-left:.45em;white-space:nowrap}
+.xpop .xbody p,.xpop .xbody ol,.xpop .xbody ul{margin:.35rem 0}
+.xpop.k-sec{--xbg:color-mix(in srgb,var(--ether) 6%,var(--paper));--xlc:var(--ether)}
+.xpop.k-sec .xlbl{font-family:var(--font-body);font-size:1.05rem;font-weight:600;line-height:1.35;margin-bottom:.2rem}
+.xpop .ximgs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem;margin:.2rem 0 .45rem}
+.xpop .ximgs img,.xpop .ximgs svg{display:block;max-width:100%;max-height:min(42vh,22rem);width:auto;height:auto;border-radius:6px}
+.xpop .xcap{color:var(--muted);font-size:.92em;margin:.2rem 0 .1rem;text-align:center}
+.xpop .xbody .math-wrap{overflow-x:auto}
+.xpop .xfoot{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:flex-end;align-items:center;padding:.5rem .7rem;border-top:1px solid var(--rule);font-family:var(--font-ui);font-size:.85rem}
+.xpop .xfoot a.go{text-decoration:none}
+.xpop .xfoot button,.xpop .xfoot a.go{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:.22rem .9rem;cursor:pointer}
+.xpop .xfoot .go{color:var(--ether);border-color:var(--ether);font-weight:700}
+.xpop .xfoot button:hover,.xpop .xfoot a.go:hover{border-color:var(--ether)}
+.xpop .xfoot button:focus-visible,.xpop .xfoot a.go:focus-visible{outline:2px solid var(--ether);outline-offset:1px}
+.xpop .xarr{position:absolute;left:var(--ax,50%);width:12px;height:12px;margin-left:-6px;transform:rotate(45deg);border:1px solid var(--rule);top:-7px;background:var(--xbg);border-right:none;border-bottom:none}
+.xpop.up .xarr{top:auto;bottom:-7px;background:var(--paper);border:1px solid var(--rule);border-left:none;border-top:none}
+.xback{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:70;display:flex;align-items:center;font-family:var(--font-ui);font-size:.9rem;background:var(--paper);border:1px solid var(--ether);border-radius:999px;box-shadow:0 6px 22px rgba(0,0,0,.2);padding:.1rem .15rem;max-width:calc(100vw - 24px)}
+.xback[hidden]{display:none}
+.xback button{font:inherit;color:var(--ether);background:none;border:none;cursor:pointer;padding:.32rem .7rem;border-radius:999px;white-space:nowrap}
+.xback button:hover{background:color-mix(in srgb,var(--ether) 10%,transparent)}
+.xback button.x{color:var(--muted);padding:.32rem .55rem}
+.xback button{display:inline-flex;align-items:center}
+.xback .ic{flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.xback button.b .ic{margin-right:.4rem}
+@media print{.xpop,.xback{display:none}.xref{text-decoration:none}}
+</style>
+<script>
+(function(){
+  /* After MathJax has typeset the page, mentions of numbered items in the text («по лемме ∅.42(в)», «рис. ∠.1», «упражнение 3»)
+     become buttons. A click opens a card with the item itself; «Перейти» scrolls to it, or opens the other part of the book that holds it,
+     and a chip at the bottom brings the reader back. A second click on the mention, Esc or a click elsewhere closes the card. */
+  const DATA=(()=>{const e=document.getElementById('xref-data');try{return e?JSON.parse(e.textContent):null;}catch(err){return null;}})()||{pages:{},items:{}};
+  const SYM='[∅∇𝒩∠⊥]',NUM='(?:'+SYM+'\\.)?\\d+(?:\\([а-яё]\\))*',SEP='[\\s\\u00a0]*(?:,|или|и|–|—)[\\s\\u00a0]*';
+  const WORD='(?:[Оо]пределени|[Лл]емм|[Тт]еорем|[Пп]редложени|[Сс]ледстви|[Уу]тверждени|[Уу]пражнени|[Вв]опрос)[а-яё]*|[Фф]акт(?:а|у|ом|е|ы|ов|ам|ами|ах)?(?![а-яё])|[Рр]исун[а-яё]*|[Рр]ис\\.|Опр\\.|Теор\\.|Предл\\.|Упр\\.';
+  const RA=new RegExp('(?<![А-Яа-яЁё])('+WORD+')([\\s\\u00a0]+)('+NUM+')((?:'+SEP+NUM+')*)','gu');
+  const RB=new RegExp('(?<![§\\w.\\d])('+SYM+'\\.\\d+(?:\\([а-яё]\\))*)','gu');
+  const RN=new RegExp(NUM,'gu');
+  /* sections: «§∅.10», «§5–§7», «§∅.7–∅.9»; the number is not followed by a further «.digit» (a subsection) */
+  const SNUM='(?:'+SYM+'\\.)?\\d+(?![.,]\\d)';
+  const RS=new RegExp('§§?[\\s\\u00a0]*('+SNUM+')((?:'+SEP+'§?[\\s\\u00a0]*'+SNUM+')*)','gu'),RSN=new RegExp(SNUM,'gu');
+  /* the artifact viewer passes on only plain anchors (letters, digits, . _ ~ -), so a key travels as st:∅.26 ↔ #st-o.26 */
+  const HC={'∅':'o','∇':'d','∠':'a','𝒩':'n'},HD={o:'∅',d:'∇',a:'∠',n:'𝒩'};
+  const toHash=k=>k.replace(/^(\w+):/,'$1-').replace(/[∅∇∠]|𝒩/gu,c=>HC[c]);
+  const fromHash=h=>{const m=h.match(/^(st|fig|sec|ex|q)-(?:([odan])(?=\.))?([.\d]+)$/);return m?m[1]+':'+(m[2]?HD[m[2]]:'')+m[3]:'';};
+  const kindOf=w=>/^[Уу]пр/.test(w)?'ex':/^[Вв]опрос/.test(w)?'q':/^[Рр]ис/.test(w)?'fig':'st';
+  const base=n=>n.replace(/\(.*$/,'');
+  const SKIP='h1,h2,h3,h4,.lbl,.toc,.eyebrow,.gloss,.navm,.xpop,.xback,a,button,script,style,mjx-container,svg,canvas,output,label,.controls,.fx,.ro,.cap-tog';
+  const loc={};
+  function indexLocal(){
+    const LBL=new RegExp('^(Определение|Лемма|Теорема|Предложение|Следствие|Факт|Утверждение|Упражнение|Вопрос)\\s+((?:'+SYM+'\\.)?\\d+)','u');
+    document.querySelectorAll('.stmt>.lbl,.ex>.lbl').forEach(l=>{const m=l.textContent.trim().match(LBL);if(!m)return;
+      const k=(m[1]==='Упражнение'?'ex':m[1]==='Вопрос'?'q':'st')+':'+m[2];if(!loc[k])loc[k]=l.parentNode;});
+    const FIG=new RegExp('^Рис\\.\\s*((?:'+SYM+'\\.)?\\d+)','u');
+    document.querySelectorAll('figure>figcaption').forEach(c=>{const m=c.textContent.trim().match(FIG);if(m&&!loc['fig:'+m[1]])loc['fig:'+m[1]]=c.parentNode;});
+    const SEC=new RegExp('^§\\s*((?:'+SYM+'\\.)?\\d+)\\.','u');
+    document.querySelectorAll('h2').forEach(h=>{const m=h.textContent.trim().match(SEC);if(m&&!loc['sec:'+m[1]])loc['sec:'+m[1]]=h;});}
+  const known=k=>!!(loc[k]||DATA.items[k]);
+  function span(text,key){const s=document.createElement('span');s.className='xref';s.dataset.k=key;s.tabIndex=0;s.setAttribute('role','button');s.textContent=text;return s;}
+  /* wrap the mentions inside one text node */
+  function linkNode(t){
+    const s=t.nodeValue,cuts=[];let m;
+    RA.lastIndex=0;
+    while((m=RA.exec(s))){const kind=kindOf(m[1]),k0=kind+':'+base(m[3]),at=m.index;
+      if(known(k0))cuts.push([at,at+m[1].length+m[2].length+m[3].length,k0]);
+      const off=at+m[1].length+m[2].length+m[3].length;let q;RN.lastIndex=0;
+      while((q=RN.exec(m[4]))){const k=kind+':'+base(q[0]);if(known(k))cuts.push([off+q.index,off+q.index+q[0].length,k]);}}
+    const taken=(a,b)=>cuts.some(c=>a<c[1]&&b>c[0]);
+    RS.lastIndex=0;
+    while((m=RS.exec(s))){const off=m.index+m[0].length-m[2].length,a=m.index,k0='sec:'+m[1];
+      if(!taken(a,off)&&known(k0))cuts.push([a,a+m[0].length-m[2].length,k0]);
+      let q;RSN.lastIndex=0;while((q=RSN.exec(m[2]))){const k='sec:'+q[0],b0=off+q.index;if(!taken(b0,b0+q[0].length)&&known(k))cuts.push([b0,b0+q[0].length,k]);}}
+    RB.lastIndex=0;
+    while((m=RB.exec(s))){const a=m.index,b=a+m[0].length,k='st:'+base(m[1]);if(!taken(a,b)&&known(k))cuts.push([a,b,k]);}
+    if(!cuts.length)return;
+    cuts.sort((x,y)=>x[0]-y[0]);
+    /* a caption does not link to its own figure */
+    const fc=t.parentNode.closest('figcaption');
+    const own=fc&&loc[cuts[0][2]]===fc.parentNode&&s.slice(0,cuts[0][0]).trim()==='';
+    const f=document.createDocumentFragment();let p=0;
+    cuts.forEach((c,i)=>{if(c[0]<p||(i===0&&own))return;f.appendChild(document.createTextNode(s.slice(p,c[0])));f.appendChild(span(s.slice(c[0],c[1]),c[2]));p=c[1];});
+    f.appendChild(document.createTextNode(s.slice(p)));t.parentNode.replaceChild(f,t);}
+  function linkAll(){
+    const root=document.querySelector('article.book')||document.body,list=[];
+    const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const e=n.parentNode;
+      if(!e||e.closest(SKIP))return NodeFilter.FILTER_REJECT;return /\d/.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+    while(w.nextNode())list.push(w.currentNode);
+    list.forEach(linkNode);}
+
+  /* the card */
+  let pop=null,cur=null,back=null,from=null;
+  const TITLE={st:'',ex:'',q:'',fig:'Рисунок '};
+  function cleanClone(el){
+    el.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));
+    el.querySelectorAll('.xref').forEach(x=>x.replaceWith(document.createTextNode(x.textContent)));
+    el.querySelectorAll('.cap-tog,.controls,.fx,.ro,script').forEach(x=>x.remove());
+    el.querySelectorAll('.cap-more').forEach(x=>x.style.display='inline');
+    return el;}
+  function localContent(k,el,body,lbl){
+    const kind=k.split(':')[0];
+    if(kind==='fig'){
+      /* the figure itself as it is drawn now, in miniature, and only the first sentence of its caption */
+      lbl.textContent='Рисунок '+k.slice(4);
+      const box=document.createElement('div');box.className='ximgs';
+      el.querySelectorAll('canvas').forEach(cv=>{if(!cv.getClientRects().length||!cv.width)return;
+        try{const im=new Image();im.src=cv.toDataURL();im.alt='';box.appendChild(im);}catch(e){}});
+      if(!box.children.length)el.querySelectorAll(':scope>svg,:scope>div svg').forEach(g=>{if(!g.closest('mjx-container')&&g.getClientRects().length)box.appendChild(cleanClone(g.cloneNode(true)));});
+      if(box.children.length)body.appendChild(box);
+      const cap=el.querySelector('figcaption').cloneNode(true);cap.querySelectorAll('.cap-more,.cap-tog').forEach(x=>x.remove());
+      const d=document.createElement('p');d.className='xcap';d.innerHTML=cleanClone(cap).innerHTML;const t=d.firstChild;
+      if(t&&t.nodeType===3)t.nodeValue=t.nodeValue.replace(new RegExp('^\\s*Рис\\.[\\s\\u00a0]*(?:'+SYM+'\\.)?\\d+\\.\\s*','u'),'');
+      body.appendChild(d);return;}
+    if(kind==='sec'){
+      /* a section: only its title (Nick, 2026-10-23: the opening paragraph made the card a wall of text) */
+      lbl.innerHTML=cleanClone(el.cloneNode(true)).innerHTML;return;}
+    const c=cleanClone(el.cloneNode(true)),l=c.querySelector(':scope>.lbl');
+    if(l){lbl.innerHTML=l.innerHTML;l.remove();}
+    c.querySelectorAll('figure').forEach(x=>x.remove());
+    while(c.firstChild)body.appendChild(c.firstChild);}
+  function close(){if(!pop)return;const p=pop;pop=null;p.classList.remove('show');setTimeout(()=>p.remove(),180);
+    if(cur){cur.classList.remove('on');cur.setAttribute('aria-expanded','false');}cur=null;}
+  function place(ref,pt){
+    const rs=[...ref.getClientRects()];let r=rs[rs.length-1]||ref.getBoundingClientRect();
+    if(pt)for(const q of rs)if(pt[1]>=q.top-2&&pt[1]<=q.bottom+2){r=q;break;}
+    const W=document.documentElement.clientWidth,H=window.innerHeight,w=pop.offsetWidth,h=pop.offsetHeight;
+    let x=Math.max(12,Math.min(W-w-12,r.left+r.width/2-w/2)),up=r.bottom+12+h>H&&r.top-12-h>0,y=up?r.top-12-h:r.bottom+12;
+    pop.classList.toggle('up',up);pop.style.left=(x+window.scrollX)+'px';pop.style.top=(y+window.scrollY)+'px';
+    pop.style.setProperty('--ax',Math.max(14,Math.min(w-14,r.left+r.width/2-x))+'px');}
+  function open(ref,pt){
+    const k=ref.dataset.k,kind=k.split(':')[0],el=loc[k],it=el?null:DATA.items[k];if(!el&&!it)return;
+    close();cur=ref;ref.classList.add('on');ref.setAttribute('aria-expanded','true');
+    pop=document.createElement('div');pop.className='xpop k-'+kind;pop.setAttribute('role','dialog');
+    const body=document.createElement('div');body.className='xbody';const lbl=document.createElement('span');lbl.className='xlbl';body.appendChild(lbl);
+    const foot=document.createElement('div');foot.className='xfoot';
+    let go=document.createElement('button');go.type='button';go.className='go';
+    const cl=document.createElement('button');cl.type='button';cl.textContent='Закрыть';
+    const arr=document.createElement('span');arr.className='xarr';
+    if(el){localContent(k,el,body,lbl);go.textContent='Перейти';go.onclick=()=>jump(el,ref);}
+    else{const pg=DATA.pages[it.p]||{};lbl.innerHTML=it.lab+'<span class="xwhere">· '+(pg.name||'')+'</span>';
+      if(kind==='fig'&&it.img){
+        /* a figure of another part: its thumbnail in the current theme and the first sentence of its caption */
+        const th=document.documentElement.getAttribute('data-theme'),dk=th?th==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+        const box=document.createElement('div');box.className='ximgs';const im=new Image();im.src=dk?it.img.d:it.img.l;im.alt='';box.appendChild(im);body.appendChild(box);
+        const d=document.createElement('p');d.className='xcap';d.innerHTML=it.title||'';body.appendChild(d);}
+      else{const d=document.createElement('div');d.innerHTML=it.html;d.querySelectorAll('figure,canvas,.controls,.fx,.ro').forEach(x=>x.remove());while(d.firstChild)body.appendChild(d.firstChild);}
+      /* a plain link, so that it opens the other part the same way as the links in the chapter leads */
+      const u=location.protocol==='file:'?pg.file:pg.url;go=document.createElement('a');go.className='go';go.target='_blank';go.rel='noopener';
+      go.href=(u||'')+'#'+toHash(k);go.textContent='Открыть: '+(pg.name||'другая часть')+' ↗';go.onclick=()=>setTimeout(close,0);}
+    cl.onclick=()=>{close();ref.focus({preventScroll:true});};
+    foot.appendChild(go);foot.appendChild(cl);pop.appendChild(arr);pop.appendChild(body);pop.appendChild(foot);document.body.appendChild(pop);
+    place(ref,pt);requestAnimationFrame(()=>pop&&pop.classList.add('show'));
+    if(!el&&window.MathJax&&MathJax.typesetPromise){const p=pop;MathJax.typesetPromise([body]).then(()=>{if(pop===p)place(ref,pt);}).catch(()=>{});}}
+  function flash(e){e.classList.remove('flash');void e.offsetWidth;e.classList.add('flash');}
+  function jump(el,ref){close();from=ref;
+    el.scrollIntoView({behavior:'smooth',block:'center'});flash(el);
+    if(!back){back=document.createElement('div');back.className='xback';
+      back.innerHTML='<button type="button" class="b"><svg class="ic" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M5.5 2.5 2 6l3.5 3.5"/><path d="M2 6h7.5a4 4 0 0 1 0 8H6.5"/></svg>Вернуться к тексту</button><button type="button" class="x" aria-label="Скрыть"><svg class="ic" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>';
+      document.body.appendChild(back);
+      back.querySelector('.b').onclick=()=>{back.hidden=true;if(from){from.scrollIntoView({behavior:'smooth',block:'center'});flash(from);from.focus({preventScroll:true});}};
+      back.querySelector('.x').onclick=()=>{back.hidden=true;};}
+    back.hidden=false;}
+  function onPick(e){const r=e.target.closest&&e.target.closest('.xref');
+    if(r){e.preventDefault();if(r===cur)close();else open(r,e.clientX!==undefined?[e.clientX,e.clientY]:null);return;}
+    if(pop&&!pop.contains(e.target))close();}
+  function start(){
+    indexLocal();linkAll();
+    document.addEventListener('click',onPick);
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){if(pop)close();else if(back&&!back.hidden)back.hidden=true;return;}
+      const r=e.target.closest&&e.target.closest('.xref');if(r&&(e.key==='Enter'||e.key===' ')){e.preventDefault();if(r===cur)close();else open(r,null);}});
+    window.addEventListener('resize',()=>{if(pop&&cur)place(cur,null);});
+    /* arriving from another part or from the library page with #st-o.26 (older links: #ref=st%3A…): show the item */
+    const old=location.hash.match(/^#ref=(.+)$/),h=old?decodeURIComponent(old[1]):fromHash(location.hash.slice(1));
+    if(h&&loc[h])setTimeout(()=>{loc[h].scrollIntoView({block:'center'});flash(loc[h]);},250);}
+  let n=0;(function wait(){const M=window.MathJax;
+    if(M&&M.startup&&M.startup.promise)M.startup.promise.then(start,start);
+    else if(n++<400)setTimeout(wait,50);else start();})();
+})();
+</script>
+<style>
+/* Folded figure captions (FORMAT.md): the number and the first sentence stay, the rest opens with a button. */
+figcaption .cap-more{display:none}
+figcaption.cap-open .cap-more{display:inline}
+.cap-tog{font-family:var(--font-ui);font-size:.78rem;line-height:1.2;color:var(--ether);background:color-mix(in srgb,var(--ether) 9%,transparent);border:none;border-radius:999px;padding:.12rem .6rem .16rem;margin-left:.4rem;cursor:pointer;white-space:nowrap;vertical-align:baseline}
+.cap-tog:hover{background:color-mix(in srgb,var(--ether) 17%,transparent)}
+.cap-tog:focus-visible{outline:2px solid var(--ether);outline-offset:1px}
+.cap-tog::after{content:'';display:inline-block;width:.36em;height:.36em;margin-left:.45em;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-.22em) rotate(45deg);transition:transform .2s}
+figcaption.cap-open .cap-tog::after{transform:translateY(.06em) rotate(-135deg)}
+/* Lists inside captions (FORMAT.md «Подписи к рисункам»): parallel modes, cases or panels, each item opens with a bold lead-in. */
+figcaption ul.capl{list-style:none;margin:.45rem 0 .35rem;padding:0 0 0 1.1rem}
+figcaption ul.capl>li{position:relative;margin:.3rem 0}
+figcaption ul.capl>li::before{content:"";position:absolute;left:-.88rem;top:.6em;width:.32rem;height:.32rem;border-radius:50%;background:var(--ether);opacity:.6}
+figcaption ul.capl b{font-weight:650;color:var(--ink)}
+@media print{figcaption .cap-more{display:inline}.cap-tog{display:none}}
+</style>
+<script>
+(function(){
+  /* Each figure caption is cut after its first sentence before MathJax typesets the page; the rest is folded behind a button.
+     The cut is made only outside formulas and outside any open element, after «Рис. N.», and not after abbreviations such as «рис.» or «т. е.». */
+  const AB=/(?:^|[\s(«>;])(рис|т|е|см|гл|п|ср|напр|др|им|стр|ок|упр|разд|ч|вып|ед)$/i,VOID=/^<(wbr|br|img|hr|input)\b/i;
+  function cut(s){
+    const pre=s.match(/^\s*Рис\.(?:\s|&nbsp;)*[^\s<]+?\.(?=\s|&nbsp;)/);let i=pre?pre[0].length:0,math=0,depth=0;
+    for(;i<s.length;i++){const c=s[i];
+      if(math){if(c==='\\')i++;else if(c==='$'){if(math===2){if(s[i+1]==='$'){math=0;i++;}}else math=0;}continue;}
+      if(c==='<'){const k=s.indexOf('>',i);if(k<0)return -1;const t=s.slice(i,k+1);
+        if(t[1]==='/')depth--;else if(!VOID.test(t)&&!/\/>$/.test(t))depth++;i=k;continue;}
+      if(c==='$'){if(s[i+1]==='$'){math=2;i++;}else math=1;continue;}
+      if(c!=='.'&&c!=='!'&&c!=='?')continue;
+      if(c==='.'&&AB.test(s.slice(Math.max(0,i-9),i)))continue;
+      let j=i+1,d=depth,m;while((m=s.slice(j).match(/^<\/[a-z0-9]+>/i))){j+=m[0].length;d--;}
+      if(d!==0)continue;
+      const sp=s.slice(j).match(/^(?:\s|&nbsp;)+/);if(!sp)continue;
+      if(/^(?:[А-ЯЁA-Z«(\d$]|<(?!\/))/.test(s.slice(j+sp[0].length)))return j;}
+    return -1;}
+  const plain=h=>h.replace(/<[^>]*>/g,'').replace(/\$[^$]*\$/g,'x').replace(/\s+/g,' ').trim();
+  document.querySelectorAll('figure>figcaption').forEach(fc=>{
+    if(fc.querySelector('.cap-tog, mjx-container'))return;
+    const s=fc.innerHTML,j=cut(s);if(j<0||plain(s.slice(j)).length<60)return;
+    fc.innerHTML=s.slice(0,j)+'<span class="cap-more"> '+s.slice(j).replace(/^(?:\s|&nbsp;)+/,'')+'</span>';
+    const b=document.createElement('button');b.type='button';b.className='cap-tog';b.textContent='пояснение';b.setAttribute('aria-expanded','false');fc.appendChild(b);
+    b.addEventListener('click',()=>{const o=fc.classList.toggle('cap-open');b.textContent=o?'свернуть':'пояснение';b.setAttribute('aria-expanded',o?'true':'false');});});
+})();
+</script>
+
+<script>
+(function(){
+  /* Shared helpers for the figures: theme tokens, number format with a decimal comma, read-only gauges. */
+  const TB=window.TB={};
+  TB.tok=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  TB.pal=i=>TB.tok(['--yellow','--green','--blue','--coral','--violet','--pink','--sky'][((i%7)+7)%7]);
+  TB.hex=c=>{const m=c.replace('#','');return [0,2,4].map(i=>parseInt(m.substr(i,2),16));};
+  TB.rgba=(c,a)=>{const h=TB.hex(c);return 'rgba('+h[0]+','+h[1]+','+h[2]+','+a+')';};
+  TB.mixh=(a,b,t)=>{const A=TB.hex(a),B=TB.hex(b);return '#'+A.map((u,i)=>Math.round(u+(B[i]-u)*t).toString(16).padStart(2,'0')).join('');};
+  TB.fmt=(v,d)=>{if(d===undefined)d=3;const s=Math.abs(v).toFixed(d);return (v<0&&+s!==0?'−':'')+s.replace('.',',');};
+  TB.fr=(a,b)=>'<span class="fr"><span>'+a+'</span><span>'+b+'</span></span>';
+  TB.serif='Lora, Georgia, serif';TB.ui='Onest, system-ui, sans-serif';
+  TB.onTheme=fn=>{try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',fn);}catch(e){}
+    new MutationObserver(fn).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fn);};
+  const lab=v=>String(v).replace('.',',').replace('-','−');
+  function Gauge(id){
+    const el=this.el=document.getElementById(id);if(!el)return;
+    this.min=+el.dataset.min;this.max=+el.dataset.max;
+    this.zero=el.dataset.zero!==undefined?+el.dataset.zero:this.min;
+    this.d=el.dataset.d!==undefined?+el.dataset.d:3;
+    el.innerHTML='<i class="gt"></i><i class="gf"></i><i class="ge" style="left:0">'+lab(this.min)+'</i><i class="ge" style="left:100%">'+lab(this.max)+'</i><i class="gk"></i>';
+    this.f=el.querySelector('.gf');this.k=el.querySelector('.gk');this.m={};
+    this.out=el.parentNode.querySelector('.gv');
+    el.setAttribute('role','meter');el.setAttribute('aria-valuemin',this.min);el.setAttribute('aria-valuemax',this.max);
+  }
+  Gauge.prototype.p=function(v){return Math.max(0,Math.min(1,(v-this.min)/(this.max-this.min)))*100;};
+  Gauge.prototype.set=function(v,col){
+    if(!this.el)return this;const p=this.p(v),z=this.p(this.zero);
+    this.f.style.left=Math.min(p,z)+'%';this.f.style.width=Math.abs(p-z)+'%';this.k.style.left=p+'%';
+    this.f.style.background=col||'';this.k.style.background=col||'';
+    if(this.out)this.out.textContent=TB.fmt(v,this.d);
+    this.el.setAttribute('aria-valuenow',v.toFixed(this.d));return this;};
+  Gauge.prototype.mark=function(key,v,html,below){
+    if(!this.el)return this;let m=this.m[key];
+    if(!m){m=document.createElement('i');m.className='gm'+(below?' gb':'');m.appendChild(document.createElement('b'));this.el.insertBefore(m,this.k);this.m[key]=m;}
+    m.style.left=this.p(v)+'%';if(m.firstChild.innerHTML!==html)m.firstChild.innerHTML=html;return this;};
+  TB.Gauge=Gauge;
+})();
+</script>
+<script>
+(function(){
+  /* Canvas sizing at the width of the column, sharp on dense screens; rich labels, a legend row and readout lines. */
+  const TB=window.TB;if(!TB)return;
+  TB.fit=function(cv,hOf){
+    const W=Math.round(cv.parentNode.getBoundingClientRect().width)||760,H=Math.round(hOf(W)),r=window.devicePixelRatio||1;
+    const bw=Math.round(W*r),bh=Math.round(H*r);if(cv.width!==bw)cv.width=bw;if(cv.height!==bh)cv.height=bh;
+    const c=cv.getContext('2d');c.setTransform(r,0,0,r,0,0);c.textAlign='start';c.textBaseline='alphabetic';c.setLineDash([]);
+    return {c:c,W:W,H:H};};
+  TB.onResize=function(cv,fn){let w=Math.round(cv.parentNode.getBoundingClientRect().width);
+    if(window.ResizeObserver)new ResizeObserver(()=>{const nw=Math.round(cv.parentNode.getBoundingClientRect().width);if(nw!==w){w=nw;fn();}}).observe(cv.parentNode);
+    else window.addEventListener('resize',fn);};
+  /* A label is a list of [text, kind]: 'i' italic letter, 's' italic subscript, 'r' upright sans, 'm' upright serif. */
+  function font(k,s){return k==='i'?'italic '+(s+2)+'px '+TB.serif:k==='s'?'italic '+Math.round(s*0.78)+'px '+TB.serif:k==='m'?(s+1)+'px '+TB.serif:s+'px '+TB.ui;}
+  TB.richW=function(c,segs,s){let w=0;for(const q of segs){c.font=font(q[1],s);w+=c.measureText(q[0]).width+(q[1]==='i'?1:0);}return w;};
+  TB.rich=function(c,segs,x,y,s,col,align){
+    const w=TB.richW(c,segs,s);if(align==='center')x-=w/2;else if(align==='right')x-=w;
+    c.fillStyle=col;c.textAlign='start';
+    for(const q of segs){c.font=font(q[1],s);c.fillText(q[0],x,q[1]==='s'?y+s*0.3:y);x+=c.measureText(q[0]).width+(q[1]==='i'?1:0);}
+    return w;};
+  /* Legend items: {k:'line'|'thin'|'dash'|'fill', col, a (fill opacity), t: label}. Wraps to the next row when needed; returns the bottom y. */
+  TB.legend=function(c,items,L,R,y,s){
+    const sw=22,gap=18,rowH=s+9;let x=L;y+=s;
+    for(const it of items){const w=sw+6+TB.richW(c,it.t,s);
+      if(x>L&&x+w>R){x=L;y+=rowH;}
+      const ym=y-s*0.33;
+      if(it.k==='fill'){c.fillStyle=TB.rgba(it.col,it.a||0.3);c.fillRect(x,ym-6,sw,12);}
+      else{c.strokeStyle=it.col;c.lineWidth=it.k==='thin'?1.2:2.2;c.setLineDash(it.k==='dash'?[5,4]:[]);
+        c.beginPath();c.moveTo(x,ym);c.lineTo(x+sw,ym);c.stroke();c.setLineDash([]);}
+      TB.rich(c,it.t,x+sw+6,y,s,TB.tok('--ink'));x+=w+gap;}
+    return y+7;};
+  /* Readout lines for .fx: each part stays on one line, a line may break only between parts. */
+  TB.rows=rows=>rows.map(r=>'<span>'+r.map(p=>'<span class="nw">'+p+'</span>').join('&emsp;')+'</span>').join('');
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 1: Riemann columns vs Lebesgue layers; the set {f>t} under the axis. Drawn at the width of the column. */
+  const cv=document.getElementById('slices');if(!cv||!window.TB||!TB.fit)return;
+  const mode=document.getElementById('mode'),ns=document.getElementById('nst'),tl=document.getElementById('tlv');
+  const nO=document.getElementById('nOut'),tO=document.getElementById('tOut');
+  const rowR=document.getElementById('rowR'),rowL=document.getElementById('rowL');
+  const gR=new TB.Gauge('gSumR'),gL=new TB.Gauge('gSumL'),gT=new TB.Gauge('gLev');
+  function f(x){return 0.5+0.28*Math.sin(2*Math.PI*1.3*x+0.4)+0.12*Math.sin(2*Math.PI*4.2*x)+0.06*Math.cos(2*Math.PI*9*x);}
+  const M=4000,fs=[];for(let i=0;i<M;i++)fs.push(f((i+0.5)/M));
+  const exact=fs.reduce((a,b)=>a+b,0)/M,fR=f(1);
+  gR.mark('i',exact,'∫<i>f</i>');gL.mark('i',exact,'∫<i>f</i>');
+  function draw(){
+    const n=+ns.value,t=+tl.value,md=mode.value;nO.textContent=n;tO.textContent=TB.fmt(t,2);
+    const F=TB.fit(cv,W=>W<560?320:Math.round(W*0.62)),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const eth=TB.tok('--ether'),ink=TB.tok('--ink'),muted=TB.tok('--muted'),rule=TB.tok('--rule'),warm=TB.tok('--warm');
+    c.fillStyle=TB.tok('--paper');c.fillRect(0,0,W,H);
+    const L=sm?22:40,R=W-(sm?6:16),T=sm?12:18,B=H-(sm?62:74),X=x=>L+x*(R-L),Y=y=>B-y*(B-T);
+    c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,T);c.lineTo(L,B);c.lineTo(R,B);c.stroke();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='right';c.fillText('0',L-6,B+4);c.fillText('1',L-6,Y(1)+4);c.textAlign='start';
+    TB.rich(c,[['x','i']],R,B+s+4,s,muted,'right');
+    let area=0;
+    if(md==='R'){
+      const N=2**n;
+      for(let k=0;k<N;k++){const a=k/N,h=f(a);area+=h/N;c.fillStyle=TB.rgba(eth,k%2?0.30:0.42);c.fillRect(X(a),Y(h),X(1/N)-X(0),B-Y(h));}
+    }else{
+      const h=2**-n,K=Math.ceil(1/h);
+      for(let k=1;k<=K;k++){const lv=k*h;let run=-1;c.fillStyle=TB.rgba(TB.pal(k-1),0.62);
+        for(let i=0;i<=M;i++){const inS=i<M&&fs[i]>=lv;if(inS&&run<0)run=i;if(!inS&&run>=0){c.fillRect(X(run/M),Y(lv),X(i/M)-X(run/M),Y(lv-h)-Y(lv));run=-1;}}}
+      for(let i=0;i<M;i++)area+=Math.min(n,Math.floor(fs[i]/h)*h)/M;
+      c.strokeStyle=rule;c.lineWidth=1;c.setLineDash([3,5]);for(let k=1;k<=K;k++){c.beginPath();c.moveTo(L,Y(k*h));c.lineTo(R,Y(k*h));c.stroke();}c.setLineDash([]);
+    }
+    rowR.hidden=md!=='R';rowL.hidden=md==='R';(md==='R'?gR:gL).set(area);
+    c.strokeStyle=ink;c.lineWidth=2.2;c.beginPath();for(let i=0;i<M;i+=4){const px=X((i+0.5)/M),py=Y(fs[i]);i?c.lineTo(px,py):c.moveTo(px,py);}c.stroke();
+    c.strokeStyle=warm;c.lineWidth=2;c.beginPath();c.moveTo(L,Y(t));c.lineTo(R,Y(t));c.stroke();
+    /* The label t sits on the side of its line away from the graph near the right end. */
+    const below=t<=fR&&t>fR-0.1;
+    TB.rich(c,[['t','i']],R-2,below?Y(t)+s+5:Y(t)-6,s,warm,'right');
+    const hs=sm?10:12,yb=B+(sm?24:30);c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,yb+hs/2);c.lineTo(R,yb+hs/2);c.stroke();
+    let meas=0,run=-1;c.fillStyle=TB.rgba(warm,0.85);
+    for(let i=0;i<=M;i++){const inS=i<M&&fs[i]>t;if(inS){meas+=1/M;if(run<0)run=i;}
+      if(!inS&&run>=0){c.fillRect(X(run/M),yb,X(i/M)-X(run/M),hs);c.fillRect(X(run/M),Y(t)-1.5,X(i/M)-X(run/M),3);run=-1;}}
+    TB.rich(c,[['{ ','m'],['x','i'],[' : ','m'],['f','i'],['(','m'],['x','i'],[') > ','m'],['t','i'],[' }','m']],L,yb+hs+s+8,s,muted);
+    gT.set(meas);
+  }
+  [mode,ns,tl].forEach(e=>e.addEventListener('input',draw));mode.addEventListener('change',draw);
+  draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 3: rationals of [0,1) covered by intervals of total length below eps. Drawn at the width of the column. */
+  const qc=document.getElementById('qcover');if(!qc||!window.TB||!TB.fit)return;
+  const Q=[];function gcd(a,b){return b?gcd(b,a%b):a;}
+  Q.push([0,1]);for(let q=2;Q.length<400;q++)for(let p=1;p<q&&Q.length<400;p++)if(gcd(p,q)===1)Q.push([p,q]);
+  const qe=document.getElementById('qeps'),qk=document.getElementById('qK'),qeo=document.getElementById('qepsOut'),qko=document.getElementById('qKOut');
+  const gS=new TB.Gauge('gQs'),gC=new TB.Gauge('gQc');gS.mark('one',1,'1',true);gC.mark('one',1,'1',true);
+  function draw(){
+    const eps=+qe.value,K=+qk.value;qeo.textContent=TB.fmt(eps,2);qko.textContent=K;
+    const F=TB.fit(qc,W=>W<560?280:Math.max(280,Math.round(W*0.4))),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const L=sm?12:28,R=W-(sm?12:28),X=x=>L+x*(R-L);
+    const ink=TB.tok('--ink'),muted=TB.tok('--muted'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule');
+    c.fillStyle=TB.tok('--paper');c.fillRect(0,0,W,H);
+    const rows=Math.min(K,24),top=12,rh=(H-(sm?100:110))/24;let tot=0;const iv=[];
+    for(let k=1;k<=K;k++){const q=Q[k-1][0]/Q[k-1][1],len=eps*Math.pow(2,-k),e=Math.min(1,q+len);tot+=len;iv.push([q,e]);
+      if(k<=rows){const y=top+(k-1)*rh;c.fillStyle=TB.rgba(eth,0.55);c.fillRect(X(q),y,Math.max(1,X(e)-X(q)),rh*0.6);
+        c.fillStyle=ink;c.beginPath();c.arc(X(q),y+rh*0.3,2.2,0,7);c.fill();}}
+    iv.sort((a,b)=>a[0]-b[0]);let cov=0,cs=-1,ce=-1;const segs=[];
+    for(const [a,b] of iv){if(a>ce){if(ce>cs)segs.push([cs,ce]);cs=a;ce=b;}else ce=Math.max(ce,b);}if(ce>cs)segs.push([cs,ce]);
+    for(const [a,b] of segs)cov+=b-a;
+    const hs=sm?14:16,yb=H-(sm?50:58);c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(X(0),yb+hs/2);c.lineTo(X(1),yb+hs/2);c.stroke();
+    c.fillStyle=TB.rgba(warm,0.85);for(const [a,b] of segs)c.fillRect(X(a),yb,Math.max(1.2,X(b)-X(a)),hs);
+    c.fillStyle=ink;for(let k=0;k<K;k++){const q=Q[k][0]/Q[k][1];c.fillRect(X(q)-0.5,yb+hs+2,1,6);}
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='center';const yl=H-(sm?10:12);
+    c.fillText('0',X(0),yl);c.fillText('1',X(1),yl);c.fillText('объединение',X(0.5),yl);c.textAlign='start';
+    gS.mark('eps',eps,'<i>ε</i>').set(tot);gC.set(cov);
+  }
+  [qe,qk].forEach(e=>e.addEventListener('input',draw));draw();TB.onTheme(draw);TB.onResize(qc,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 4: chain of nested dyadic squares around a chosen point. Drawn at the width of the column. */
+  const cv=document.getElementById('dyadic');if(!cv||!window.TB||!TB.fit)return;
+  const sl=document.getElementById('dyM'),so=document.getElementById('dyMOut'),st=document.getElementById('dyStat');
+  let pt=[0.703,1.297],O=24;
+  const num=v=>v.toFixed(3).replace('.',',');
+  const D=(k,m)=>m===0?String(k):TB.fr(k,1<<m);
+  function draw(){
+    const M=+sl.value;so.textContent=M;
+    const F=TB.fit(cv,W=>W),c=F.c,W=F.W,sm=W<480,s=sm?12:14;O=s+10;const S=W-2*O,P=v=>O+v/2*S;
+    const ink=TB.tok('--ink'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),paper=TB.tok('--paper'),muted=TB.tok('--muted');
+    c.fillStyle=paper;c.fillRect(0,0,W,W);
+    for(let r=M;r>=0;r--){const h=Math.pow(2,-r);
+      c.strokeStyle=r===0?ink:TB.rgba(muted,0.55-0.07*r);c.lineWidth=r===0?2:Math.max(0.6,1.6-0.25*r);
+      c.beginPath();for(let v=0;v<=2+1e-9;v+=h){c.moveTo(P(v),P(0));c.lineTo(P(v),P(2));c.moveTo(P(0),P(v));c.lineTo(P(2),P(v));}c.stroke();}
+    let k1=0,k2=0;
+    for(let r=0;r<=M;r++){const h=Math.pow(2,-r),col=TB.mixh(warm,eth,M?r/M:0);k1=Math.floor(pt[0]/h);k2=Math.floor(pt[1]/h);
+      c.fillStyle=TB.rgba(col,0.16);c.fillRect(P(k1*h),P(2-(k2+1)*h),h/2*S,h/2*S);
+      c.strokeStyle=TB.rgba(col,0.95);c.lineWidth=2.2;c.strokeRect(P(k1*h)+1.1,P(2-(k2+1)*h)+1.1,h/2*S-2.2,h/2*S-2.2);}
+    c.fillStyle=ink;c.beginPath();c.arc(P(pt[0]),P(2-pt[1]),3.5,0,7);c.fill();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='right';c.fillText('0',O-5,W-O+s);c.fillText('2',O-5,O+s*0.35);
+    c.textAlign='center';c.fillText('2',W-O,W-O+s+3);c.textAlign='start';
+    const two='2<sup>'+M+'</sup>';
+    st.innerHTML='<span><i>x</i> = ('+num(pt[0])+'; '+num(pt[1])+')</span>'+
+      '<span><i>k</i><sub>1</sub> = ⌊'+two+'·'+num(pt[0])+'⌋ = '+k1+',&emsp;<i>k</i><sub>2</sub> = ⌊'+two+'·'+num(pt[1])+'⌋ = '+k2+'</span>'+
+      '<span><i>D</i> = ['+D(k1,M)+', '+D(k1+1,M)+') × ['+D(k2,M)+', '+D(k2+1,M)+')</span>';
+  }
+  function setFrom(e){const b=cv.getBoundingClientRect(),S=b.width-2*O;
+    const x=Math.round((e.clientX-b.left-O)/S*2000)/1000,y=Math.round((2-(e.clientY-b.top-O)/S*2)*1000)/1000;
+    if(x>=0&&x<2&&y>=0&&y<2){pt=[x,y];draw();}}
+  let down=false;
+  cv.addEventListener('pointerdown',e=>{down=true;cv.setPointerCapture&&cv.setPointerCapture(e.pointerId);setFrom(e);});
+  cv.addEventListener('pointermove',e=>{if(down||e.pointerType==='mouse')setFrom(e);});
+  cv.addEventListener('pointerup',()=>{down=false;});
+  cv.style.touchAction='pan-y';
+  sl.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 5: open set filled by maximal dyadic squares; optional outer approximation. The squares of each rank are found once and kept. */
+  const dc=document.getElementById('dyad');if(!dc||!window.TB||!TB.fit)return;
+  const dm=document.getElementById('dm'),dout=document.getElementById('dout'),dmo=document.getElementById('dmOut'),rowO=document.getElementById('rowDout');
+  const gI=new TB.Gauge('gDin'),gO=new TB.Gauge('gDout');
+  function Rf(p){return 0.31*(1+0.22*Math.cos(3*p+0.3)+0.1*Math.sin(5*p));}
+  function inU(x,y){const dx=x-0.5,dy=y-0.5;return Math.hypot(dx,dy)<Rf(Math.atan2(dy,dx));}
+  function sqIn(x0,y0,h){const n=8;for(let i=0;i<=n;i++)for(let j=0;j<=n;j++)if(!inU(x0+h*i/n,y0+h*j/n))return false;return true;}
+  function sqHit(x0,y0,h){const n=8;for(let i=0;i<=n;i++)for(let j=0;j<=n;j++)if(inU(x0+h*i/n,y0+h*j/n))return true;return false;}
+  let areaU=0;{const N=4000;for(let i=0;i<N;i++){const p=2*Math.PI*(i+0.5)/N;areaU+=0.5*Rf(p)**2*2*Math.PI/N;}}
+  const lu='λ<sub>2</sub>(<i>U</i>)';gI.mark('u',areaU,lu);gO.mark('u',areaU,lu);
+  const maxSq={},outSq={};
+  function maximal(m){if(maxSq[m])return maxSq[m];const h=Math.pow(2,-m),n=1<<m,L=[];
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++){const x0=i*h,y0=j*h;if(!sqIn(x0,y0,h))continue;
+      const ph=2*h,px=Math.floor(x0/ph)*ph,py=Math.floor(y0/ph)*ph;if(m>1&&sqIn(px,py,ph))continue;L.push([x0,y0]);}
+    return maxSq[m]=L;}
+  function outer(m){if(outSq[m])return outSq[m];const h=Math.pow(2,-m),n=1<<m,L=[];
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++)if(sqHit(i*h,j*h,h))L.push([i*h,j*h]);return outSq[m]=L;}
+  function draw(){
+    const M=+dm.value;dmo.textContent=M;
+    const F=TB.fit(dc,W=>W),c=F.c,W=F.W,O=W<480?10:18,S=W-2*O,P=v=>O+v*S;
+    const ink=TB.tok('--ink'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule'),paper=TB.tok('--paper');
+    c.fillStyle=paper;c.fillRect(0,0,W,W);
+    let inner=0;
+    for(let m=1;m<=M;m++){const h=Math.pow(2,-m),g=h*S>6?1:0.5;c.fillStyle=TB.rgba(TB.pal(m-1),0.78);
+      for(const [x0,y0] of maximal(m)){inner+=h*h;c.fillRect(P(x0)+g,P(1-y0-h)+g,h*S-2*g,h*S-2*g);}}
+    let out=0;
+    if(dout.checked){const h=Math.pow(2,-M);c.strokeStyle=TB.rgba(warm,0.9);c.lineWidth=1.1;
+      for(const [x0,y0] of outer(M)){out+=h*h;c.strokeRect(P(x0)+0.5,P(1-y0-h)+0.5,h*S-1,h*S-1);}}
+    c.strokeStyle=ink;c.lineWidth=2;c.setLineDash([7,5]);c.beginPath();
+    for(let k=0;k<=720;k++){const p=2*Math.PI*k/720,r=Rf(p);const x=0.5+r*Math.cos(p),y=0.5+r*Math.sin(p);if(k===0)c.moveTo(P(x),P(1-y));else c.lineTo(P(x),P(1-y));}
+    c.stroke();c.setLineDash([]);c.strokeStyle=rule;c.lineWidth=1;c.strokeRect(O,O,S,S);
+    gI.set(inner);rowO.hidden=!dout.checked;if(dout.checked)gO.set(out);
+  }
+  dm.addEventListener('input',draw);dout.addEventListener('change',draw);draw();TB.onTheme(draw);TB.onResize(dc,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 6: covering squares inflated to open ones, extra area below eps. Drawn at the width of the column. */
+  const cv=document.getElementById('inflate');if(!cv||!window.TB||!TB.fit)return;
+  const ie=document.getElementById('infEps'),im=document.getElementById('infM'),ieo=document.getElementById('infEpsOut'),imo=document.getElementById('infMOut');
+  const gS=new TB.Gauge('gIs'),gX=new TB.Gauge('gIe');
+  function Rf(p){return 0.27*(1+0.25*Math.cos(2*p-0.6)+0.12*Math.sin(3*p+0.8));}
+  function inE(x,y){const dx=x-0.5,dy=y-0.5;return Math.hypot(dx,dy)<Rf(Math.atan2(dy,dx));}
+  function hit(x0,y0,h){const n=10;for(let i=0;i<=n;i++)for(let j=0;j<=n;j++)if(inE(x0+h*i/n,y0+h*j/n))return true;return false;}
+  let areaE=0;{const N=4000;for(let i=0;i<N;i++){const p=2*Math.PI*(i+0.5)/N;areaE+=0.5*Rf(p)**2*2*Math.PI/N;}}
+  gS.mark('e',areaE,'λ<sub>2</sub>(<i>E</i>)');
+  const cover={};
+  function squares(M){if(cover[M])return cover[M];const h=Math.pow(2,-M),n=1<<M,B=[];
+    for(let i=0;i<n;i++)for(let j=0;j<n;j++){const x0=i*h,y0=j*h;if(hit(x0,y0,h))B.push([x0,y0,(1-y0)*10+x0]);}
+    B.sort((a,b)=>a[2]-b[2]);return cover[M]=B;}
+  function draw(){
+    const eps=+ie.value,M=+im.value;ieo.textContent=TB.fmt(eps,3);imo.textContent=M;
+    const F=TB.fit(cv,W=>W),c=F.c,W=F.W,sm=W<480,s=sm?12:14,mg=sm?10:18,Z=0.84,S=(W-2*mg)/Z,O=mg-0.08*S,P=v=>O+v*S;
+    const ink=TB.tok('--ink'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),paper=TB.tok('--paper');
+    c.fillStyle=paper;c.fillRect(0,0,W,W);
+    const h=Math.pow(2,-M),B=squares(M);
+    let sumv=0,extra=0;
+    for(let k=B.length;k>=1;k--){const [x0,y0]=B[k-1],add=eps*Math.pow(2,-k),d=(Math.sqrt(h*h+add)-h)/2;
+      const t=Math.min(1,(k-1)/8);
+      c.fillStyle=TB.rgba(warm,0.30*(1-t)+0.10);c.fillRect(P(x0-d),P(1-y0-h-d),(h+2*d)*S,(h+2*d)*S);
+      c.strokeStyle=TB.rgba(warm,0.9*(1-t)+0.1);c.lineWidth=1.1;c.setLineDash([4,3]);c.strokeRect(P(x0-d),P(1-y0-h-d),(h+2*d)*S,(h+2*d)*S);c.setLineDash([]);}
+    for(let k=1;k<=B.length;k++){const [x0,y0]=B[k-1];sumv+=h*h;extra+=eps*Math.pow(2,-k);
+      c.fillStyle=TB.rgba(eth,0.16);c.fillRect(P(x0),P(1-y0-h),h*S,h*S);
+      c.strokeStyle=TB.rgba(eth,0.85);c.lineWidth=1;c.strokeRect(P(x0)+0.5,P(1-y0-h)+0.5,h*S-1,h*S-1);
+      if(k<=6&&h*S>s+14){c.fillStyle=ink;c.font=s+'px '+TB.ui;c.fillText(String(k),P(x0)+3,P(1-y0-h)+s+1);}}
+    c.strokeStyle=ink;c.lineWidth=2;c.setLineDash([7,5]);c.beginPath();
+    for(let k=0;k<=720;k++){const p=2*Math.PI*k/720,r=Rf(p),x=0.5+r*Math.cos(p),y=0.5+r*Math.sin(p);if(k===0)c.moveTo(P(x),P(1-y));else c.lineTo(P(x),P(1-y));}
+    c.stroke();c.setLineDash([]);
+    /* The label sits in the middle of a grid cell inside E, away from grid lines. */
+    const lx=(Math.floor(0.42/h)+0.5)*h,ly=(Math.floor(0.58/h)+0.5)*h;
+    c.font='italic '+(s+8)+'px '+TB.serif;c.textAlign='center';c.textBaseline='middle';
+    c.lineWidth=5;c.lineJoin='round';c.strokeStyle=TB.rgba(paper,0.9);c.strokeText('E',P(lx),P(1-ly));
+    c.fillStyle=ink;c.fillText('E',P(lx),P(1-ly));c.textAlign='start';c.textBaseline='alphabetic';
+    gS.set(sumv);gX.mark('eps',eps,'<i>ε</i>').set(extra);
+  }
+  [ie,im].forEach(e=>e.addEventListener('input',draw));draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 8: steps of the Cantor construction. Drawn at the width of the column. */
+  const cv=document.getElementById('cantor');if(!cv||!window.TB||!TB.fit)return;
+  const ck=document.getElementById('cK'),cko=document.getElementById('cKOut');
+  function draw(){
+    const K=+ck.value;cko.textContent=K;
+    const F=TB.fit(cv,W=>W<560?250:Math.max(260,Math.round(W*0.4))),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const L=sm?30:44,R=W-(sm?12:28),X=x=>L+x*(R-L);
+    const eth=TB.tok('--ether'),warm=TB.tok('--warm'),muted=TB.tok('--muted'),paper=TB.tok('--paper'),rule=TB.tok('--rule');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    const rows=K+1,top=12,rh=(H-(sm?56:64))/rows,bh=Math.min(18,rh*0.6);
+    let segs=[[0,1]];
+    for(let k=0;k<=K;k++){
+      const y=top+k*rh,col=TB.pal(k);
+      c.fillStyle=TB.rgba(col,k===K?0.95:0.55);
+      for(const [a,b] of segs){const x0=X(a),x1=X(b);c.fillRect(x0,y,Math.max(1,x1-x0),bh);}
+      TB.rich(c,[['C','i'],[String(k),'s']],4,y+bh/2+s*0.35,s,muted);
+      if(k<K){const nx=[];for(const [a,b] of segs){const d=(b-a)/3;nx.push([a,a+d],[b-d,b]);}segs=nx;}
+    }
+    const ya=H-(sm?30:34);c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(X(0),ya);c.lineTo(X(1),ya);
+    for(const v of [0,1/3,2/3,1]){c.moveTo(X(v),ya-4);c.lineTo(X(v),ya+4);}c.stroke();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='center';
+    [['0',0],['1/3',1/3],['2/3',2/3],['1',1]].forEach(([q,v])=>c.fillText(q,X(v),ya+s+7));c.textAlign='start';
+  }
+  ck.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 9: the set {f>t} for three kinds of functions, written out exactly or with numerical endpoints. Drawn at the width of the column. */
+  const cv=document.getElementById('lvl');if(!cv||!window.TB||!TB.fit)return;
+  const sf=document.getElementById('lvF'),st=document.getElementById('lvT'),so=document.getElementById('lvTOut'),out=document.getElementById('lvSet');
+  const g=new TB.Gauge('gLv');
+  const bump=(x,m,sl,sr)=>{const s=x<m?sl:sr;return Math.exp(-(((x-m)/s)**2));};
+  const J=[0.22,0.5,0.74];
+  const F={
+    c:x=>0.2+0.92*bump(x,0.2,0.055,0.1)+0.48*bump(x,0.62,0.2,0.13)+0.26*bump(x,0.9,0.045,0.06)-0.14*x,
+    m:x=>x<0.22?0.08+0.3*x:x<0.5?0.35+0.4*(x-0.22):x<0.74?0.72+0.1*(x-0.5):0.95+0.15*(x-0.74),
+    i:x=>(x>=0.3&&x<0.65)?1:0
+  };
+  const nm=v=>(v===0||v===1)?String(v):v.toFixed(2).replace('.',',');
+  function sets(k,t){
+    const f=F[k];
+    if(k==='i'){if(t<0)return {s:[[0,1,1,1]],ex:true};if(t<1)return {s:[[0.3,0.65,1,0]],ex:true};return {s:[],ex:true};}
+    if(k==='m'){
+      if(f(0)>t)return {s:[[0,1,1,1]],ex:true};if(f(1)<=t)return {s:[],ex:true};
+      let lo=0,hi=1;for(let i=0;i<60;i++){const mid=(lo+hi)/2;if(f(mid)>t)hi=mid;else lo=mid;}
+      for(const j of J)if(Math.abs(hi-j)<1e-9)return {s:[[j,1,f(j)>t?1:0,1]],ex:true};
+      return {s:[[hi,1,0,1]],ex:false};
+    }
+    const N=2000,s=[];let a=null,lc=0;
+    const root=(lo,hi)=>{const up=f(lo)>t;for(let i=0;i<50;i++){const mid=(lo+hi)/2;if((f(mid)>t)===up)lo=mid;else hi=mid;}return (lo+hi)/2;};
+    for(let i=0;i<=N;i++){const x=i/N,ok=f(x)>t;
+      if(ok&&a===null){a=i===0?0:root((i-1)/N,x);lc=i===0?1:0;}
+      if(a!==null&&(!ok||i===N)){s.push([a,ok?1:root((i-1)/N,x),lc,ok?1:0]);a=null;}}
+    return {s:s,ex:false};
+  }
+  function draw(){
+    const k=sf.value,f=F[k],t=+st.value;so.textContent=TB.fmt(t,2);
+    const r=sets(k,t);let meas=0;for(const q of r.s)meas+=q[1]-q[0];
+    const Fc=TB.fit(cv,W=>W<560?300:Math.round(W*0.5)),c=Fc.c,W=Fc.W,H=Fc.H,sm=W<560,s=sm?12:14;
+    const L=sm?16:36,R=W-(sm?8:20),T=sm?14:20,B=H-(sm?66:74);
+    const X=x=>L+x*(R-L),Y=y=>B-(y+0.4)/1.8*(B-T);
+    const ink=TB.tok('--ink'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule'),paper=TB.tok('--paper'),muted=TB.tok('--muted');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,Y(0));c.lineTo(R,Y(0));c.moveTo(L,T);c.lineTo(L,B);c.stroke();
+    c.fillStyle=TB.rgba(warm,0.14);for(const [a,b] of r.s)c.fillRect(X(a),T,X(b)-X(a),B-T);
+    const N=1500;c.strokeStyle=eth;c.lineWidth=2.2;c.beginPath();let prev=null;
+    for(let i=0;i<=N;i++){const x=i/N,y=f(x);if(prev!==null&&Math.abs(y-prev)>0.08){c.stroke();c.beginPath();c.moveTo(X(x),Y(y));}else if(i===0)c.moveTo(X(x),Y(y));else c.lineTo(X(x),Y(y));prev=y;}
+    c.stroke();
+    c.strokeStyle=ink;c.setLineDash([6,5]);c.lineWidth=1.2;c.beginPath();c.moveTo(L,Y(t));c.lineTo(R,Y(t));c.stroke();c.setLineDash([]);
+    /* The label t goes to the side of its line away from the graph near the right end. */
+    const fR=f(1-1e-9),below=t<=fR&&t>fR-0.14;
+    TB.rich(c,[['t','i']],R-2,below?Y(t)+s+5:Y(t)-6,s,muted,'right');
+    const ya=H-(sm?34:40);c.strokeStyle=rule;c.beginPath();c.moveTo(L,ya);c.lineTo(R,ya);c.stroke();
+    c.fillStyle=TB.rgba(warm,0.9);for(const [a,b] of r.s)c.fillRect(X(a),ya-6,Math.max(2,X(b)-X(a)),12);
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='center';const yl=H-(sm?9:12);c.fillText('0',X(0),yl);c.fillText('1',X(1),yl);c.textAlign='start';
+    TB.rich(c,[['{ ','m'],['f','i'],[' > ','m'],['t','i'],[' }','m']],L+6,ya-12,s,muted);
+    let html='{<i>f</i> &gt; <i>t</i>} ';
+    if(!r.s.length)html+='= ∅';
+    else html+=(r.ex?'= ':'≈ ')+r.s.map(q=>(q[2]?'[':'(')+nm(q[0])+'; '+nm(q[1])+(q[3]?']':')')).join(' ∪ ');
+    out.innerHTML='<span>'+html+'</span>';
+    g.set(meas);
+  }
+  sf.addEventListener('change',draw);st.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 10: a simple function with adjustable values; the integral groups pieces by value. Drawn at the width of the column. */
+  const S=document.getElementById('simpleF');if(!S||!window.TB||!TB.fit)return;
+  const sl=[1,2,3].map(i=>document.getElementById('sc'+i)),so=[1,2,3].map(i=>document.getElementById('sc'+i+'Out'));
+  const out=document.getElementById('simpleStat'),g=new TB.Gauge('gSi');
+  /* Pieces in units of 1/20; index 0 is the zero level set A_0. */
+  const A=[[[0,1],[8,9],[15,17],[19,20]],[[1,5],[12,15]],[[5,8],[17,19]],[[9,12]]];
+  const meas=A.map(p=>p.reduce((s,q)=>s+q[1]-q[0],0));
+  const pieces=[];A.forEach((p,i)=>p.forEach(q=>pieces.push([q[0],q[1],i])));pieces.sort((a,b)=>a[0]-b[0]);
+  /* Labels in left-to-right order go to the first row where they do not touch the previous label. */
+  function place(items,gap){const ends=[];return items.map(it=>{let r=0;while(ends[r]!==undefined&&it.x-it.w/2<ends[r]+gap)r++;ends[r]=it.x+it.w/2;return r;});}
+  function draw(){
+    const cs=[0].concat(sl.map(e=>+e.value));sl.forEach((e,i)=>{so[i].textContent=TB.fmt(cs[i+1],2);});
+    const F=TB.fit(S,W=>W<560?300:Math.round(W*0.447)),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const L=sm?28:46,R=W-(sm?8:24),T=sm?20:18,X=x=>L+x*(R-L),ls=s-1;
+    /* Lengths of the pieces may need a second row on a narrow screen; the space under the axis is measured first. */
+    c.font=ls+'px '+TB.ui;
+    const items=pieces.map(([a,b])=>({x:(X(a/20)+X(b/20))/2,w:c.measureText((b-a)+'/20').width})),rowsL=place(items,4),nr=Math.max(...rowsL)+1;
+    const hb=sm?10:12,B=H-(s+19+hb+s+8+ls+7+(nr-1)*(ls+4)+8),Y=y=>B-y/1.25*(B-T);
+    const eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule'),paper=TB.tok('--paper'),muted=TB.tok('--muted');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    const cols=[muted,TB.tok('--coral'),TB.tok('--green'),eth];
+    c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,T);c.lineTo(L,B);
+    for(const v of [0.5,1]){c.moveTo(L-5,Y(v));c.lineTo(L,Y(v));}c.stroke();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='right';c.fillText('0,5',L-7,Y(0.5)+s*0.35);c.fillText('1',L-7,Y(1)+s*0.35);
+    for(let i=1;i<=3;i++){
+      for(const [a,b] of A[i]){const x0=X(a/20),x1=X(b/20);c.fillStyle=TB.rgba(cols[i],0.32);c.fillRect(x0,Y(cs[i]),x1-x0,B-Y(cs[i]));
+        c.strokeStyle=cols[i];c.lineWidth=2.4;c.beginPath();c.moveTo(x0,Y(cs[i]));c.lineTo(x1,Y(cs[i]));c.stroke();}
+      TB.rich(c,[['c','i'],[String(i),'s']],X(A[i][0][0]/20)+4,Y(cs[i])-7,s,cols[i]);
+    }
+    c.strokeStyle=muted;c.lineWidth=2.4;for(const [a,b] of A[0]){c.beginPath();c.moveTo(X(a/20),B);c.lineTo(X(b/20),B);c.stroke();}
+    c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,B);c.lineTo(R,B);
+    for(let k=0;k<=20;k++){c.moveTo(X(k/20),B);c.lineTo(X(k/20),B+(k%5?4:8));}c.stroke();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='center';
+    ['0','1/4','1/2','3/4','1'].forEach((q,j)=>c.fillText(q,X(j/4),B+s+11));
+    const yb=B+s+19;
+    for(const [a,b,i] of pieces){const x0=X(a/20),x1=X(b/20);c.fillStyle=TB.rgba(cols[i],i?0.85:0.45);c.fillRect(x0+1,yb,x1-x0-2,hb);}
+    /* Names A_i in one row, lengths below them in as many rows as needed. */
+    const ya=yb+hb+s+8,nameSeg=i=>[['A','i'],[String(i),'s']];
+    for(const [a,b,i] of pieces)TB.rich(c,nameSeg(i),(X(a/20)+X(b/20))/2,ya,s,i?cols[i]:muted,'center');
+    c.font=ls+'px '+TB.ui;c.fillStyle=muted;c.textAlign='center';
+    pieces.forEach(([a,b],j)=>c.fillText((b-a)+'/20',items[j].x,ya+ls+7+rowsL[j]*(ls+4)));
+    c.textAlign='start';
+    let tot=0;for(let i=1;i<=3;i++)tot+=cs[i]*meas[i]/20;
+    const terms=[1,2,3].map(i=>TB.fmt(cs[i],2)+'·'+TB.fr(meas[i],20)).concat(['0·'+TB.fr(meas[0],20)]);
+    const parts=['= '+terms[0]+' +',terms[1]+' +',terms[2]+' +',terms[3]+' = '+TB.fmt(tot,3)];
+    out.innerHTML='<span>'+parts.map(p=>'<span class="nw">'+p+'</span>').join(' ')+'</span>';
+    g.set(tot);
+  }
+  sl.forEach(e=>e.addEventListener('input',draw));draw();TB.onTheme(draw);TB.onResize(S,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 11: standard ladders under f; the previous ladder and the new increment in different hues. Drawn at the width of the column. */
+  const cv=document.getElementById('belowF');if(!cv||!window.TB||!TB.fit)return;
+  const sl=document.getElementById('bn'),so=document.getElementById('bnOut'),g=new TB.Gauge('gBn');
+  function f(x){return 0.62+0.32*Math.sin(2*Math.PI*1.1*x+0.3)+0.14*Math.sin(2*Math.PI*3.2*x+1);}
+  const phi=(v,n)=>n<=0?0:Math.min(n,Math.floor(v*2**n)/2**n);
+  const N=2000;let I=0;for(let i=0;i<N;i++)I+=f((i+0.5)/N)/N;
+  g.mark('f',I,'∫<i>f</i>');
+  function runs(vals){const r=[];let s=0;for(let i=1;i<=vals.length;i++)if(i===vals.length||vals[i]!==vals[s]){r.push([s,i,vals[s]]);s=i;}return r;}
+  function draw(){
+    const n=+sl.value;so.textContent=n;
+    const F=TB.fit(cv,W=>W<560?230:Math.round(W*0.395)),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const L=sm?28:46,R=W-(sm?8:20),T=sm?12:16,B=H-(sm?20:28),X=x=>L+x*(R-L),Y=y=>B-y/1.15*(B-T);
+    const ink=TB.tok('--ink'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule'),paper=TB.tok('--paper'),muted=TB.tok('--muted');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    const P=Math.max(240,Math.round(R-L)),a=[],b=[];for(let i=0;i<P;i++){const v=f((i+0.5)/P);a.push(phi(v,n-1));b.push(phi(v,n));}
+    c.fillStyle=TB.rgba(eth,0.40);for(const [st,e,v] of runs(a))if(v>0)c.fillRect(X(st/P),Y(v),X(e/P)-X(st/P),B-Y(v));
+    c.fillStyle=TB.rgba(warm,0.55);
+    for(const [st,e,v] of runs(b.map((v,i)=>v>a[i]?v+'|'+a[i]:'')))if(v){const [hi,lo]=v.split('|').map(Number);c.fillRect(X(st/P),Y(hi),X(e/P)-X(st/P),Y(lo)-Y(hi));}
+    c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,T);c.lineTo(L,B);c.lineTo(R,B);
+    for(const v of [0.5,1]){c.moveTo(L-5,Y(v));c.lineTo(L,Y(v));}c.stroke();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='right';c.fillText('0,5',L-7,Y(0.5)+s*0.35);c.fillText('1',L-7,Y(1)+s*0.35);c.textAlign='start';
+    c.strokeStyle=ink;c.lineWidth=2.2;c.beginPath();for(let i=0;i<=600;i++){const x=i/600;i?c.lineTo(X(x),Y(f(x))):c.moveTo(X(x),Y(f(x)));}c.stroke();
+    TB.rich(c,[['f','i']],X(0.02),Y(f(0.02))-8,s,ink);
+    let area=0;for(let i=0;i<N;i++)area+=phi(f((i+0.5)/N),n)/N;
+    g.set(area);
+  }
+  sl.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 12: the standard approximation at one point. The lens stretches a window of the value axis by 2^n; the floor drops to an integer; the ray brings it back; the cap is n. */
+  const cv=document.getElementById('stdap');if(!cv||!window.TB||!TB.fit)return;
+  const sn=document.getElementById('saN'),sno=document.getElementById('saNOut'),sx=document.getElementById('saX'),sxo=document.getElementById('saXOut');
+  const fx=document.getElementById('saFx'),g=new TB.Gauge('gSa');
+  const f=x=>0.55+0.35*Math.sin(2*Math.PI*0.9*x+0.5)+0.12*Math.sin(2*Math.PI*2.7*x+1.3)+2.1*Math.exp(-(((x-0.7)/0.07)**2));
+  const Ym=2.6,SUP='⁰¹²³⁴⁵⁶⁷⁸⁹',pw=n=>String(n).split('').map(d=>SUP[+d]).join('');
+  let gx={L:0,GR:1};
+  function arrow(c,x,y0,y1,col){
+    if(Math.abs(y1-y0)<9)return;const d=y1>y0?1:-1;
+    c.strokeStyle=col;c.fillStyle=col;c.lineWidth=1.5;c.beginPath();c.moveTo(x,y0);c.lineTo(x,y1-d*6);c.stroke();
+    c.beginPath();c.moveTo(x,y1);c.lineTo(x-4,y1-d*7);c.lineTo(x+4,y1-d*7);c.closePath();c.fill();}
+  function dot(c,x,y,col,hollow){c.beginPath();c.arc(x,y,4.5,0,2*Math.PI);
+    if(hollow){c.fillStyle=TB.tok('--paper');c.fill();c.strokeStyle=col;c.lineWidth=1.6;c.stroke();}else{c.fillStyle=col;c.fill();}}
+  function draw(){
+    const n=+sn.value,x=+sx.value,N2=2**n;sno.textContent=n;sxo.textContent=TB.fmt(x,2);
+    const F=TB.fit(cv,W=>W<560?350:400),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const ink=TB.tok('--ink'),muted=TB.tok('--muted'),rule=TB.tok('--rule'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),paper=TB.tok('--paper');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    const L=sm?28:38,R=W-(sm?4:12);
+    const T=TB.legend(c,[{k:'line',col:ink,t:[['f','i']]},{k:'fill',col:eth,a:0.35,t:[['φ','i'],['n','s']]},{k:'dash',col:warm,t:[['потолок ','r'],['n','i']]}],L,R,4,s)+10;
+    const B=H-(sm?26:30),GR=Math.round(L+(R-L)*(sm?0.55:0.6)),LX=GR+(sm?40:110);gx={L:L,GR:GR};
+    const X=t=>L+t*(GR-L),Y=v=>B-v/Ym*(B-T);
+    const v0=f(x),u=N2*v0,K=Math.floor(u),q=K/N2,p=Math.min(n,q),xv=X(x);
+    /* Graph: grid of levels, region above the cap, ladder, f. */
+    c.save();c.beginPath();c.rect(L,T,GR-L,B-T);c.clip();
+    if(n<Ym){c.fillStyle=TB.rgba(muted,0.08);c.fillRect(L,T,GR-L,Y(n)-T);}
+    for(let k=1;k<=Math.floor(Ym*N2);k++){const yy=Math.round(Y(k/N2))+0.5,major=k%N2===0;
+      c.strokeStyle=TB.rgba(muted,major?0.45:Math.max(0.12,0.34-0.04*n));c.lineWidth=1;c.beginPath();c.moveTo(L,yy);c.lineTo(GR,yy);c.stroke();}
+    const P=Math.max(200,Math.round(GR-L)),run=[];let st=0;
+    const ph=i=>Math.min(n,Math.floor(N2*f((i+0.5)/P))/N2);
+    for(let i=1;i<=P;i++)if(i===P||ph(i)!==ph(st)){run.push([st,i,ph(st)]);st=i;}
+    c.fillStyle=TB.rgba(eth,0.32);for(const [a,b,v] of run)if(v>0)c.fillRect(X(a/P),Y(v),X(b/P)-X(a/P),B-Y(v));
+    c.strokeStyle=eth;c.lineWidth=1.4;c.beginPath();run.forEach(([a,b,v],j)=>{j?c.lineTo(X(a/P),Y(v)):c.moveTo(X(a/P),Y(v));c.lineTo(X(b/P),Y(v));});c.stroke();
+    c.strokeStyle=ink;c.lineWidth=2.2;c.beginPath();for(let i=0;i<=500;i++){const t=i/500;i?c.lineTo(X(t),Y(f(t))):c.moveTo(X(t),Y(f(t)));}c.stroke();
+    if(n<Ym){c.strokeStyle=warm;c.lineWidth=1.8;c.setLineDash([6,4]);c.beginPath();c.moveTo(L,Y(n));c.lineTo(GR,Y(n));c.stroke();c.setLineDash([]);}
+    c.restore();
+    /* Axes and labels. */
+    c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,T);c.lineTo(L,B);c.lineTo(GR,B);c.stroke();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='right';for(const v of [0,1,2])c.fillText(String(v),L-7,Y(v)+4);
+    c.textAlign='center';c.fillText('0',X(0),B+s+5);c.fillText('1',X(1),B+s+5);c.textAlign='start';
+    TB.rich(c,[['x','i']],xv,B+s+5,s,ink,'center');
+    if(n<Ym)TB.rich(c,[['n','i'],[' = '+n,'r']],GR-4,Y(n)-6,s,warm,'right');
+    /* The chosen point. */
+    c.strokeStyle=TB.rgba(muted,0.7);c.lineWidth=1;c.setLineDash([3,3]);c.beginPath();c.moveTo(xv,B);c.lineTo(xv,Math.max(T,Y(v0)));c.stroke();
+    c.strokeStyle=TB.rgba(warm,0.6);c.beginPath();c.moveTo(xv,Y(v0));c.lineTo(GR,Y(v0));c.stroke();
+    c.strokeStyle=TB.rgba(eth,0.7);c.beginPath();c.moveTo(GR,Y(q));c.lineTo(xv,Y(q));c.stroke();c.setLineDash([]);
+    arrow(c,xv,Y(v0),Y(q),eth);
+    if(q>p){arrow(c,xv,Y(q),Y(p),warm);dot(c,xv,Y(q),eth,true);}
+    dot(c,xv,Y(v0),warm);dot(c,xv,Y(p),eth);
+    /* Lens: window [u0,u1] of the stretched axis. */
+    const u0=Math.max(-0.5,K-1.5),u1=u0+4,YL=t=>B-(t-u0)/(u1-u0)*(B-T);
+    c.save();c.beginPath();c.rect(GR,T-2,R-GR,B-T+4);c.clip();
+    c.fillStyle=TB.rgba(eth,0.07);c.beginPath();c.moveTo(GR,Y(u0/N2));c.lineTo(GR,Y(u1/N2));c.lineTo(LX,YL(u1));c.lineTo(LX,YL(u0));c.closePath();c.fill();
+    for(let j=Math.ceil(u0);j<=Math.floor(u1);j++){const on=j===K;
+      c.strokeStyle=on?eth:TB.rgba(muted,0.45);c.lineWidth=on?1.6:1;c.beginPath();c.moveTo(GR,Y(j/N2));c.lineTo(LX,YL(j));c.stroke();}
+    c.strokeStyle=warm;c.lineWidth=1.5;c.beginPath();c.moveTo(GR,Y(v0));c.lineTo(LX,YL(u));c.stroke();
+    c.restore();
+    c.strokeStyle=TB.rgba(eth,0.8);c.lineWidth=1.5;c.beginPath();c.moveTo(GR,Math.max(T,Y(u1/N2)));c.lineTo(GR,Math.min(B,Y(u0/N2)));c.stroke();
+    c.fillStyle=TB.rgba(warm,0.18);c.fillRect(LX-8,YL(K+1),16,YL(K)-YL(K+1));
+    c.strokeStyle=ink;c.lineWidth=1.2;c.beginPath();c.moveTo(LX,T);c.lineTo(LX,B);c.stroke();
+    for(let j=Math.ceil(u0);j<=Math.floor(u1);j++){const yy=YL(j),on=j===K;
+      c.strokeStyle=on?eth:ink;c.lineWidth=on?2:1;c.beginPath();c.moveTo(LX-6,yy);c.lineTo(LX+6,yy);c.stroke();
+      c.fillStyle=on?eth:muted;c.font=(on?'700 ':'')+s+'px '+TB.ui;c.fillText(String(j),LX+10,yy+4);}
+    arrow(c,LX-13,YL(u),YL(K),eth);
+    dot(c,LX,YL(u),warm);dot(c,LX,YL(K),eth);
+    c.fillStyle=warm;c.font=s+'px '+TB.ui;const lx=LX+(sm?30:38),ly=Math.max(T+s,Math.min(YL(u)+4,YL(K)-s-2));c.fillText(TB.fmt(u,2),lx,ly);
+    c.fillStyle=muted;c.textAlign='center';c.fillText(sm?'×2'+pw(n):'×2'+pw(n)+' = '+N2,(GR+LX)/2,B+s+5);c.textAlign='start';
+    /* Readout. */
+    const tw='2<sup>'+n+'</sup>',fxs='<i>f</i>(<i>x</i>)',fm=v=>TB.fmt(v,3);
+    fx.innerHTML=TB.rows([[fxs+' = '+fm(v0),tw+'·'+fxs+' = '+TB.fmt(u,2),'⌊'+tw+'·'+fxs+'⌋ = '+K],
+      ['2<sup>−'+n+'</sup>·'+K+' = '+fm(q),'<i>φ</i><sub>'+n+'</sub>(<i>x</i>) = min('+n+'; '+fm(q)+') = '+fm(p)]]);
+    const e=v0-p;g.mark('h',1/N2,'2<sup>−'+n+'</sup>');g.set(e,e<1/N2?eth:warm);
+  }
+  function pick(ev){const r=cv.getBoundingClientRect(),px=ev.clientX-r.left;if(px<gx.L-6||px>gx.GR+6)return;
+    sx.value=Math.max(0,Math.min(1,(px-gx.L)/(gx.GR-gx.L)));draw();}
+  cv.style.touchAction='pan-y';
+  cv.addEventListener('pointerdown',e=>{pick(e);cv.setPointerCapture&&cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener('pointermove',e=>{if(e.buttons)pick(e);});
+  sn.addEventListener('input',draw);sx.addEventListener('input',draw);
+  draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Fig. 13: positive and negative parts; a vertical shift moves area between them. Drawn at the width of the column. */
+  const G=document.getElementById('signF');if(!G||!window.TB||!TB.fit)return;
+  const sl=document.getElementById('gc'),so=document.getElementById('gcOut');
+  const gP=new TB.Gauge('gP'),gM=new TB.Gauge('gM'),gI=new TB.Gauge('gI');gI.mark('z',0,'0',true);
+  function g0(x){return 0.55*Math.sin(2*Math.PI*1.25*x+0.2)+0.18*Math.sin(2*Math.PI*3.1*x);}
+  function draw(){
+    const cc=+sl.value;so.textContent=TB.fmt(cc,2);const g=x=>g0(x)+cc;
+    const F=TB.fit(G,W=>W<560?220:Math.round(W*0.395)),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const gap=sm?14:30,w=(W-gap)/2,T=sm?12:16,B=H-(sm?14:20),Ym=1.3;
+    const ink=TB.tok('--ink'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),rule=TB.tok('--rule'),paper=TB.tok('--paper'),muted=TB.tok('--muted');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);const N=400;
+    const curve=(X,Y,fn)=>{c.beginPath();for(let i=0;i<=N;i++){const x=i/N;i?c.lineTo(X(x),Y(fn(x))):c.moveTo(X(x),Y(fn(x)));}c.stroke();};
+    const lf=sm?10:28,rf=sm?2:10;
+    {const L=lf,R=w-rf,X=x=>L+x*(R-L),Y0=(T+B)/2,sc=(B-T)/2/Ym,Y=y=>Y0-y*sc;
+      c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,Y0);c.lineTo(R,Y0);c.moveTo(L,T);c.lineTo(L,B);c.stroke();
+      for(let i=0;i<N;i++){const v=g((i+0.5)/N);c.fillStyle=TB.rgba(v>0?warm:eth,0.38);c.fillRect(X(i/N),Math.min(Y(v),Y0),X((i+1)/N)-X(i/N)+0.4,Math.abs(Y(v)-Y0));}
+      c.strokeStyle=ink;c.lineWidth=2;curve(X,Y,g);
+      /* The label f stays at the top left unless the graph comes close; then it goes to the corner farthest from the graph. */
+      {let best=null;for(const [ax,top] of [[0,1],[0,0],[1,1],[1,0]]){const x0=ax?R-s-4:L+6,x1=x0+s,yb=top?T+s+1:B-3,yt=yb-s;let cl=1e9;
+        for(let i=0;i<=20;i++){const px=x0+(x1-x0)*i/20,yv=Y(g((px-L)/(R-L)));cl=Math.min(cl,yv<yt?yt-yv:yv>yb?yv-yb:0);}
+        if(!best||cl>best[0])best=[cl,x0,yb];if(cl>=8)break;}
+        TB.rich(c,[['f','i']],best[1],best[2],s,muted);}}
+    {const ox=w+gap,L=ox+lf,R=ox+w-rf,X=x=>L+x*(R-L),Y0=B,sc=(B-T)/Ym,Y=y=>Y0-y*sc;
+      c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,Y0);c.lineTo(R,Y0);c.moveTo(L,T);c.lineTo(L,B);c.stroke();
+      const parts=[[x=>Math.max(g(x),0),warm,'f⁺'],[x=>Math.max(-g(x),0),eth,'f⁻']];
+      for(const [fn,col] of parts){c.fillStyle=TB.rgba(col,0.3);
+        for(let i=0;i<N;i++){const v=fn((i+0.5)/N);if(v>0)c.fillRect(X(i/N),Y(v),X((i+1)/N)-X(i/N)+0.4,Y0-Y(v));}
+        c.strokeStyle=col;c.lineWidth=2.2;curve(X,Y,fn);}
+      c.font='italic '+(s+3)+'px '+TB.serif;
+      /* Each label goes next to the peak of its curve, at the candidate place farthest from both curves. */
+      const lw=s+10,lh=s+3,clear=(x0,yb)=>{let cl=1e9;for(let i=0;i<=16;i++){const px=x0+lw*i/16;if(px<L||px>R)continue;const x=(px-L)/(R-L);
+        for(const [fn] of parts){const yv=Y(fn(x));cl=Math.min(cl,yv<yb-lh?yb-lh-yv:yv>yb?yv-yb:0);}}return cl;};
+      for(const [fn,col,name] of parts){let bx=0,bv=0;for(let i=0;i<=N;i++){const v=fn(i/N);if(v>bv){bv=v;bx=i/N;}}
+        if(bv>0.06){const px=X(bx),py=Y(bv),cand=[[px-lw/2,py-7],[px-lw-6,py-7],[px+6,py-7],[px-lw-8,py+lh/2],[px+8,py+lh/2]];let best=null;
+          for(const [x0,yb] of cand){if(x0<L+2||x0+lw>R+rf-1||yb-lh<T-4||yb>B-2)continue;const cl=clear(x0,yb);if(!best||cl>best[0]+0.5)best=[cl,x0,yb];}
+          if(best){c.fillStyle=col;c.fillText(name,best[1]+3,best[2]-3);}}}}
+    let ip=0,im=0;const M=2000;for(let i=0;i<M;i++){const v=g((i+0.5)/M);if(v>0)ip+=v/M;else im-=v/M;}
+    gP.set(ip,warm);gM.set(im,eth);gI.set(ip-im,ip-im>=0?warm:eth);
+  }
+  sl.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(G,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Exercise figure: ternary digits of a point as nested thirds; each row magnifies the third of the row above that holds the point. */
+  const cv=document.getElementById('exTern');if(!cv||!window.TB||!TB.fit)return;
+  const sx=document.getElementById('exTernX'),so=document.getElementById('exTernXOut'),fx=document.getElementById('exTernFx');
+  const K=5;let gx={L:0,R:1,T:0,B:0};
+  function draw(){
+    const x=+sx.value;so.textContent=TB.fmt(x,3);
+    const F=TB.fit(cv,W=>W<520?196:236),c=F.c,W=F.W,H=F.H,sm=W<520,s=sm?12:14;
+    const ink=TB.tok('--ink'),muted=TB.tok('--muted'),rule=TB.tok('--rule'),eth=TB.tok('--ether'),paper=TB.tok('--paper');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    const L=sm?58:76,R=W-(sm?8:14),bh=sm?20:24,gp=sm?16:20,top=s+10,Xr=u=>L+u*(R-L);
+    /* digits by repeated tripling: the cell of rank k holding x starts at a_k */
+    const d=[];let a=0,len=1;
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='center';
+    [['0',0],['1/3',1/3],['2/3',2/3],['1',1]].forEach(([q,u])=>c.fillText(q,Xr(u),top-6));
+    for(let k=1;k<=K;k++){
+      const y=top+(k-1)*(bh+gp),u=(x-a)/len,dk=Math.min(2,Math.floor(3*u));d.push(dk);
+      c.fillStyle=TB.rgba(muted,0.10);c.fillRect(Xr(0),y,R-L,bh);
+      c.fillStyle=TB.rgba(eth,0.38);c.fillRect(Xr(dk/3),y,(R-L)/3,bh);
+      c.strokeStyle=rule;c.lineWidth=1;c.strokeRect(Xr(0)+0.5,y+0.5,R-L-1,bh-1);
+      c.beginPath();c.moveTo(Xr(1/3),y);c.lineTo(Xr(1/3),y+bh);c.moveTo(Xr(2/3),y);c.lineTo(Xr(2/3),y+bh);c.stroke();
+      c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='center';
+      for(let j=0;j<3;j++)if(j!==dk)c.fillText(String(j),Xr((j+0.5)/3),y+bh/2+s*0.36);
+      c.fillStyle=ink;c.beginPath();c.arc(Xr(u),y+bh/2,3.5,0,7);c.fill();
+      TB.rich(c,[['d','i'],[String(k),'s'],[' = '+dk,'r']],8,y+bh/2+s*0.36,s,eth);
+      if(k<K){c.fillStyle=TB.rgba(eth,0.08);c.beginPath();c.moveTo(Xr(dk/3),y+bh);c.lineTo(Xr((dk+1)/3),y+bh);c.lineTo(R,y+bh+gp);c.lineTo(L,y+bh+gp);c.closePath();c.fill();
+        c.strokeStyle=TB.rgba(eth,0.35);c.beginPath();c.moveTo(Xr(dk/3),y+bh);c.lineTo(L,y+bh+gp);c.moveTo(Xr((dk+1)/3),y+bh);c.lineTo(R,y+bh+gp);c.stroke();}
+      a+=dk*len/3;len/=3;}
+    c.textAlign='start';gx={L:L,R:R,T:top,B:top+bh};
+    const pw=k=>'3<sup>−'+k+'</sup>';
+    const terms=d.map((v,i)=>'<span class="nw">'+(i?'+ ':'≈ ')+v+'·'+pw(i+1)+'</span>').join(' ');
+    fx.innerHTML='<span><span class="nw"><i>x</i> = '+TB.fmt(x,3)+'</span>&emsp;<span class="nw">(0,'+d.join('')+'…)<sub>3</sub></span></span><span>'+terms+' <span class="nw">+ …</span></span>';
+  }
+  function pick(e){const r=cv.getBoundingClientRect(),px=e.clientX-r.left,py=e.clientY-r.top;
+    if(px<gx.L||px>gx.R||py<gx.T-8||py>gx.B+8)return;sx.value=Math.max(0,Math.min(0.999,(px-gx.L)/(gx.R-gx.L)));draw();}
+  cv.style.touchAction='pan-y';
+  cv.addEventListener('pointerdown',e=>{pick(e);});
+  cv.addEventListener('pointermove',e=>{if(e.buttons)pick(e);});
+  sx.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Exercise figure: the simple function 1 under f+g, where f(x)=x and g(x)=1-x; a ladder chi under f leaves a remainder 1-chi that exceeds g almost everywhere. */
+  const cv=document.getElementById('exSplit');if(!cv||!window.TB||!TB.fit)return;
+  const sm_=document.getElementById('exSplitM'),so=document.getElementById('exSplitMOut'),g=new TB.Gauge('gExSplit');
+  g.mark('g',0.5,'∫<i>g</i>');
+  function draw(){
+    const m=+sm_.value;so.textContent=m;
+    const F=TB.fit(cv,W=>W<560?270:Math.round(W*0.42)),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const ink=TB.tok('--ink'),muted=TB.tok('--muted'),rule=TB.tok('--rule'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),paper=TB.tok('--paper');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    const L=sm?26:40,R=W-(sm?8:16);
+    const T=TB.legend(c,[{k:'line',col:eth,t:[['f','i']]},{k:'line',col:warm,t:[['g','i']]},{k:'thin',col:ink,t:[['f','i'],[' + ','r'],['g','i'],[' = 1','r']]},
+      {k:'fill',col:eth,a:0.3,t:[['χ','i']]},{k:'dash',col:warm,t:[['1 − ','r'],['χ','i']]}],L,R,2,s)+8;
+    const B=H-(sm?40:46),X=x=>L+x*(R-L),Y=y=>B-y/1.1*(B-T);
+    const ch=x=>Math.floor(m*x+1e-12)/m;
+    /* chi under f, and the excess of the remainder over g */
+    for(let k=0;k<m;k++){const a=k/m,b=(k+1)/m,v=a;
+      if(v>0){c.fillStyle=TB.rgba(eth,0.26);c.fillRect(X(a),Y(v),X(b)-X(a),B-Y(v));}
+      c.fillStyle=TB.rgba(warm,0.26);c.beginPath();c.moveTo(X(a),Y(1-v));c.lineTo(X(b),Y(1-v));c.lineTo(X(b),Y(1-b));c.lineTo(X(a),Y(1-a));c.closePath();c.fill();}
+    c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,T);c.lineTo(L,B);c.lineTo(R,B);for(const v of [0.5,1]){c.moveTo(L-5,Y(v));c.lineTo(L,Y(v));}c.stroke();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='right';c.fillText('0,5',L-7,Y(0.5)+s*0.35);c.fillText('1',L-7,Y(1)+s*0.35);c.textAlign='start';
+    c.strokeStyle=ink;c.lineWidth=1.2;c.beginPath();c.moveTo(X(0),Y(1));c.lineTo(X(1),Y(1));c.stroke();
+    c.strokeStyle=eth;c.lineWidth=2.2;c.beginPath();c.moveTo(X(0),Y(0));c.lineTo(X(1),Y(1));c.stroke();
+    c.strokeStyle=warm;c.lineWidth=2.2;c.beginPath();c.moveTo(X(0),Y(1));c.lineTo(X(1),Y(0));c.stroke();
+    c.strokeStyle=eth;c.lineWidth=1.4;c.beginPath();for(let k=0;k<m;k++){const a=k/m,b=(k+1)/m;k?c.lineTo(X(a),Y(a)):c.moveTo(X(a),Y(a));c.lineTo(X(b),Y(a));}c.stroke();
+    c.strokeStyle=warm;c.lineWidth=2;c.setLineDash([6,4]);c.beginPath();for(let k=0;k<m;k++){const a=k/m,b=(k+1)/m;k?c.lineTo(X(a),Y(1-a)):c.moveTo(X(a),Y(1-a));c.lineTo(X(b),Y(1-a));}c.stroke();c.setLineDash([]);
+    /* the set where 1-chi > g: all of [0,1) except the points k/m */
+    const yb=B+(sm?12:14),hb=sm?8:10;c.fillStyle=TB.rgba(warm,0.85);c.fillRect(X(0),yb,X(1)-X(0),hb);
+    for(let k=0;k<m;k++){const px=X(k/m);c.fillStyle=paper;c.beginPath();c.arc(px,yb+hb/2,hb/2+1.5,0,7);c.fill();c.strokeStyle=warm;c.lineWidth=1.3;c.beginPath();c.arc(px,yb+hb/2,hb/2,0,7);c.stroke();}
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='center';c.fillText('0',X(0),H-4);c.fillText('1',X(1),H-4);c.textAlign='start';
+    TB.rich(c,[['{ 1 − ','m'],['χ','i'],[' > ','m'],['g','i'],[' }','m']],X(0.5),H-4,s,muted,'center');
+    g.set((m+1)/(2*m));
+  }
+  sm_.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Exercise figure: f_n is the indicator of [n,n+1); the earlier f_k are drawn as thin outlines. Fixed axis [0,12). */
+  const cv=document.getElementById('exEsc');if(!cv||!window.TB||!TB.fit)return;
+  const sn=document.getElementById('exEscN'),so=document.getElementById('exEscNOut');
+  function draw(){
+    const n=+sn.value;so.textContent=n;
+    const F=TB.fit(cv,W=>W<560?150:170),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const ink=TB.tok('--ink'),muted=TB.tok('--muted'),rule=TB.tok('--rule'),warm=TB.tok('--warm'),paper=TB.tok('--paper');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    const L=sm?20:30,R=W-(sm?8:14),T=sm?12:14,B=H-(sm?24:28),X=x=>L+x/12*(R-L),Y=y=>B-y/1.3*(B-T);
+    c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,T);c.lineTo(L,B);c.lineTo(R,B);
+    for(let k=0;k<=12;k++){c.moveTo(X(k),B);c.lineTo(X(k),B+4);}c.moveTo(L-4,Y(1));c.lineTo(L,Y(1));c.stroke();
+    c.fillStyle=muted;c.font=s+'px '+TB.ui;c.textAlign='center';for(let k=0;k<=12;k+=(sm?2:1))c.fillText(String(k),X(k),B+s+6);
+    c.textAlign='right';c.fillText('1',L-7,Y(1)+s*0.35);c.textAlign='start';
+    c.strokeStyle=TB.rgba(muted,0.6);c.lineWidth=1;
+    for(let k=1;k<n;k++){c.beginPath();c.moveTo(X(k)+1,B);c.lineTo(X(k)+1,Y(1)+1);c.lineTo(X(k+1)-1,Y(1)+1);c.lineTo(X(k+1)-1,B);c.stroke();}
+    c.fillStyle=TB.rgba(warm,0.32);c.fillRect(X(n),Y(1),X(n+1)-X(n),B-Y(1));
+    c.strokeStyle=warm;c.lineWidth=2.4;c.beginPath();c.moveTo(X(n),Y(1));c.lineTo(X(n+1),Y(1));c.stroke();
+    c.fillStyle=warm;c.beginPath();c.arc(X(n),Y(1),4,0,7);c.fill();
+    c.fillStyle=paper;c.beginPath();c.arc(X(n+1),Y(1),4,0,7);c.fill();c.strokeStyle=warm;c.lineWidth=1.6;c.stroke();
+    TB.rich(c,[['f','i'],[String(n),'s']],(X(n)+X(n+1))/2,Y(1)-8,s,warm,'center');
+  }
+  sn.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Question figure: two increasing sequences of simple functions under the same f, with level steps 2^-n and 3^-n. */
+  const cv=document.getElementById('exTwo');if(!cv||!window.TB||!TB.fit)return;
+  const sn=document.getElementById('exTwoN'),so=document.getElementById('exTwoNOut');
+  const gA=new TB.Gauge('gExTwoA'),gB=new TB.Gauge('gExTwoB');
+  const f=x=>0.5+0.3*Math.sin(2*Math.PI*0.8*x+0.2)+0.13*Math.sin(2*Math.PI*2.6*x+1.1);
+  const lad=(v,n,b)=>Math.min(n,Math.floor(v*b**n+1e-12)/b**n);
+  const N=1600,fv=[];for(let i=0;i<N;i++)fv.push(f((i+0.5)/N));
+  function draw(){
+    const n=+sn.value;so.textContent=n;
+    const F=TB.fit(cv,W=>W<560?210:Math.round(W*0.36)),c=F.c,W=F.W,H=F.H,sm=W<560,s=sm?12:14;
+    const ink=TB.tok('--ink'),muted=TB.tok('--muted'),rule=TB.tok('--rule'),eth=TB.tok('--ether'),warm=TB.tok('--warm'),paper=TB.tok('--paper');
+    c.fillStyle=paper;c.fillRect(0,0,W,H);
+    const gap=sm?14:30,w=(W-gap)/2,T=s+12,B=H-(sm?8:12),Y=y=>B-y/1.05*(B-T);
+    const ints=[];
+    [[2,eth,'шаг 2⁻ⁿ'],[3,warm,'шаг 3⁻ⁿ']].forEach(([b,col,title],j)=>{
+      const ox=j*(w+gap),L=ox+(sm?4:10),R=ox+w-(sm?2:6),X=x=>L+x*(R-L),P=Math.max(160,Math.round(R-L));
+      const v=[];for(let i=0;i<P;i++)v.push(lad(f((i+0.5)/P),n,b));
+      /* the ladder as one closed outline, filled once */
+      c.beginPath();c.moveTo(X(0),B);let st=0;
+      for(let i=1;i<=P;i++)if(i===P||v[i]!==v[st]){c.lineTo(X(st/P),Y(v[st]));c.lineTo(X(i/P),Y(v[st]));st=i;}
+      c.lineTo(X(1),B);c.closePath();c.fillStyle=TB.rgba(col,0.34);c.fill();
+      c.strokeStyle=rule;c.lineWidth=1;c.beginPath();c.moveTo(L,T);c.lineTo(L,B);c.lineTo(R,B);c.stroke();
+      c.strokeStyle=ink;c.lineWidth=2;c.beginPath();for(let i=0;i<=300;i++){const x=i/300;i?c.lineTo(X(x),Y(f(x))):c.moveTo(X(x),Y(f(x)));}c.stroke();
+      c.fillStyle=muted;c.font=s+'px '+TB.ui;c.fillText(title,L+2,s+2);
+      let I=0;for(let i=0;i<N;i++)I+=lad(fv[i],n,b)/N;ints.push(I);});
+    gA.set(ints[0],eth);gB.set(ints[1],warm);
+  }
+  sn.addEventListener('input',draw);draw();TB.onTheme(draw);TB.onResize(cv,draw);
+})();
+</script>
+<script>
+(function(){
+  /* Glossary and contents: each opens on hover, on keyboard focus, or by tap; closes after a jump. */
+  const nl=document.querySelector('.nlist');
+  if(nl){const items=[];let uid=0;
+    /* Each section lists its subsections and, as short coloured pills, every numbered statement, exercise and figure in it. */
+    const AB={'Определение':'Опр.','Теорема':'Теор.','Лемма':'Лемма','Предложение':'Предл.','Следствие':'След.','Упражнение':'Упр.','Вопрос':'Вопр.'};
+    const pillOf=e=>{
+      if(e.tagName==='FIGCAPTION'){const m=e.textContent.match(/^\s*(Рис\.\s*[^\s.]+(?:\.[^\s.]+)*)/);if(!m)return null;const f=e.closest('figure'),cv=f.querySelector('canvas');
+        return {el:f,txt:m[1].replace(/\.$/,''),cls:'p-fg',title:cv&&cv.getAttribute('aria-label')||''};}
+      const box=e.parentNode,t=e.textContent.trim().replace(/\s+/g,' '),m=t.match(/^(\S+)\s+([^\s(]+)\s*(?:\((.*)\))?/);if(!m)return null;
+      return {el:box,txt:(AB[m[1]]||m[1])+' '+m[2]+(m[3]?' '+m[3]:''),cls:box.classList.contains('ex')?'p-ex':'p-st',title:t};};
+    document.querySelectorAll('section[id]').forEach(sec=>{const h=sec.querySelector('h2');if(!h)return;
+      const head={el:sec,txt:h.textContent,sub:false,pills:[]};items.push(head);let cur=head,k=0;
+      sec.querySelectorAll('h3, .stmt>.lbl, .ex>.lbl, figure>figcaption').forEach(e=>{
+        if(e.tagName==='H3'){k++;if(!e.id)e.id=sec.id+'-'+k;cur={el:e,txt:e.textContent,sub:true,pills:[]};items.push(cur);return;}
+        const pl=pillOf(e);if(pl)cur.pills.push(pl);});});
+    items.forEach(it=>{const li=document.createElement('li');if(it.sub)li.className='sub';const a=document.createElement('a');a.href='#'+it.el.id;a.textContent=it.txt;li.appendChild(a);nl.appendChild(li);it.a=a;
+      if(it.pills.length){const pl=document.createElement('li');pl.className='pills';
+        it.pills.forEach(q=>{if(!q.el.id)q.el.id='nv'+(++uid);const b=document.createElement('a');b.className='npill '+q.cls;b.href='#'+q.el.id;b.textContent=q.txt;if(q.title)b.title=q.title;b.dataset.flash='1';pl.appendChild(b);});
+        nl.appendChild(pl);}});
+    const mark=()=>{let cur=null;const y=window.innerHeight*0.3;items.forEach(it=>{if(it.el.getBoundingClientRect().top<y)cur=it;});
+      let top=null;items.forEach(it=>{if(!it.sub&&it.el.getBoundingClientRect().top<y)top=it;});
+      items.forEach(it=>it.a.classList.toggle('cur',it===cur||it===top));};
+    let q=false;window.addEventListener('scroll',()=>{if(q)return;q=true;requestAnimationFrame(()=>{q=false;mark();});},{passive:true});mark();
+    /* opening the contents scrolls the list to the current section */
+    const toCur=()=>{const c=nl.querySelector('li:not(.sub)>a.cur');if(c)nl.scrollTop+=c.getBoundingClientRect().top-nl.getBoundingClientRect().top-6;};
+    const ng=nl.closest('.gloss');ng.addEventListener('mouseenter',toCur);ng.querySelector('.gbtn').addEventListener('click',toCur);
+    nl.addEventListener('click',e=>{const a=e.target.closest('a');if(!a)return;e.preventDefault();const g=nl.closest('.gloss');
+      g.classList.remove('open');g.querySelector('.gbtn').setAttribute('aria-expanded','false');g.classList.add('shut');a.blur();
+      const el=document.getElementById(a.getAttribute('href').slice(1));if(!el)return;
+      if(a.dataset.flash){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}
+      else el.scrollIntoView({behavior:'smooth',block:'start'});});}
+  document.querySelectorAll('.gloss').forEach(g=>{
+  const b=g.querySelector('.gbtn');let ptr='mouse';
+  function setOpen(o){g.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');}
+  b.addEventListener('pointerdown',e=>{ptr=e.pointerType||'mouse';});
+  /* A click on the circle toggles the panel; closing it while the mouse is over it keeps it shut until the mouse leaves. */
+  b.addEventListener('click',e=>{e.stopPropagation();
+    const shown=g.classList.contains('open')||(ptr==='mouse'&&hov&&!g.classList.contains('shut'));
+    if(shown){setOpen(false);g.classList.add('shut');}else{g.classList.remove('shut');setOpen(true);}});
+  let hov=false;g.addEventListener('mouseenter',()=>{hov=true;});
+  g.addEventListener('mouseleave',()=>{hov=false;if(ptr==='mouse'){g.classList.remove('shut');setOpen(false);}});
+  document.addEventListener('click',e=>{if(!g.contains(e.target))setOpen(false);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){setOpen(false);if(g.contains(document.activeElement))document.activeElement.blur();}});
+  g.querySelectorAll('.gref').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();const t=a.dataset.t;let el=null;
+    if(t[0]==='#'){el=document.getElementById(t.slice(1));if(el&&el.tagName==='CANVAS')el=el.closest('figure');}
+    else{const l=[...document.querySelectorAll('.stmt>.lbl,.ex>.lbl')].find(x=>{const s=x.textContent.trim();return s.startsWith(t)&&!/\d/.test(s.charAt(t.length));});el=l&&l.parentNode;}
+    setOpen(false);g.classList.add('shut');a.blur();
+    if(!el)return;
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');
+  }));
+  });
+})();
+</script>
+<script>
+(function(){
+  /* Theme switch: a round button in the top right corner; the choice is remembered in this browser when storage is available. */
+  const b=document.querySelector('.tbtn');if(!b)return;const R=document.documentElement;
+  const cur=()=>R.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  const lab=()=>b.setAttribute('aria-label',cur()==='dark'?'Включить светлую тему':'Включить тёмную тему');lab();
+  b.addEventListener('click',()=>{const n=cur()==='dark'?'light':'dark';R.setAttribute('data-theme',n);lab();try{localStorage.setItem('book-theme',n);}catch(e){}});
+})();
+</script>
+<script>
+(function(){
+  /* Proofs and solutions fold into two squares joined by a thread; solutions start folded. */
+  document.querySelectorAll('.proof').forEach(function(p){
+    var lbl=p.querySelector(':scope>.lbl'); if(!lbl) return;
+    var sol=p.classList.contains('sol');
+    var body=document.createElement('div'); body.className='pbody';
+    var pin=document.createElement('div'); pin.className='pin'; body.appendChild(pin);
+    while(lbl.nextSibling) pin.appendChild(lbl.nextSibling);
+    p.appendChild(body);
+    ['thread','qo','qc'].forEach(function(c){var e=document.createElement('span');e.className=c;e.setAttribute('aria-hidden','true');p.appendChild(e);});
+    lbl.setAttribute('role','button'); lbl.tabIndex=0;
+    lbl.title=sol?'Показать или скрыть решение':'Свернуть или развернуть доказательство';
+    var f0=sol||p.classList.contains('tech');
+    if(f0){p.classList.add('folded');body.inert=true;}
+    lbl.setAttribute('aria-expanded',f0?'false':'true');
+    function toggle(){
+      var f=p.classList.toggle('folded');
+      lbl.setAttribute('aria-expanded',f?'false':'true');
+      body.inert=f;
+      p.classList.remove('snap'); void p.offsetWidth;
+      setTimeout(function(){p.classList.add('snap');},f?430:0);
+    }
+    lbl.addEventListener('click',toggle);
+    lbl.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+    p.querySelector('.qo').addEventListener('click',toggle);
+    p.querySelector('.qc').addEventListener('click',toggle);
+  });
+})();
+</script>
+
+<script>
+/* Tabula: each numbered statement gets its kind, so that the card takes the colour of its kind. */
+(function(){var K={'Определение':'def','Теорема':'thm','Факт':'thm','Лемма':'lem','Предложение':'lem','Следствие':'cor'};
+document.querySelectorAll('.stmt>.lbl').forEach(function(l){var w=l.textContent.trim().split(/\s+/)[0];l.parentNode.dataset.k=K[w]||'thm';});})();
+/* Tabula: pills in the contents take the colour of their kind. */
+(function(){var P={'Опр.':'def','Теор.':'thm','Факт':'thm','Лемма':'lem','Предл.':'lem','След.':'lem','Упр.':'ex','Вопр.':'ex'};document.querySelectorAll('.nlist a.npill').forEach(function(a){var w=a.textContent.trim().split(/\s+/)[0];if(P[w])a.dataset.k=P[w];});})();
+</script>
+<style id="tabula">
+/* ===== Tabula · книжная глава, редакция 2 =====
+   Спокойная премиальная оболочка: тёплый стол, белая страница, мало заливок, сдержанные скругления.
+   Сочный цвет живёт только в содержании: в рисунках и в маленьких цветных метках. */
+
+html{background:var(--desk)}
+body{background:var(--desk);font-family:var(--font-body);font-size:17px;line-height:1.7;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:color-mix(in srgb,var(--ether) 20%,transparent)}
+a{color:var(--blue-ink);text-decoration-thickness:1px;text-underline-offset:.18em}
+b{font-weight:600}
+p{margin:0 0 1.1rem}
+
+/* Страница */
+.book{max-width:42rem;margin:32px auto 64px;padding:4rem 4.5rem 4.5rem;background:var(--paper);border-radius:16px;box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 5%,transparent),0 12px 40px rgba(40,30,10,.05);box-sizing:content-box}
+@media (max-width:900px){.book{margin:68px 16px 40px;padding:2.6rem 2.2rem 3rem;max-width:none}}
+@media (max-width:600px){.book{margin:64px 0 0;padding:1.8rem 16px 2.6rem;border-radius:16px 16px 0 0}}
+
+/* Шапка */
+header.ch{border-bottom:none;padding-bottom:0;margin-bottom:3rem;display:grid;grid-template-columns:minmax(0,1fr) 180px;column-gap:2.5rem;align-items:start}
+header.ch>*{grid-column:1}
+header.ch .hero{grid-column:2;grid-row:1 / span 3;width:100%;height:auto;margin-top:.2rem}
+header.ch .toc,header.ch>.aside{grid-column:1 / -1}
+@media (max-width:600px){header.ch{padding-top:0;grid-template-columns:minmax(0,1fr)}header.ch .hero{grid-column:1;grid-row:auto;width:132px;margin:0 0 1rem}}
+.eyebrow{font-family:var(--font-ui);font-weight:500;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--muted)}
+h1{font-family:var(--font-display);font-weight:600;font-size:3rem;line-height:1.08;letter-spacing:-.02em;margin:.5rem 0 1rem}
+.lead{font-size:1.1rem;line-height:1.6;color:var(--muted)}
+@media (max-width:560px){h1{font-size:2.25rem}}
+
+/* Оглавление: тихий список в две колонки, цвет — только маленькая точка */
+.toc{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:2rem;row-gap:0;margin:2rem 0 0;font-size:.92rem;border-top:1px solid var(--line)}
+.toc li{margin:0;border-bottom:1px solid var(--line)}
+.toc a{display:flex;align-items:baseline;gap:.65rem;padding:.6rem .1rem;border-bottom:none;color:var(--ink);line-height:1.4}
+.toc a::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--dot,var(--blue));transform:translateY(-1px)}
+.toc a:hover{color:var(--ether-ink)}
+@media (max-width:560px){.toc{grid-template-columns:minmax(0,1fr)}}
+.toc li:nth-child(1){--dot:var(--yellow)}.toc li:nth-child(2){--dot:var(--blue)}.toc li:nth-child(3){--dot:var(--coral)}
+.toc li:nth-child(4){--dot:var(--green)}.toc li:nth-child(5){--dot:var(--violet)}.toc li:nth-child(6){--dot:var(--pink)}.toc li:nth-child(7){--dot:var(--sky)}
+
+/* Заголовки */
+h2{font-family:var(--font-display);font-weight:600;font-size:1.95rem;line-height:1.18;letter-spacing:-.015em;margin:4.2rem 0 1.2rem}
+h3{font-family:var(--font-ui);font-weight:600;font-size:1.12rem;letter-spacing:-.005em;margin:2.6rem 0 .7rem}
+@media (max-width:560px){h2{font-size:1.65rem;margin-top:3.2rem}}
+
+/* Утверждения: светлая карточка, вид — цветной точкой и цветом метки */
+.stmt{--c:var(--blue);--ci:var(--blue-ink);background:var(--fill);border-radius:12px;padding:1.1rem 1.35rem 1.15rem;margin:1.8rem 0}
+.stmt[data-k=thm]{--c:var(--coral);--ci:var(--warm-ink)}
+.stmt[data-k=lem],.stmt[data-k=cor]{--c:var(--green);--ci:var(--green-ink)}
+.stmt .lbl,.ex .lbl{display:flex;align-items:center;gap:.5rem;font-family:var(--font-ui);font-weight:600;font-size:.8rem;letter-spacing:.01em;text-transform:none;line-height:1.4;color:var(--ci);margin:0 0 .45rem}
+.stmt .lbl::before,.ex .lbl::before{content:"";flex:none;width:8px;height:8px;border-radius:2px;background:var(--c)}
+.stmt ol.ax li::marker,ol.ax>li::marker{color:var(--muted);font-weight:500}
+ol[type="a"]>li::before,ol[type="i"]>li::before{color:var(--muted);font-family:var(--font-ui);font-size:.92em}
+
+/* Упражнения и вопросы: тёплая кремовая карточка */
+.ex{--c:var(--yellow);--ci:#8A6400;background:var(--cream);border-radius:12px;padding:1.1rem 1.35rem 1.15rem;margin:2rem 0 1rem}
+:root[data-theme=dark] .ex{--ci:var(--yellow)}
+@media (prefers-color-scheme: dark){:root:not([data-theme=light]) .ex{--ci:var(--yellow)}}
+
+/* Доказательство: два кружка и нить */
+.proof{padding-left:1.7rem;margin:0 0 1.5rem}
+.proof .thread{left:.33em;width:1.5px;background:var(--line);opacity:1}
+.proof .qo,.proof .qc{width:.7em;height:.7em;border-radius:50%}
+.proof .qo{top:.46em;border:1.6px solid var(--ink);background:var(--paper)}
+.proof .qc{background:var(--ink)}
+.proof .lbl{font-style:normal;font-family:var(--font-ui);font-weight:600;font-size:.92rem;color:var(--ink)}
+.proof .lbl:hover,.proof.sol .lbl:hover{color:var(--ether-ink)}
+.proof.folded .lbl::after{content:"свёрнуто";font-weight:400;font-size:.8rem;color:var(--muted);margin-left:.6em}
+.proof.sol.folded .lbl::after{content:"скрыто"}
+.step{margin:.85rem 0}
+.step .sh{font-weight:600;font-size:.88rem;color:var(--ink);margin-bottom:.15rem}
+.proof.sol .step .sh{color:var(--ink)}
+
+/* «Идея» и «На пальцах»: без цветных плашек, тихо */
+.plain{border-left:none;background:var(--fill);border-radius:10px;padding:.75rem 1rem;margin:.6rem 0 1rem;font-size:.96rem}
+.plain .pl{text-transform:none;letter-spacing:0;font-weight:600;font-size:.8rem;color:var(--ink);margin-bottom:.2rem}
+.aside{border-left:2px solid var(--line);border-radius:0;background:none;padding:.05rem 0 .05rem .85rem;margin:.55rem 0 .35rem;font-size:.87rem;line-height:1.55;color:var(--muted)}
+p.aside{margin:.3rem 0 1.2rem}
+header.ch>.aside{margin-top:1.2rem}
+.why{color:var(--muted);font-size:.96rem}
+ul>li::marker{color:var(--ink-3)}
+
+/* Рисунки: светлая подложка, белое поле, ручки управления — тихие */
+figure{background:var(--fill);border-radius:14px;padding:12px 12px 14px;margin:2.4rem 0}
+.fig1 canvas,.fig canvas{border-radius:8px}
+.svgwrap,.boxrow{background:var(--paper);border-radius:8px;padding:6px 8px}
+figcaption{font-family:var(--font-ui);font-size:.84rem;line-height:1.55;color:var(--muted);margin:.85rem .35rem 0}
+figure.exfig{background:color-mix(in srgb,var(--paper) 55%,transparent)}
+@media (max-width:600px){figure{padding:8px 8px 12px;border-radius:12px;margin-left:-8px;margin-right:-8px}}
+
+.boxfig .p1{fill:var(--blue);fill-opacity:.85}.boxfig .p2{fill:var(--yellow);fill-opacity:1}
+.boxfig .p3{fill:var(--coral);fill-opacity:.9}.boxfig .p4{fill:var(--green);fill-opacity:.85}.boxfig .p5{fill:var(--sky);fill-opacity:.8}
+.boxfig .pc{stroke:var(--paper);stroke-width:2.5}
+.boxfig .frame{stroke:var(--ink);stroke-width:1.6}
+.boxfig .hole{stroke:var(--ink)}
+.boxfig .grid{stroke:var(--ink-3);opacity:.7}
+.boxfig .lab{font:600 15px var(--font-ui)}
+.boxfig .cap{font-family:var(--font-ui)}
+.hier .lv{stroke:none;fill-opacity:1}
+.hier .lv0{fill:var(--fill)}
+.hier .lv1{fill:var(--yellow)}
+.hier .lv2{fill:var(--green)}
+.hier .lv3{fill:var(--blue)}
+.hier .lv4{fill:var(--coral)}
+.hier .lt{font-family:var(--font-ui);font-weight:600;fill:#1E1C19}
+.hier .le{font-family:var(--font-ui);font-style:normal;font-size:13px;fill:#1E1C19;fill-opacity:.72}
+.hier .lv0 ~ .lt,.hier .lv0 ~ .le{fill:var(--ink)}
+.hier .lv1 ~ .lt,.hier .lv1 ~ .le,.hier .lv2 ~ .lt,.hier .lv2 ~ .le{fill:#1E1C19}
+.hier .lv3 ~ .lt,.hier .lv3 ~ .le{fill:#fff;fill-opacity:1}
+.hier .lv3 ~ .le{fill-opacity:.85}
+.hier .lv4 ~ .lt,.hier .lv4 ~ .le{fill:#1E1C19}
+
+.controls{gap:.6rem 1.6rem;margin:.9rem .35rem 0;font-size:.85rem;color:var(--muted)}
+.controls label{gap:.6rem}
+.controls output{font-weight:600;color:var(--ink);min-width:2.4em}
+.controls select{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.25rem .55rem;color:var(--ink)}
+.controls input[type=checkbox]{accent-color:var(--ether);width:15px;height:15px;margin:0}
+input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;height:20px;width:8.5rem;max-width:40vw;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:var(--fill-2)}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--fill-2)}
+input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--ether)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:var(--paper);border:2px solid var(--ether);box-sizing:border-box;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--ether);box-sizing:border-box}
+input:focus-visible{outline:2px solid var(--ether);outline-offset:3px;border-radius:4px}
+
+.ro{margin:.8rem .35rem 0}
+.rl{font-family:var(--font-ui);font-size:.9rem}
+.gauge>.gt{top:21.5px;height:4px;border-radius:2px;background:var(--fill-2)}
+.gauge>.gf{top:21.5px;height:4px;border-radius:2px}
+.gauge>.gk{top:17.5px;width:12px;height:12px;margin-left:-6px;box-shadow:0 0 0 2.5px var(--fill)}
+.gauge>.gm b{font-family:var(--font-ui)}
+.rr>output.gv{font-weight:600;color:var(--ink)}
+.fx{font-family:var(--font-ui);font-size:.98rem;margin:.8rem .35rem 0}
+.fx:empty{display:none}
+
+.cap-tog{font-weight:500;color:var(--ink);background:var(--paper);border-radius:6px;padding:.1rem .5rem .14rem}
+.cap-tog:hover{background:var(--fill-2)}
+figcaption ul.capl>li::before{width:5px;height:5px;background:var(--ink-3);opacity:1}
+figcaption ul.capl b{font-weight:600}
+
+hr{border:0;border-top:1px solid var(--line);margin:3.6rem 0 2.4rem}
+
+/* Плавающие кнопки и панели */
+.gbtn,.tbtn{width:40px;height:40px;border:none;background:var(--paper);color:var(--ink);box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 7%,transparent),0 4px 14px rgba(40,30,10,.08)}
+.gloss:hover .gbtn,.gloss.open .gbtn,.tbtn:hover{transform:none;background:var(--fill)}
+.gloss{top:60px}.gloss.navm{top:12px}
+@media (max-width:900px){.gloss{top:12px;left:60px}.gloss.navm{left:12px}}
+:root[data-theme="dark"] .tbtn svg{transform:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tbtn svg{transform:none}}
+.tbtn .sun{display:none}
+:root[data-theme="dark"] .tbtn .sun{display:inline}:root[data-theme="dark"] .tbtn .moon{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tbtn .sun{display:inline}:root:not([data-theme="light"]) .tbtn .moon{display:none}}
+.gpanel{padding-top:50px}
+.gpanel>.ghead,.gpanel>.glist{background:var(--paper);border:none}
+.ghead{font-family:var(--font-display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;text-transform:none;color:var(--ink);padding:.85rem 1.1rem .35rem;border-radius:12px 12px 0 0;box-shadow:var(--pop)}
+.ghead span{font-family:var(--font-ui);font-weight:400;font-size:.8rem;letter-spacing:0}
+.ghome{font-family:var(--font-ui)}
+.glist{border-radius:0 0 12px 12px;box-shadow:var(--pop);padding:.2rem .4rem .6rem}
+.glist li{border-top:1px solid var(--line);padding:.45rem .7rem}
+.gref{color:var(--ether-ink)}
+.nlist li{border-top:none;font-size:.9rem}
+.nlist a{border-radius:8px;padding:.42rem .7rem}
+.nlist li.sub a{padding:.22rem .7rem .28rem 1.6rem}
+.nlist a:hover{background:var(--fill);color:var(--ink)}
+.nlist a.cur{color:var(--ink);font-weight:600}
+.nlist li.sub a.cur{color:var(--ether-ink)}
+.nlist li.pills{padding:.1rem .7rem .5rem 1.6rem}
+.nlist a.npill{border-radius:5px;padding:.05rem .45rem}
+.nlist a.npill.p-st{background:var(--fill)}
+.nlist a.npill.p-ex{background:var(--cream)}
+.nlist a.npill.p-fg{background:none;outline:1px solid var(--line)}
+.nlist a.npill:hover{outline:1px solid var(--ether)}
+
+/* Карточка ссылки */
+.xpop{border:none;border-radius:12px;box-shadow:var(--pop);font-family:var(--font-body)}
+.xpop{--xbg:var(--fill);--xlc:var(--ink)}
+.xpop .xbody{border-radius:12px 12px 0 0}
+.xpop.k-ex,.xpop.k-q{--xbg:var(--cream);--xlc:var(--ink)}
+.xpop .xlbl{font-weight:600}
+.xpop .xfoot{border-top:none;background:var(--paper);border-radius:0 0 12px 12px}
+.xpop .xfoot button,.xpop .xfoot a.go{border:1px solid var(--line);border-radius:8px;background:var(--paper)}
+.xpop .xfoot .go{background:var(--ink);border-color:var(--ink);color:var(--paper);font-weight:600}
+.xpop .xarr,.xpop.up .xarr{border:none}
+.xback{border:none;border-radius:10px;box-shadow:var(--pop)}
+.xback button{color:var(--ink);border-radius:8px}
+.xref{text-decoration-color:color-mix(in srgb,var(--ether) 55%,transparent);border-radius:4px}
+.xref:hover,.xref.on{background:var(--ether-soft)}
+@keyframes flash{0%{box-shadow:0 0 0 3px color-mix(in srgb,var(--ether) 45%,transparent)}100%{box-shadow:0 0 0 3px transparent}}
+
+/* Пилюли во всплывающем содержании — акцентными цветами по виду */
+.nlist a.npill{font-weight:500}
+.nlist a.npill[data-k=def]{background:var(--blue);color:#fff}
+.nlist a.npill[data-k=thm]{background:var(--coral);color:#1E1C19}
+.nlist a.npill[data-k=lem]{background:var(--green);color:#1E1C19}
+.nlist a.npill[data-k=ex]{background:var(--yellow);color:#1E1C19}
+.nlist a.npill.p-fg{color:var(--muted)}
+.nlist a.npill:hover{outline:2px solid var(--ink);outline-offset:1px}
+
+</style>
+</body></html>
