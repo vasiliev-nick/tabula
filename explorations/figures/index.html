@@ -51,28 +51,33 @@ main{max-width:1680px;margin:0 auto;padding:8px 24px 64px}
 .bk h2{font:600 1.35rem/1.2 var(--font-display);margin:0}
 .bk .eb{flex-basis:100%}
 .bk .n{color:var(--ink-3);font-size:.82rem}
+.vs{display:inline-flex;margin-left:auto;background:var(--fill-2);border-radius:6px;padding:2px}
+.vs button{font:500 .8rem var(--font-ui);border:0;background:transparent;color:var(--muted);padding:4px 12px;border-radius:4px;cursor:pointer}
+.vs button[aria-pressed="true"]{background:var(--paper);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.vs.all{margin:16px 0 0}
+.vs.all button{font-size:.9rem;padding:6px 18px}
 iframe{display:block;width:100%;border:0;background:transparent}
 @media (max-width:600px){.top,main{padding-left:16px;padding-right:16px}nav.jump .in{padding:8px 16px}h1{font-size:1.9rem}}
 </style></head><body>
 <div class="top"><button class="tb" type="button" aria-label="Светлая или тёмная тема" title="Светлая или тёмная тема"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M19.5 14.2A7.5 7.5 0 0 1 9.8 4.5a7.5 7.5 0 1 0 9.7 9.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button><div class="eb">Tabula · рабочая сетка</div><h1>Рисунки учебников</h1>
-<p class="lead">Все 145 рисунков из восьми учебников на одной странице, мелко, сеткой. Рисунки живые: ползунки и кнопки работают. Подпись разворачивается щелчком.</p></div>
+<p class="lead">Все 145 рисунков из восьми учебников на одной странице, мелко, сеткой. Сдержанная страница и весёлые рисунки: у каждого рисунка своя яркая пара цветов, плотные заливки, толстые линии и цветная подложка. Рисунки живые, подпись разворачивается щелчком.</p><div class="vs all" role="group" aria-label="Версия всех рисунков"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></div></div>
 <nav class="jump" aria-label="Учебники"><div class="in"><a href="#b0">Мера и интеграл Лебега<span>17</span></a><a href="#b1">Предельный переход под знаком интеграла<span>18</span></a><a href="#b2">Образ меры, плотности и теорема Фубини<span>27</span></a><a href="#b3">Кривые, кривизна и функция расстояния<span>17</span></a><a href="#b4">Случайные величины как векторы<span>6</span></a><a href="#b5">Гауссовские векторы<span>4</span></a><a href="#b6">Кросс-энтропия<span>26</span></a><a href="#b7">Оптимизаторы<span>30</span></a></div></nav>
 <main>
-<section id="b0" class="bk"><header><div class="eb">Глава ∅ · часть 1</div><h2>Мера и интеграл Лебега</h2><span class="n">17 рис.</span></header>
+<section id="b0" class="bk"><header><div class="eb">Глава ∅ · часть 1</div><h2>Мера и интеграл Лебега</h2><span class="n">17 рис.</span><span class="vs" role="group" aria-label="Версия"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></span></header>
 <iframe src="lebesgue-1.html" title="Рисунки: Мера и интеграл Лебега" loading="lazy" style="height:3120px"></iframe></section>
-<section id="b1" class="bk"><header><div class="eb">Глава ∅ · часть 2</div><h2>Предельный переход под знаком интеграла</h2><span class="n">18 рис.</span></header>
+<section id="b1" class="bk"><header><div class="eb">Глава ∅ · часть 2</div><h2>Предельный переход под знаком интеграла</h2><span class="n">18 рис.</span><span class="vs" role="group" aria-label="Версия"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></span></header>
 <iframe src="lebesgue-2.html" title="Рисунки: Предельный переход под знаком интеграла" loading="lazy" style="height:3640px"></iframe></section>
-<section id="b2" class="bk"><header><div class="eb">Глава ∅ · часть 3</div><h2>Образ меры, плотности и теорема Фубини</h2><span class="n">27 рис.</span></header>
+<section id="b2" class="bk"><header><div class="eb">Глава ∅ · часть 3</div><h2>Образ меры, плотности и теорема Фубини</h2><span class="n">27 рис.</span><span class="vs" role="group" aria-label="Версия"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></span></header>
 <iframe src="lebesgue-3.html" title="Рисунки: Образ меры, плотности и теорема Фубини" loading="lazy" style="height:5200px"></iframe></section>
-<section id="b3" class="bk"><header><div class="eb">Глава ∇</div><h2>Кривые, кривизна и функция расстояния</h2><span class="n">17 рис.</span></header>
+<section id="b3" class="bk"><header><div class="eb">Глава ∇</div><h2>Кривые, кривизна и функция расстояния</h2><span class="n">17 рис.</span><span class="vs" role="group" aria-label="Версия"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></span></header>
 <iframe src="curves.html" title="Рисунки: Кривые, кривизна и функция расстояния" loading="lazy" style="height:3120px"></iframe></section>
-<section id="b4" class="bk"><header><div class="eb">Глава ∠</div><h2>Случайные величины как векторы</h2><span class="n">6 рис.</span></header>
+<section id="b4" class="bk"><header><div class="eb">Глава ∠</div><h2>Случайные величины как векторы</h2><span class="n">6 рис.</span><span class="vs" role="group" aria-label="Версия"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></span></header>
 <iframe src="vectors.html" title="Рисунки: Случайные величины как векторы" loading="lazy" style="height:1560px"></iframe></section>
-<section id="b5" class="bk"><header><div class="eb">Глава 𝒩 · часть 1</div><h2>Гауссовские векторы</h2><span class="n">4 рис.</span></header>
+<section id="b5" class="bk"><header><div class="eb">Глава 𝒩 · часть 1</div><h2>Гауссовские векторы</h2><span class="n">4 рис.</span><span class="vs" role="group" aria-label="Версия"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></span></header>
 <iframe src="gauss-1.html" title="Рисунки: Гауссовские векторы" loading="lazy" style="height:1040px"></iframe></section>
-<section id="b6" class="bk"><header><div class="eb">Мини-учебник</div><h2>Кросс-энтропия</h2><span class="n">26 рис.</span></header>
+<section id="b6" class="bk"><header><div class="eb">Мини-учебник</div><h2>Кросс-энтропия</h2><span class="n">26 рис.</span><span class="vs" role="group" aria-label="Версия"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></span></header>
 <iframe src="xent.html" title="Рисунки: Кросс-энтропия" loading="lazy" style="height:4680px"></iframe></section>
-<section id="b7" class="bk"><header><div class="eb">Мини-учебник</div><h2>Оптимизаторы</h2><span class="n">30 рис.</span></header>
+<section id="b7" class="bk"><header><div class="eb">Мини-учебник</div><h2>Оптимизаторы</h2><span class="n">30 рис.</span><span class="vs" role="group" aria-label="Версия"><button type="button" data-v="orig" aria-pressed="false">Было</button><button type="button" data-v="new" aria-pressed="true">Стало</button></span></header>
 <iframe src="optim.html" title="Рисунки: Оптимизаторы" loading="lazy" style="height:5720px"></iframe></section>
 </main>
 <script>
@@ -82,6 +87,11 @@ iframe{display:block;width:100%;border:0;background:transparent}
   function send(f){try{f.contentWindow.postMessage({theme:th()},'*');}catch(e){}}
   fr.forEach(function(f){f.addEventListener('load',function(){send(f);});});
   addEventListener('message',function(e){var h=e.data&&e.data.figH;if(!h)return;fr.forEach(function(f){if(f.contentWindow===e.source)f.style.height=h+'px';});});
+  function setV(sec,v){var f=sec.querySelector('iframe'),src=f.getAttribute('src').replace(/^orig\//,'');f.setAttribute('src',(v==='orig'?'orig/':'')+src);
+    sec.querySelectorAll('.vs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.v===v);});}
+  document.querySelectorAll('.bk .vs button').forEach(function(b){b.onclick=function(){setV(b.closest('.bk'),b.dataset.v);};});
+  document.querySelectorAll('.vs.all button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.vs.all button').forEach(function(x){x.setAttribute('aria-pressed',x===b);});
+    document.querySelectorAll('.bk').forEach(function(sec){setV(sec,b.dataset.v);});};});
   document.querySelector('.tb').onclick=function(){
     var dark=th()==='dark'||(th()==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);
     R.setAttribute('data-theme',dark?'light':'dark');try{localStorage.setItem('tabula-figs-theme',R.getAttribute('data-theme'));}catch(e){}

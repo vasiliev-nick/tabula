@@ -1,4 +1,75 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body><style>article.book{position:absolute!important;left:-99999px!important;top:0;width:44rem;visibility:hidden!important}.gloss,.tbtn{display:none!important}</style><script>document.documentElement.dataset.palOffset="3";
+/* Tabula figures: cheerful illustrations inside a calm page.
+   Every figure gets its own pair of bright colours (a cold one in place of --ether, a warm one in place of --warm),
+   fills become dense and flat, lines get thicker and rounder, dots bigger, and the canvas sits on a soft tint
+   of its cold colour. The figures' own code is untouched: colours are swapped where they are painted. */
+(function(){
+  var PAL={blue:['#4F6BFF','#EAEEFF','#2C47D6'],green:['#22B07A','#E0F5EC','#12784F'],violet:['#8A5CFF','#EFE8FF','#5B33C9'],sky:['#1FB2EA','#E0F4FC','#0B7FAD'],
+           coral:['#FF6F59','#FFE9E3','#C7402A'],yellow:['#FFC21A','#FFF4CC','#B37F00'],pink:['#FF6BA8','#FFE6F0','#C2306F']};
+  var PAIRS=[['blue','coral'],['green','yellow'],['violet','coral'],['sky','yellow'],['green','coral'],['violet','yellow'],['blue','yellow'],['sky','pink']];
+  var NAMES={blue:['син','soft'],green:['зелён','hard'],violet:['фиолетов','hard'],sky:['голуб','hardo']};
+  var OFF=+(document.documentElement.dataset.palOffset||0);
+  function hex(h){h=h.trim();if(h[0]==='#'){if(h.length===4)h='#'+h[1]+h[1]+h[2]+h[2]+h[3]+h[3];return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16),1];}
+    var m=h.match(/rgba?\(([^)]+)\)/);if(m){var p=m[1].split(/[ ,\/]+/).filter(Boolean).map(Number);return [p[0],p[1],p[2],p.length>3?p[3]:1];}return null;}
+  var root=document.documentElement;
+  var base=null,baseTheme=null;
+  function tok(n){return getComputedStyle(root).getPropertyValue(n).trim();}
+  function dark(){var t=root.getAttribute('data-theme');return t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);}
+  function B(){var th=dark()?'d':'l';if(base&&baseTheme===th)return base;baseTheme=th;
+    base={E:hex(tok('--ether')),W:hex(tok('--warm')),Es:hex(tok('--ether-soft')),Ws:hex(tok('--warm-soft')),paper:hex(tok('--paper'))};return base;}
+  function eq(a,b){return a&&b&&Math.abs(a[0]-b[0])<3&&Math.abs(a[1]-b[1])<3&&Math.abs(a[2]-b[2])<3;}
+  function mix(a,b,t){return [a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];}
+  function css(c,a){return 'rgba('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+','+(+a.toFixed(3))+')';}
+  function pairOf(cv){var f=cv&&cv.closest&&cv.closest('figure');if(!f)return null;if(!f._pal)assign(f);return f._pal;}
+  function assign(f){var all=[].slice.call(document.querySelectorAll('figure'));var i=all.indexOf(f);var pr=PAIRS[((i+OFF)%PAIRS.length+PAIRS.length)%PAIRS.length];
+    var P=PAL[pr[0]],S=PAL[pr[1]];f._pal={p:pr[0],s:pr[1],P:hex(P[0]),Ps:hex(P[1]),Pi:hex(P[2]),S:hex(S[0]),Ss:hex(S[1]),Si:hex(S[2])};
+    f.dataset.pal=pr[0]+'-'+pr[1];
+  }
+  window.TabulaPal={assign:assign,PAIRS:PAIRS,NAMES:NAMES};
+  /* map one colour of the old two-accent scheme to the figure's pair */
+  var cache=new Map();
+  function map(v,cv,fill){if(typeof v!=='string')return v;var pr=pairOf(cv);if(!pr)return v;var k=v+'|'+(fill?1:0)+'|'+pr.p+pr.s+'|'+baseTheme;
+    if(cache.has(k))return cache.get(k);var c=hex(v),b=B(),out=v;
+    if(c){var a=c[3],boost=function(x){return x>=0.999?1:Math.min(fill?0.95:1,x*1.45+0.14);};
+      var dk=dark();var P=dk?mix(pr.P,[255,255,255],0.12):pr.P,S=dk?mix(pr.S,[255,255,255],0.1):pr.S;
+      if(eq(c,b.E))out=css(P,boost(a));
+      else if(eq(c,b.W))out=css(S,boost(a));
+      else if(eq(c,b.Es))out=css(dk?mix(b.paper,P,0.22):pr.Ps,a);
+      else if(eq(c,b.Ws))out=css(dk?mix(b.paper,S,0.22):pr.Ss,a);
+      else{ /* a mix of the two accents: the same mix of the pair */
+        var d=[b.W[0]-b.E[0],b.W[1]-b.E[1],b.W[2]-b.E[2]],L=d[0]*d[0]+d[1]*d[1]+d[2]*d[2],t=((c[0]-b.E[0])*d[0]+(c[1]-b.E[1])*d[1]+(c[2]-b.E[2])*d[2])/L;
+        if(t>0.02&&t<0.98){var q=mix(b.E,b.W,t),e=Math.hypot(c[0]-q[0],c[1]-q[1],c[2]-q[2]);if(e<14)out=css(mix(P,S,t),boost(a));}}}
+    cache.set(k,out);return out;}
+  /* gauges, swatches and SVG drawn by the scripts get their colours inline: those follow the pair too */
+  var PROPS=['background','backgroundColor','color','borderColor','borderLeftColor','fill','stroke'];
+  function fixEl(el){var f=el.closest&&el.closest('figure[data-pal]');if(!f)return;var st=el.style;
+    PROPS.forEach(function(k){var v=st[k];if(!v||v.indexOf('var(')>=0)return;var m=v.replace(/(#[0-9a-fA-F]{3,6}|rgba?\([^)]*\))/g,function(c){return map(c,el,k!=='color'&&k!=='stroke');});if(m!==v)st[k]=m;});
+    ['fill','stroke'].forEach(function(k){var v=el.getAttribute&&el.getAttribute(k);if(v&&/^(#|rgb)/.test(v)){var m=map(v,el,k==='fill');if(m!==v)el.setAttribute(k,m);}});}
+  new MutationObserver(function(ms){ms.forEach(function(m){if(m.type==='attributes')fixEl(m.target);else m.addedNodes.forEach(function(n){if(n.nodeType===1){fixEl(n);n.querySelectorAll&&[].forEach.call(n.querySelectorAll('[style],[fill],[stroke]'),fixEl);}});});})
+    .observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['style','fill','stroke']});
+  window.TabulaPal.fixAll=function(){[].forEach.call(document.querySelectorAll('figure[data-pal] [style],figure[data-pal] [fill],figure[data-pal] [stroke]'),fixEl);};
+  var C=CanvasRenderingContext2D.prototype;
+  function wrapProp(name,fill){var d=Object.getOwnPropertyDescriptor(C,name);Object.defineProperty(C,name,{configurable:true,get:function(){return d.get.call(this);},
+    set:function(v){var m=map(v,this.canvas,fill);this['_y'+name]=(m!==v&&/^rgba\((255,194,26)/.test(m));d.set.call(this,m);}});}
+  C.__origFill=Object.getOwnPropertyDescriptor(C,'fillStyle');wrapProp('fillStyle',true);wrapProp('strokeStyle',false);
+  /* gradients: stops go through the same map */
+  ['createLinearGradient','createRadialGradient','createConicGradient'].forEach(function(n){var o=C[n];if(!o)return;C[n]=function(){var g=o.apply(this,arguments),cv=this.canvas,a=g.addColorStop;g.addColorStop=function(s,c){return a.call(g,s,map(c,cv,true));};return g;};});
+  /* thicker, rounder lines for the drawing itself; hairlines (axes, grids) stay thin */
+  var lw=Object.getOwnPropertyDescriptor(C,'lineWidth');
+  Object.defineProperty(C,'lineWidth',{configurable:true,get:function(){return lw.get.call(this);},set:function(v){if(v>=1.6&&pairOf(this.canvas))v=Math.min(6,v*1.4);lw.set.call(this,v);}});
+  var st=C.stroke;C.stroke=function(){if(lw.get.call(this)>=2&&pairOf(this.canvas)){this.lineCap='round';this.lineJoin='round';}return st.apply(this,arguments);};
+  /* bigger dots */
+  var arc=C.arc;C.arc=function(x,y,r,a0,a1,ccw){if(r>1.2&&r<=6&&Math.abs((a1||0)-(a0||0))>6.2&&pairOf(this.canvas))r=r*1.3;return arc.call(this,x,y,r,a0,a1,ccw);};
+  /* yellow text is unreadable: text in the yellow accent uses its ink */
+  var ft=C.fillText,FD=C.__origFill;C.fillText=function(){if(this._yfillStyle){var pr=pairOf(this.canvas);this.save();FD.set.call(this,css(pr.s==='yellow'?pr.Si:pr.Si,1));var r=ft.apply(this,arguments);this.restore();return r;}
+    return ft.apply(this,arguments);};
+  /* a soft tint behind the drawing: the full-size paper fill becomes the tint */
+  var fr=C.fillRect;C.fillRect=function(x,y,w,h){var cv=this.canvas,pr=pairOf(cv);
+    if(pr&&x<=1&&y<=1&&w>=cv.width*0.95&&h>=cv.height*0.95){var c=hex(String(this.fillStyle)),b=B();if(c&&eq(c,b.paper)){var s=this.fillStyle;this.fillStyle=dark()?css(mix(b.paper,pr.P,0.08),1):css(mix(pr.Ps,[255,255,255],0.35),1);var r=fr.apply(this,arguments);this.fillStyle=s;return r;}}
+    return fr.apply(this,arguments);};
+})();
+
+</script>
 <title>Рисунки · ∅, часть 2</title>
 <script>try{var t=localStorage.getItem("book-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2329,7 +2400,7 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
   V.dim=function(cv,is3){cv.dataset.dim=is3?'3':'2';cv.style.touchAction=is3?'none':'pan-y';cv.style.cursor=is3?'grab':'';
     const f=cv.closest('figure');f.querySelectorAll('.only3d').forEach(e=>{e.hidden=!is3;});f.querySelectorAll('.only2d').forEach(e=>{e.hidden=is3;});};
   /* A short turn of the view the first time a 3D scene is shown, so that it reads as three-dimensional. */
-  V.intro=function(st,redraw){if(TB.reduced()||st.introDone)return;st.introDone=true;const y0=st.yaw-0.7,t0=performance.now();st.yaw=y0;
+  V.intro=function(st,redraw){return;st.introDone=true;const y0=st.yaw-0.7,t0=performance.now();st.yaw=y0;
     const step=t=>{const a=Math.min(1,(t-t0)/1400);st.yaw=y0+0.7*(1-Math.pow(1-a,3));redraw();if(a<1)requestAnimationFrame(step);};requestAnimationFrame(step);};
 })();
 </script>
@@ -2527,12 +2598,63 @@ figcaption ul.capl b{font-weight:650;color:var(--ink)}
 })();
 </script>
 
+<style>figure[data-pal^="blue-"]{--ether:#4F6BFF;--ether-soft:#EAEEFF;--ether-ink:#2C47D6;--tint-bg:color-mix(in srgb,#EAEEFF 65%,#fff)}
+figure[data-pal$="-blue"]{--warm:#4F6BFF;--warm-soft:#EAEEFF;--warm-ink:#2C47D6}
+:root[data-theme="dark"] figure[data-pal^="blue-"]{--ether-soft:color-mix(in srgb,#4F6BFF 22%,var(--paper));--tint-bg:color-mix(in srgb,#4F6BFF 8%,var(--paper))}
+:root[data-theme="dark"] figure[data-pal$="-blue"]{--warm-soft:color-mix(in srgb,#4F6BFF 22%,var(--paper))}
+figure[data-pal^="green-"]{--ether:#22B07A;--ether-soft:#E0F5EC;--ether-ink:#12784F;--tint-bg:color-mix(in srgb,#E0F5EC 65%,#fff)}
+figure[data-pal$="-green"]{--warm:#22B07A;--warm-soft:#E0F5EC;--warm-ink:#12784F}
+:root[data-theme="dark"] figure[data-pal^="green-"]{--ether-soft:color-mix(in srgb,#22B07A 22%,var(--paper));--tint-bg:color-mix(in srgb,#22B07A 8%,var(--paper))}
+:root[data-theme="dark"] figure[data-pal$="-green"]{--warm-soft:color-mix(in srgb,#22B07A 22%,var(--paper))}
+figure[data-pal^="violet-"]{--ether:#8A5CFF;--ether-soft:#EFE8FF;--ether-ink:#5B33C9;--tint-bg:color-mix(in srgb,#EFE8FF 65%,#fff)}
+figure[data-pal$="-violet"]{--warm:#8A5CFF;--warm-soft:#EFE8FF;--warm-ink:#5B33C9}
+:root[data-theme="dark"] figure[data-pal^="violet-"]{--ether-soft:color-mix(in srgb,#8A5CFF 22%,var(--paper));--tint-bg:color-mix(in srgb,#8A5CFF 8%,var(--paper))}
+:root[data-theme="dark"] figure[data-pal$="-violet"]{--warm-soft:color-mix(in srgb,#8A5CFF 22%,var(--paper))}
+figure[data-pal^="sky-"]{--ether:#1FB2EA;--ether-soft:#E0F4FC;--ether-ink:#0B7FAD;--tint-bg:color-mix(in srgb,#E0F4FC 65%,#fff)}
+figure[data-pal$="-sky"]{--warm:#1FB2EA;--warm-soft:#E0F4FC;--warm-ink:#0B7FAD}
+:root[data-theme="dark"] figure[data-pal^="sky-"]{--ether-soft:color-mix(in srgb,#1FB2EA 22%,var(--paper));--tint-bg:color-mix(in srgb,#1FB2EA 8%,var(--paper))}
+:root[data-theme="dark"] figure[data-pal$="-sky"]{--warm-soft:color-mix(in srgb,#1FB2EA 22%,var(--paper))}
+figure[data-pal^="coral-"]{--ether:#FF6F59;--ether-soft:#FFE9E3;--ether-ink:#C7402A;--tint-bg:color-mix(in srgb,#FFE9E3 65%,#fff)}
+figure[data-pal$="-coral"]{--warm:#FF6F59;--warm-soft:#FFE9E3;--warm-ink:#C7402A}
+:root[data-theme="dark"] figure[data-pal^="coral-"]{--ether-soft:color-mix(in srgb,#FF6F59 22%,var(--paper));--tint-bg:color-mix(in srgb,#FF6F59 8%,var(--paper))}
+:root[data-theme="dark"] figure[data-pal$="-coral"]{--warm-soft:color-mix(in srgb,#FF6F59 22%,var(--paper))}
+figure[data-pal^="yellow-"]{--ether:#FFC21A;--ether-soft:#FFF4CC;--ether-ink:#B37F00;--tint-bg:color-mix(in srgb,#FFF4CC 65%,#fff)}
+figure[data-pal$="-yellow"]{--warm:#FFC21A;--warm-soft:#FFF4CC;--warm-ink:#B37F00}
+:root[data-theme="dark"] figure[data-pal^="yellow-"]{--ether-soft:color-mix(in srgb,#FFC21A 22%,var(--paper));--tint-bg:color-mix(in srgb,#FFC21A 8%,var(--paper))}
+:root[data-theme="dark"] figure[data-pal$="-yellow"]{--warm-soft:color-mix(in srgb,#FFC21A 22%,var(--paper))}
+figure[data-pal^="pink-"]{--ether:#FF6BA8;--ether-soft:#FFE6F0;--ether-ink:#C2306F;--tint-bg:color-mix(in srgb,#FFE6F0 65%,#fff)}
+figure[data-pal$="-pink"]{--warm:#FF6BA8;--warm-soft:#FFE6F0;--warm-ink:#C2306F}
+:root[data-theme="dark"] figure[data-pal^="pink-"]{--ether-soft:color-mix(in srgb,#FF6BA8 22%,var(--paper));--tint-bg:color-mix(in srgb,#FF6BA8 8%,var(--paper))}
+:root[data-theme="dark"] figure[data-pal$="-pink"]{--warm-soft:color-mix(in srgb,#FF6BA8 22%,var(--paper))}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) figure[data-pal^="blue-"]{--ether-soft:color-mix(in srgb,#4F6BFF 22%,var(--paper));--tint-bg:color-mix(in srgb,#4F6BFF 8%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal$="-blue"]{--warm-soft:color-mix(in srgb,#4F6BFF 22%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal^="green-"]{--ether-soft:color-mix(in srgb,#22B07A 22%,var(--paper));--tint-bg:color-mix(in srgb,#22B07A 8%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal$="-green"]{--warm-soft:color-mix(in srgb,#22B07A 22%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal^="violet-"]{--ether-soft:color-mix(in srgb,#8A5CFF 22%,var(--paper));--tint-bg:color-mix(in srgb,#8A5CFF 8%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal$="-violet"]{--warm-soft:color-mix(in srgb,#8A5CFF 22%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal^="sky-"]{--ether-soft:color-mix(in srgb,#1FB2EA 22%,var(--paper));--tint-bg:color-mix(in srgb,#1FB2EA 8%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal$="-sky"]{--warm-soft:color-mix(in srgb,#1FB2EA 22%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal^="coral-"]{--ether-soft:color-mix(in srgb,#FF6F59 22%,var(--paper));--tint-bg:color-mix(in srgb,#FF6F59 8%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal$="-coral"]{--warm-soft:color-mix(in srgb,#FF6F59 22%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal^="yellow-"]{--ether-soft:color-mix(in srgb,#FFC21A 22%,var(--paper));--tint-bg:color-mix(in srgb,#FFC21A 8%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal$="-yellow"]{--warm-soft:color-mix(in srgb,#FFC21A 22%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal^="pink-"]{--ether-soft:color-mix(in srgb,#FF6BA8 22%,var(--paper));--tint-bg:color-mix(in srgb,#FF6BA8 8%,var(--paper))}
+:root:not([data-theme="light"]) figure[data-pal$="-pink"]{--warm-soft:color-mix(in srgb,#FF6BA8 22%,var(--paper))}}
+figure[data-pal] canvas{background:var(--tint-bg)}
+</style>
 <main id="figgrid" class="figgrid" aria-label="Рисунки"></main>
 <script>
 /* Figures page: every figure leaves the (hidden) text and goes into one grid, with its listeners intact. */
 (function(){
   var g=document.getElementById('figgrid');
   document.querySelectorAll('article.book figure').forEach(function(f){g.appendChild(f);});
+  /* each figure takes its colour pair; colour words in the text follow the cold colour */
+  if(window.TabulaPal){var E={soft:{'ий':'ий','яя':'яя','ее':'ее','ие':'ие','им':'им','его':'его','ей':'ей','их':'их','юю':'юю','ими':'ими','ему':'ему','ем':'ем'},
+      hard:{'ий':'ый','яя':'ая','ее':'ое','ие':'ые','им':'ым','его':'ого','ей':'ой','их':'ых','юю':'ую','ими':'ыми','ему':'ому','ем':'ом'}};
+    E.hardo=Object.assign({},E.hard,{'ий':'ой'});
+    [].forEach.call(g.querySelectorAll('figure'),function(f){TabulaPal.assign(f);var nm=TabulaPal.NAMES[f.dataset.pal.split('-')[0]];if(!nm||nm[0]==='син')return;
+      var w=document.createTreeWalker(f,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode()){var t=n.nodeValue;if(t.indexOf('ин')<0)continue;
+        n.nodeValue=t.replace(/([Сс])ин(ий|яя|ее|ие|ими|им|его|ей|их|юю|ему|ем)(?![а-яё])/g,function(m,c,e){var r=nm[0]+E[nm[1]][e];return c==='С'?r[0].toUpperCase()+r.slice(1):r;});}});TabulaPal.fixAll();}
   g.addEventListener('click',function(e){var c=e.target.closest('figcaption');if(c)c.classList.toggle('open');});
   function post(){try{parent.postMessage({figH:Math.ceil(g.getBoundingClientRect().bottom+scrollY+12),src:location.pathname},'*');}catch(e){}}
   new ResizeObserver(post).observe(g);addEventListener('load',post);post();
@@ -2544,7 +2666,7 @@ html,body{background:transparent!important}
 body{padding:4px 0 8px!important;margin:0}
 .gloss,.tbtn,article.book{display:none!important}
 .figgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-items:start;font-size:14px;line-height:1.45}
-.figgrid figure{margin:0!important;padding:12px 12px 10px;background:var(--paper);border:1px solid var(--line);border-radius:6px;min-width:0;max-width:none!important}
+.figgrid figure{margin:0!important;padding:12px 12px 10px;background:var(--paper);border:1px solid var(--line,var(--rule));border-radius:6px;min-width:0;max-width:none!important}
 .figgrid figure .fig1.sq{max-width:none}
 .figgrid canvas{border-radius:4px}
 .figgrid .controls{font-size:.78rem;gap:.5rem .9rem;margin-top:.55rem}
